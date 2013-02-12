@@ -52,6 +52,7 @@ choqok
 chrony
 cups-pdf
 dolphin-root-actions
+digikam
 eekboard
 expect
 firefox
@@ -187,6 +188,7 @@ gstreamer-plugins-bad-nonfree
 gstreamer-plugins-good
 gstreamer-plugins-ugly
 kid3
+kio-ftps
 kio_mtp
 lame
 libmpg123
@@ -291,6 +293,10 @@ sed -i 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anacon
 # chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
 
+# link install video to desktop
+mkdir -p /home/liveuser/Desktop 2>/dev/null
+ln -sf /usr/share/korora-videos/korora-install-howto.webm /home/liveuser/Desktop/Installation\ Video.webm
+
 # copy over the icons for liveinst to hicolor
 cp /usr/share/icons/gnome/16x16/apps/system-software-install.png /usr/share/icons/hicolor/16x16/apps/
 cp /usr/share/icons/gnome/22x22/apps/system-software-install.png /usr/share/icons/hicolor/22x22/apps/
@@ -307,7 +313,7 @@ cat > /home/liveuser/.config/akonadi/akonadiserverrc << AKONADI_EOF
 Driver=QSQLITE3
 AKONADI_EOF
 
-# Disable the update notifications of apper 
+# Disable the update notifications of apper
 cat > /home/liveuser/.kde/share/config/apper << APPER_EOF
 [CheckUpdate]
 autoUpdate=0

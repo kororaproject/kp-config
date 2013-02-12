@@ -186,6 +186,7 @@ system-config-lvm
 system-config-printer
 #tilda
 -transmission-gtk
+-thunderbird
 deluge
 vim
 #vinagre
@@ -239,6 +240,9 @@ Miro
 #mozilla-vlc
 mpg321
 nautilus-sound-converter
+-nemo
+-nemo-open-terminal
+-nemo-extensions
 openshot
 PackageKit-browser-plugin
 PackageKit-gstreamer-plugin
@@ -374,6 +378,11 @@ pactl set-sink-volume 0 50000
 #chmod a+x /home/liveuser/Desktop/liveinst.desktop
 chmod +x /usr/share/applications/liveinst.desktop
 chown -Rf liveuser:liveuser /home/liveuser/Desktop
+
+# link install video to desktop
+mkdir -p /home/liveuser/Desktop 2>/dev/null
+ln -sf /usr/share/korora-videos/korora-install-howto.webm /home/liveuser/Desktop/Installation\ Video.webm
+
 restorecon -R /home/liveuser/
 
 #Turn off screensaver in live mode
