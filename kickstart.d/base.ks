@@ -30,7 +30,7 @@ repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedora
 repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates Testing" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/%%KP_BASEARCH%%/ --cost=1000
-repo --name="Korora %%KP_VERSION%%" --baseurl=file://%%KP_REPOSITORY_DIR%%/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
+repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
 #repo --name="Kororaa Testing" --baseurl=file:///home/chris/repos/kororaa/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=5
 #repo --name="Ksplice Uptrack for Fedora" --baseurl=http://www.ksplice.com/yum/uptrack/fedora/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
