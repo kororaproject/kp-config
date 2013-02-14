@@ -109,9 +109,15 @@ fpaste
 # HARDWARE MONITORING/CONTROLLING
 powertop
 
-# system config
+#
+# SYSTEM CONFIG
 system-config-samba
 system-config-services
+
+#
+# GAMING PLATFORM
+steam
+
 
 %end
 
