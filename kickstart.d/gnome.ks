@@ -185,6 +185,7 @@ simple-scan
 system-config-lvm
 system-config-printer
 #tilda
+-totem*
 -transmission-gtk
 -thunderbird
 deluge

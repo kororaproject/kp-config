@@ -115,6 +115,11 @@ system-config-samba
 system-config-services
 
 #
+# MULTIMEDIA
+flash-plugin-helper
+flash-plugin
+
+#
 # GAMING PLATFORM
 steam
 
