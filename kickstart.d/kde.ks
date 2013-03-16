@@ -40,6 +40,7 @@ adwaita-gtk3-theme
 akmods
 alsa-utils
 alsa-plugins-pulseaudio
+amarok
 apper
 backintime-kde
 bash-completion
@@ -89,7 +90,7 @@ kdebase-workspace-ksplash-themes
 -kdegames
 kdegames-minimal
 kdenlive
-#kde-partitionmanager #broken deps atm
+kde-partitionmanager
 kde-plasma-daisy
 kde-plasma-yawp
 kde-settings
