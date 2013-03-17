@@ -67,7 +67,7 @@ frei0r-plugins
 fuse
 gimp
 git
-#gparted
+gparted
 -gnome-packagekit*
 HandBrake-gui
 htop
@@ -90,7 +90,7 @@ kdebase-workspace-ksplash-themes
 -kdegames
 kdegames-minimal
 kdenlive
-kde-partitionmanager
+#kde-partitionmanager
 kde-plasma-daisy
 kde-plasma-yawp
 kde-settings
