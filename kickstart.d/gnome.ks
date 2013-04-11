@@ -62,7 +62,7 @@ firefox
 font-manager
 fprintd-pam
 fuse
-libXft-infinality
+#libXft-infinality
 freetype-infinality
 fontconfig-infinality
 gconf-editor

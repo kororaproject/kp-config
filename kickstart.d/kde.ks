@@ -58,7 +58,7 @@ eekboard
 expect
 firefox
 *firmware*
-libXft-infinality
+#libXft-infinality
 freetype-infinality
 fontconfig-infinality
 font-manager
@@ -233,7 +233,7 @@ echo "****BUILDING AKMODS****"
 for x in fedora google-chrome virtualbox korora livna adobe rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary ; do rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-$x ; done
 
 #KDE - stop Klipper from starting
-sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
+#sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
 
 #Start yum-updatesd
 systemctl enable yum-updatesd.service
@@ -278,6 +278,8 @@ fi
 echo "startkde" > /home/liveuser/.xsession
 chmod a+x /home/liveuser/.xsession
 chown liveuser:liveuser /home/liveuser/.xsession
+
+echo -e '#!/bin/bash\nif [ -n "$(env |grep DISPLAY)" ]; then xhost +; fi' >> /home/liveuser/.bashrc
 
 # set up autologin for user liveuser
 sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
