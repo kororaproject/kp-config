@@ -33,7 +33,8 @@ nss-mdns
 korora-backgrounds-gnome
 korora-backgrounds-extras-gnome
 
-elementary-gtk
+egtk-gtk2-theme
+egtk-gtk3-theme
 elementary-icon-theme
 
 #
