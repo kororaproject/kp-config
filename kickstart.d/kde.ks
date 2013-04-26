@@ -30,7 +30,8 @@ korora-backgrounds-kde
 korora-backgrounds-extras-kde
 -desktop-backgrounds-basic
 
-elementary-gtk
+egtk-gtk2-theme
+egtk-gtk3-theme
 elementary-icon-theme
 adwaita-gtk3-theme
 
