@@ -27,7 +27,7 @@ nss-mdns
 
 # (RE)BRANDING
 korora-backgrounds-kde
-korora-backgrounds-extras-kde
+#korora-backgrounds-extras-kde - TODO: fix when f19 artwork updated
 -desktop-backgrounds-basic
 
 egtk-gtk2-theme
@@ -124,14 +124,14 @@ libreoffice-math
 libreoffice-ogltrans
 libreoffice-opensymbol-fonts
 libreoffice-pdfimport
-libreoffice-presenter-screen
+#libreoffice-presenter-screen - f19 - N/A
 libreoffice-report-builder
 libreoffice-ure
 libreoffice-writer
 libreoffice-xsltfilter
 linphone
 liveusb-creator
-mtpfs
+#mtpfs - f19 - N/A
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
@@ -158,7 +158,7 @@ sane-backends
 screen
 skanlite
 -synaptic
-system-config-lvm
+#system-config-lvm - f19 - N/A
 -system-config-printer
 kde-print-manager
 vim

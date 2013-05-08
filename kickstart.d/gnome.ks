@@ -18,7 +18,7 @@
 #
 
 %packages
-@cinnamon-desktop
+#@cinnamon-desktop - TODO: DEPRACTED - for removal in k19
 @firefox
 @gnome-desktop
 @gnome-games
@@ -31,7 +31,7 @@ nss-mdns
 
 # (RE)BRANDING
 korora-backgrounds-gnome
-korora-backgrounds-extras-gnome
+#korora-backgrounds-extras-gnome - TODO: fix when f19 artwork updated.
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -70,8 +70,8 @@ gconf-editor
 gimp
 git
 gnome-disk-utility
-gnome-games*
-gnome-lirc-properties
+#gnome-games* - N/A - f19
+#gnome-lirc-properties - N/A - f19
 gnome-packagekit
 -gnome-shell-extension-gpaste
 -gnome-shell-extension-pidgin
@@ -81,7 +81,7 @@ gnome-shell-extension-user-theme
 #gnome-shell-extension-theme-selector
 gnome-shell-extension-workspacesmenu
 gnome-shell-extension-alternative-status-menu
-gnome-shell-extension-dock
+#gnome-shell-extension-dock - N/A - f19
 gnome-shell-extension-drive-menu
 gnome-shell-extension-places-menu
 -gnome-shell-extension-native-window-placement
@@ -102,8 +102,8 @@ gvfs-obexftp
 gwibber
 hardlink
 htop
--ibus-pinyin-db-open-phrase
-ibus-pinyin-db-android
+#-ibus-pinyin-db-open-phrase - N/A - f19
+#ibus-pinyin-db-android - N/A - f19
 inkscape
 iok
 jack-audio-connection-kit
@@ -124,7 +124,7 @@ libreoffice-math
 libreoffice-ogltrans
 libreoffice-opensymbol-fonts
 libreoffice-pdfimport
-libreoffice-presenter-screen
+#libreoffice-presenter-screen - N/A - f19
 libreoffice-report-builder
 libreoffice-ure
 libreoffice-writer
@@ -134,7 +134,7 @@ libsane-hpaio
 lirc
 lirc-remotes
 liveusb-creator
-mtpfs
+#mtpfs - N/A - f19
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
@@ -183,7 +183,7 @@ shotwell
 simple-scan
 -smartmontools
 #synaptic
-system-config-lvm
+#system-config-lvm  - N/A - f19
 system-config-printer
 #tilda
 -totem*
@@ -341,10 +341,11 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 [org.gnome.shell]
 favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
 FOE
-  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
-[org.cinnamon]
-favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
-FOE
+# TODO: DEPRACATED - for removal in k19
+#  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
+#[org.cinnamon]
+#favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
+#FOE
 
   # Make the welcome screen show up
   if [ -f /usr/share/anaconda/gnome/fedora-welcome.desktop ]; then
