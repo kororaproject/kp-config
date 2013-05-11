@@ -131,7 +131,6 @@ libreoffice-writer
 libreoffice-xsltfilter
 linphone
 liveusb-creator
-#mtpfs - f19 - N/A
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall

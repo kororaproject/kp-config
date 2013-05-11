@@ -134,7 +134,6 @@ libsane-hpaio
 lirc
 lirc-remotes
 liveusb-creator
-#mtpfs - N/A - f19
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
