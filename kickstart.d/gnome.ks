@@ -377,13 +377,11 @@ amixer set PCM 85% unmute 2>/dev/null
 pactl set-sink-mute 0 0
 pactl set-sink-volume 0 50000
 
-#chmod a+x /home/liveuser/Desktop/liveinst.desktop
 chmod +x /usr/share/applications/liveinst.desktop
-chown -Rf liveuser:liveuser /home/liveuser/Desktop
 
-# link install video to desktop
+# ensure liveuser desktop exists with correct permissions
 mkdir -p /home/liveuser/Desktop 2>/dev/null
-ln -sf /usr/share/korora-videos/korora-install-howto.webm /home/liveuser/Desktop/Installation\ Video.webm
+chown -Rf liveuser:liveuser /home/liveuser/Desktop
 
 restorecon -R /home/liveuser/
 

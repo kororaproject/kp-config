@@ -296,9 +296,9 @@ sed -i 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anacon
 # chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
 
-# link install video to desktop
+# ensure liveuser desktop exists with correct permissions
 mkdir -p /home/liveuser/Desktop 2>/dev/null
-ln -sf /usr/share/korora-videos/korora-install-howto.webm /home/liveuser/Desktop/Installation\ Video.webm
+chown -Rf liveuser:liveuser /home/liveuser/Desktop
 
 # copy over the icons for liveinst to hicolor
 cp /usr/share/icons/gnome/16x16/apps/system-software-install.png /usr/share/icons/hicolor/16x16/apps/
