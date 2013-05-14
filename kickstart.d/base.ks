@@ -77,6 +77,9 @@ memtest86+
 anaconda
 @anaconda-tools
 
+# Make live images easy to shutdown and the like in libvirt
+qemu-guest-agent
+
 #Install 3rd party repo releases
 adobe-release
 google-chrome-release
@@ -89,7 +92,6 @@ rpmfusion-nonfree-release
 
 #
 # (RE)BRANDING
-korora-backgrounds
 korora-extras
 korora-release
 korora-logos
@@ -148,6 +150,9 @@ cat > /etc/rc.d/init.d/livesys << EOF
 #
 # chkconfig: 345 00 99
 # description: Init script for live image.
+### BEGIN INIT INFO
+# X-Start-Before: display-manager
+### END INIT INFO
 
 . /etc/init.d/functions
 
@@ -259,10 +264,9 @@ if [ -n "\$configdone" ]; then
 fi
 
 # add fedora user with no passwd
-action "Adding live user" useradd \$USERADDARGS -c "Live User" liveuser
+action "Adding live user" useradd \$USERADDARGS -c "Live System User" liveuser
 passwd -d liveuser > /dev/null
-#echo "liveuser" | passwd --stdin liveuser
-gpasswd -a liveuser wheel
+usermod -aG wheel liveuser > /dev/null
 
 # turn off firstboot for livecd boots
 systemctl --no-reload disable firstboot-text.service 2> /dev/null || :
@@ -320,7 +324,7 @@ cat > /etc/rc.d/init.d/livesys-late << EOF
 
 . /etc/init.d/functions
 
-if ! strstr "\`cat /proc/cmdline\`" liveimg || [ "\$1" != "start" ] || [ -e /.liveimg-late-configured ] ; then
+if ! strstr "\`cat /proc/cmdline\`" rd.live.image || [ "\$1" != "start" ] || [ -e /.liveimg-late-configured ] ; then
     exit 0
 fi
 
@@ -400,6 +404,8 @@ rm -f /core*
 
 %post --nochroot
 cp $INSTALL_ROOT/usr/share/doc/*-release-*/GPL $LIVE_ROOT/GPL
+
+# add a korora README
 cat > $LIVE_ROOT/README.txt << EOF
 Thank you for downloading Korora!
 

@@ -18,18 +18,16 @@
 #
 
 %packages
-#@cinnamon-desktop - TODO: DEPRACTED - for removal in k19
 @firefox
 @gnome-desktop
 @gnome-games
-#@mate-desktop-environment
 @libreoffice
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.
 nss-mdns
 
-# (RE)BRANDING
+# (RE)BRANDING - KP
 korora-backgrounds-gnome
 #korora-backgrounds-extras-gnome - TODO: fix when f19 artwork updated.
 
@@ -183,7 +181,8 @@ simple-scan
 -smartmontools
 #synaptic
 #system-config-lvm  - N/A - f19
-system-config-printer
+# use gnome-control-center's printer panel instead
+-system-config-printer
 #tilda
 -totem*
 -transmission-gtk
@@ -289,17 +288,20 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
-#Build out of kernel modules (so it's not done on first boot)
+# TODO: KP-CHECK
+# Are the following required for Korora?
+
+# KP - build out of kernel modules (so it's not done on first boot)
 echo "****BUILDING AKMODS****"
 /usr/sbin/akmods --force
 
-#Import keys
+# KP - import keys
 for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary ; do rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-$x ; done
 
 #Start yum-updatesd
 systemctl enable yum-updatesd.service
 
-#Update locate database
+# KP - update locate database
 /usr/bin/updatedb
 
 #Rebuild initrd to remove Generic branding (necessary?)
@@ -323,17 +325,23 @@ cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.override <
 disable-lock-screen=true
 FOE
 
+# TODO: KP-CHECK-END
+
 # disable updates plugin
 cat >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.updates.gschema.override << FOE
 [org.gnome.settings-daemon.plugins.updates]
 active=false
 FOE
 
+# don't run gnome-initial-setup
+mkdir ~liveuser/.config
+touch ~liveuser/.config/gnome-initial-setup-done
+
 # make the installer show up
 if [ -f /usr/share/applications/liveinst.desktop ]; then
   # Show harddisk install in shell dash
   sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-  sed -i -e 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anaconda.svg/' /usr/share/applications/liveinst.desktop
+#  sed -i -e 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anaconda.svg/' /usr/share/applications/liveinst.desktop
   # need to move it to anaconda.desktop to make shell happy
   #cp /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
@@ -361,10 +369,13 @@ glib-compile-schemas /usr/share/glib-2.0/schemas
 #Set up autologin
 sed -i '/^\[daemon\]/a AutomaticLoginEnable=true\nAutomaticLogin=liveuser' /etc/gdm/custom.conf
 
-# Turn off PackageKit-command-not-found in live CD
+# Turn off PackageKit-command-not-found while uninstalled
 if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
   sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 fi
+
+# TODO: KP-CHECK
+# Are the following required for Korora?
 
 # don't use prelink on a running live image
 #sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
@@ -396,7 +407,7 @@ rm /etc/xdg/autostart/jockey*
 
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
+# TODO: KP-CHECK-END
 EOF
 
 %end
-
