@@ -2,60 +2,24 @@
 # To use this for 32bit build, :4,$s/x86_64/i386/g
 # and build with 'setarch i686 livecd-creator ...'
 
+#
+# KP:DESCRIPTION:START
+#
+# var KP_RELEASE_META_LABEL=gnome
+#
+#
+# KP:DESCRIPTION:END
+#
 
-%include fedora-live-base.ks
-#%include fedora-livecd-kde.ks
+%include %%KP_KICKSTART_DIR%%/base.ks
+
 
 #version=DEVEL
 install
 
-#install system from the net, to get latest updates
-url --url=ftp://mirror.internode.on.net/pub/fedora/linux/releases/14/Fedora/x86_64/os/
-
-lang en_AU.UTF-8
-keyboard us
-network --onboot yes --device eth0 --bootproto dhcp --noipv6
-timezone --utc Australia/Sydney
-#rootpw  --iscrypted $6$D8V.j2ICJUxPjPEl$S.OjfjUxpIBfYKEMjSBolPPHGG1wLSIrihg75qvd1K34CUA7KfPC3fIzypVY/A4LSPs8uwG3joDXMiZ6vGaN40
-selinux --enforcing
-authconfig --enableshadow --passalgo=sha512 --enablefingerprint
-firewall --enabled --service=ssh,mdns
-xconfig --startxonboot
-services --enabled=NetworkManager --disabled=capi,iscsi,iscsid,isdn,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sshd
-
-#Partitioning, for Live CD
-part / --size 8192 --fstype ext4
-
-
-#Partitioning, for virtual machine testing
-#clearpart --all --drives=sda
 #
-#part /boot --fstype=ext4 --size=512
-#part pv.EaGFJm-w7pp-JMFF-02sd-ynAj-3bbx-Yj8Kfz --grow --size=512
+# PACKAGES
 #
-#volgroup system --pesize=32768 pv.EaGFJm-w7pp-JMFF-02sd-ynAj-3bbx-Yj8Kfz
-#logvol / --fstype=ext4 --name=root --vgname=system --grow --size=1024 --maxsize=20480
-#logvol swap --name=swap --vgname=system --grow --size=1024 --maxsize=2048
-#bootloader --location=mbr --driveorder=sda --append="rhgb quiet"
-
-#Repos
-repo --name="Adobe Systems Incorporated" --baseurl=http://linuxdownload.adobe.com/linux/i386/ --cost=1000
-#repo --name="ATrpms" --baseurl=http://dl.atrpms.net/f14-x86_64/atrpms/stable/ --cost=1000
-repo --name="Fedora 14 - x86_64" --baseurl=ftp://mirror.internode.on.net/pub/fedora/linux/releases/14/Everything/x86_64/os/ --cost=1000
-#repo --name="Fedora 14 - x86_64 - Updates" --baseurl=ftp://mirror.internode.on.net/pub/fedora/linux/updates/14/x86_64/ --cost=1000
-repo --name="Fedora 14 - x86_64 - Updates" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/14/x86_64/ --cost=1000
-repo --name="Firefox 4 Web Browser" --baseurl=http://repos.fedorapeople.org/repos/spot/firefox4/fedora-14/x86_64/ --cost=1000
-repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64/ --cost=1000
-repo --name="Ksplice Uptrack for Fedora" --baseurl=http://www.ksplice.com/yum/uptrack/fedora/14/x86_64/ --cost=1000
-repo --name="Kororaa" --baseurl=file:///home/chris/repos/kororaa/releases/14/x86_64/ --cost=1000
-#repo --name="LibreOffice" --baseurl=http://kororaa.org/repos/libreoffice/14/x86_64/ --cost=1000
-#repo --name="Livna" --baseurl=http://rpm.livna.org/repo/14/x86_64/ --cost=1000
-repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/14/Everything/x86_64/os/ --cost=1000
-repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/14/x86_64/ --cost=1000
-repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/14/Everything/x86_64/os/ --cost=1000
-repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/14/x86_64/ --cost=1000
-repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/14/x86_64/ --cost=1000
-#repo --name="Yum Rawhide" --baseurl=http://repos.fedorapeople.org/repos/james/yum-rawhide/fedora-14/x86_64/ --cost=1000
 
 %packages
 @admin-tools
@@ -72,7 +36,6 @@ repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm
 
 #Install 3rd party repo releases
 adobe-release
-ksplice-uptrack
 #livna-release
 rpmfusion-free-release
 rpmfusion-nonfree-release
@@ -81,11 +44,13 @@ rpmfusion-nonfree-release
 -fedora-logos
 -fedora-release
 -fedora-release-notes
-kororaa-extras
-kororaa-release
-kororaa-logos
-kororaa-release-notes
-elementary-gtk
+korora-extras
+korora-release
+korora-logos
+korora-release-notes
+
+egtk-gtk2-theme
+egtk-gtk3-theme
 elementary-icon-theme
 
 #Package for checksumming livecd on boot, installer, memtest
@@ -94,17 +59,15 @@ isomd5sum
 
 #Extra packages
 abiword
-add-remove-extras
 #alacarte
 bash-completion
 beesu
-bootconf-gui
 #control-center
 cups-pdf
 #evince
 #evolution
 #evolution-mapi
-firefox4
+firefox
 #fprintd-pam
 #gconf-editor
 gdm
@@ -131,8 +94,7 @@ htop
 #libimobiledevice
 #libsane-hpaio
 liveusb-creator
-mozilla-adblockplus
-mozilla-download-statusbar
+mozilla-adblock-plus
 mozilla-flashblock
 mozilla-xclear
 #nautilus-actions
@@ -142,19 +104,11 @@ mozilla-xclear
 #nautilus-pastebin
 #nautilus-search-tool
 #nautilus-sendto
-NetworkManager-gnome
-NetworkManager-pptp
-NetworkManager-openconnect
-NetworkManager-openswan
-NetworkManager-openvpn
-NetworkManager-vpnc
 #openoffice.org-pdfimport
 #openoffice.org-presenter-screen
 #openoffice.org-xsltfilter
 p7zip
 p7zip-plugins
-PackageKit-command-not-found
-PackageKit-gtk-module
 pidgin
 #pidgin-rhythmbox
 polkit-desktop-policy
@@ -162,7 +116,6 @@ polkit-desktop-policy
 #samba-winbind
 shotwell
 simple-scan
-system-config-lvm
 system-config-printer
 #tilda
 #transmission-gtk
@@ -235,7 +188,7 @@ time
 #akmod-VirtualBox-OSE
 #akmod-wl (I don't think this is GPLv2!)
 #kmod-staging
-mesa-dri-drivers-experimental
+%end
 
 %post
 

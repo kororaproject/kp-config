@@ -354,13 +354,14 @@ FOE
 #favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
 #FOE
 
+# TODO: depracated by korora-welcome
   # Make the welcome screen show up
-  if [ -f /usr/share/anaconda/gnome/fedora-welcome.desktop ]; then
-    mkdir -p ~liveuser/.config/autostart
-    cp /usr/share/anaconda/gnome/fedora-welcome.desktop /usr/share/applications/
-    cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
-    chown -R liveuser:liveuser /home/liveuser/.config/
-  fi
+#  if [ -f /usr/share/anaconda/gnome/fedora-welcome.desktop ]; then
+#    mkdir -p ~liveuser/.config/autostart
+#    cp /usr/share/anaconda/gnome/fedora-welcome.desktop /usr/share/applications/
+#    cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
+#    chown -R liveuser:liveuser /home/liveuser/.config/
+#  fi
 fi
 
 # rebuild schema cache with any overrides we installed

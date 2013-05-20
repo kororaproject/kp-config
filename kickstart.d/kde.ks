@@ -253,7 +253,7 @@ DESKTOP="KDE"
 DISPLAYMANAGER="KDE"
 EOF
 
-# make oxygen-gtk the default GTK+ 2 theme for root (see #683855, #689070)
+# make oxygen-gtk the default GTK+ theme for root (see #683855, #689070, #808062)
 cat > /root/.gtkrc-2.0 << EOF
 include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
 include "/etc/gtk-2.0/gtkrc"
@@ -265,9 +265,9 @@ cat > /root/.config/gtk-3.0/settings.ini << EOF
 gtk-theme-name = oxygen-gtk
 EOF
 
-#LiveCD stuff (like creating user) is done by fedora-live-base.ks
-#Modify LiveCD stuff, i.e. set autologin, enable installer (this is done in /etc/rc.d/init.d/livesys)
+# add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
+
 if [ -e /usr/share/icons/hicolor/96x96/apps/fedora-logo-icon.png ] ; then
     # use image also for kdm
     mkdir -p /usr/share/apps/kdm/faces
@@ -279,6 +279,7 @@ echo "startkde" > /home/liveuser/.xsession
 chmod a+x /home/liveuser/.xsession
 chown liveuser:liveuser /home/liveuser/.xsession
 
+# KP - run xhost + to ensure anaconda can start in live session
 echo -e '#!/bin/bash\nif [ -n "$(env |grep DISPLAY)" ]; then xhost +; fi' >> /home/liveuser/.bashrc
 
 # set up autologin for user liveuser
@@ -289,6 +290,13 @@ sed -i 's/#AutoLoginUser=fred/AutoLoginUser=liveuser/' /etc/kde/kdm/kdmrc
 sed -i 's/#PreselectUser=Default/PreselectUser=Default/' /etc/kde/kdm/kdmrc
 sed -i 's/#DefaultUser=johndoe/DefaultUser=liveuser/' /etc/kde/kdm/kdmrc
 
+# add liveinst.desktop to favorites menu
+mkdir -p /home/liveuser/.kde/share/config/
+cat > /home/liveuser/.kde/share/config/kickoffrc << MENU_EOF
+[Favorites]
+FavoriteURLs=/usr/share/applications/kde4/konqbrowser.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/liveinst.desktop
+MENU_EOF
+
 # show liveinst.desktop on desktop and in menu
 sed -i 's/NoDisplay=true/NoDisplay=false/g' /usr/share/applications/liveinst.desktop
 sed -i 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anaconda.svg/g' /usr/share/applications/liveinst.desktop
@@ -296,9 +304,8 @@ sed -i 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anacon
 # chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
 
-# ensure liveuser desktop exists with correct permissions
-mkdir -p /home/liveuser/Desktop 2>/dev/null
-chown -Rf liveuser:liveuser /home/liveuser/Desktop
+# ensure liveuser desktop exists
+mkdir -p ~liveuser/Desktop 2>/dev/null
 
 # copy over the icons for liveinst to hicolor
 cp /usr/share/icons/gnome/16x16/apps/system-software-install.png /usr/share/icons/hicolor/16x16/apps/
@@ -316,12 +323,25 @@ cat > /home/liveuser/.config/akonadi/akonadiserverrc << AKONADI_EOF
 Driver=QSQLITE3
 AKONADI_EOF
 
-# Disable the update notifications of apper
+# Disable the update notifications of apper 
 cat > /home/liveuser/.kde/share/config/apper << APPER_EOF
 [CheckUpdate]
 autoUpdate=0
+distroUpgrade=0
 interval=0
 APPER_EOF
+
+# Disable (apper's) plasma-applet-updater (#948099)
+mkdir -p /home/liveuser/.kde/share/kde4/services/
+sed -e "s|^X-KDE-PluginInfo-EnabledByDefault=true|X-KDE-PluginInfo-EnabledByDefault=false|g" \
+   /usr/share/kde4/services/plasma-applet-updater.desktop > \
+   /home/liveuser/.kde/share/kde4/services/plasma-applet-updater.desktop
+
+# Disable apper kded module (#948099)
+cat > /home/liveuser/.kde/share/config/kdedrc << KDEDRC_EOF
+[Module-apperd]
+autoload=false
+KDEDRC_EOF
 
 # Disable kres-migrator
 cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
@@ -329,6 +349,7 @@ cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
 Enabled=false
 KRES_EOF
 
+# KP - TODO: does this need to be global or liveuser specifif?
 cat > /usr/share/kde-settings/kde-profile/default/share/config/kres-migratorrc << KRES_EOF
 [Migration]
 Enabled=false
@@ -349,7 +370,16 @@ Start Nepomuk=false
 
 [Service-nepomukstrigiservice]
 autostart=false
+
+[Service-nepomukfileindexer]
+autostart=false
 NEPOMUK_EOF
+
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+
+# KP - TODO CHECK
+# are these necessary?
 
 # don't use prelink on a running KDE live image
 #sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink #this doesn't stop prelink, in fact it forces it to run to undo prelinking (see /etc/sysconfig/prelink)
@@ -380,8 +410,8 @@ cat > /home/liveuser/.kde/share/config/powerdevilrc << LOCK_EOF
 configLockScreen=false
 LOCK_EOF
 
-#set permissions
-chown -Rf liveuser:liveuser /home/liveuser
+# KP - END CHECK
+
 restorecon -R /home/liveuser/
 
 # small hack to enable plasma-netbook workspace on boot
@@ -389,6 +419,9 @@ if strstr "\`cat /proc/cmdline\`" netbook ; then
    mv /usr/share/autostart/plasma-desktop.desktop /usr/share/autostart/plasma-netbook.desktop
    sed -i 's/desktop/netbook/g' /usr/share/autostart/plasma-netbook.desktop
 fi
+
+# KP - TODO CHECK
+# are these necessary?
 
 #disable yumupdatesd on live CD
 #service yum-updatesd stop
@@ -404,6 +437,8 @@ fi
 
 # Turn on liveinst file
 sed -i s/NoDisplay=true/NoDisplay=false/g /usr/local/share/applications/liveinst.desktop
+
+# KP - END CHECK
 
 EOF
 
