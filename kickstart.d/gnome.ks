@@ -334,8 +334,9 @@ active=false
 FOE
 
 # don't run gnome-initial-setup
-mkdir ~liveuser/.config
+[ -d "~liveuser/.config" ] || mkdir -p ~liveuser/.config
 touch ~liveuser/.config/gnome-initial-setup-done
+chown -R liveuser:liveuser /home/liveuser/.config
 
 # make the installer show up
 if [ -f /usr/share/applications/liveinst.desktop ]; then
@@ -348,21 +349,6 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 [org.gnome.shell]
 favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
 FOE
-# TODO: DEPRACATED - for removal in k19
-#  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
-#[org.cinnamon]
-#favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
-#FOE
-
-# TODO: depracated by korora-welcome
-  # Make the welcome screen show up
-#  if [ -f /usr/share/anaconda/gnome/fedora-welcome.desktop ]; then
-#    mkdir -p ~liveuser/.config/autostart
-#    cp /usr/share/anaconda/gnome/fedora-welcome.desktop /usr/share/applications/
-#    cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
-#    chown -R liveuser:liveuser /home/liveuser/.config/
-#  fi
-fi
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
