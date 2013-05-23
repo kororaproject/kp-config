@@ -183,6 +183,7 @@ simple-scan
 #system-config-lvm  - N/A - f19
 # use gnome-control-center's printer panel instead
 -system-config-printer
+-im-chooser
 #tilda
 -totem*
 -transmission-gtk
@@ -296,7 +297,16 @@ echo "****BUILDING AKMODS****"
 /usr/sbin/akmods --force
 
 # KP - import keys
-for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary ; do rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-$x ; done
+for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
+do
+  KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
+  if [ -r "${KEY}" ];
+  then
+    rpm --import "${KEY}"
+  else
+    echo "IMPORT KEY NOT FOUND: $KEY (${x})"
+  fi
+done
 
 #Start yum-updatesd
 systemctl enable yum-updatesd.service
@@ -307,7 +317,7 @@ systemctl enable yum-updatesd.service
 #Rebuild initrd to remove Generic branding (necessary?)
 #/sbin/dracut -f
 
-#Let's run prelink
+# KP - let's run prelink (makes things faster)
 /usr/sbin/prelink -av -mR -q
 
 #LiveCD stuff (like creating user) is done by fedora-live-base.ks
@@ -361,19 +371,19 @@ if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
   sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 fi
 
-# TODO: KP-CHECK
-# Are the following required for Korora?
-
-# don't use prelink on a running live image
+# KP - don't let prelink run on the live image
 #sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
 mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
 
-#un-mute sound card (fixes some issues reported)
+# KP - un-mute sound card (fixes some issues reported)
 amixer set Master 85% unmute 2>/dev/null
 amixer set PCM 85% unmute 2>/dev/null
 pactl set-sink-mute 0 0
 pactl set-sink-volume 0 50000
+
+# TODO: KP-CHECK
+# Are the following required for Korora?
 
 chmod +x /usr/share/applications/liveinst.desktop
 
@@ -383,13 +393,13 @@ chown -Rf liveuser:liveuser /home/liveuser/Desktop
 
 restorecon -R /home/liveuser/
 
-#Turn off screensaver in live mode
+# turn off screensaver in live mode
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
 
-#disable yumupdatesd on live CD
+# disable yumupdatesd on live CD
 systemctl stop yum-updatesd.service
 
-#disable jockey from autostarting in live CD
+# disable jockey from autostarting in live CD
 rm /etc/xdg/autostart/jockey*
 
 glib-compile-schemas /usr/share/glib-2.0/schemas
