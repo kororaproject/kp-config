@@ -225,12 +225,22 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
-#Build out of kernel modules (so it's not done on first boot)
-echo "****BUILDING AKMODS****"
+# KP - build out of kernel modules (so it's not done on first boot)
+echo -e "***\nBUILDING AKMODS\n****"
 /usr/sbin/akmods --force
 
-#Import keys
-for x in fedora google-chrome virtualbox korora livna adobe rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary ; do rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-$x ; done
+# KP - import keys
+echo -e "***\nIMPORTING KEYS\n****"
+for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
+do
+  KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
+  if [ -r "${KEY}" ];
+  then
+    rpm --import "${KEY}"
+  else
+    echo "IMPORT KEY NOT FOUND: $KEY (${x})"
+  fi
+done
 
 #KDE - stop Klipper from starting
 #sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
@@ -244,7 +254,8 @@ systemctl enable yum-updatesd.service
 #Rebuild initrd to remove Generic branding (necessary?)
 #/sbin/dracut -f
 
-#Let's run prelink
+# KP - let's run prelink (makes things faster)
+echo -e "***\nPRELINKING\n****"
 /usr/sbin/prelink -av -mR -q
 
 # create /etc/sysconfig/desktop (needed for installation)

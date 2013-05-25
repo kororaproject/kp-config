@@ -293,11 +293,12 @@ echo -e "\n*****\nPOST SECTION\n*****\n"
 # Are the following required for Korora?
 
 # KP - build out of kernel modules (so it's not done on first boot)
-echo "****BUILDING AKMODS****"
+echo -e "***\nBUILDING AKMODS\n****"
 /usr/sbin/akmods --force
 
 # KP - import keys
-for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
+echo -e "***\nIMPORTING KEYS\n****"
+for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
 do
   KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
   if [ -r "${KEY}" ];
@@ -318,6 +319,7 @@ systemctl enable yum-updatesd.service
 #/sbin/dracut -f
 
 # KP - let's run prelink (makes things faster)
+echo -e "***\nPRELINKING\n****"
 /usr/sbin/prelink -av -mR -q
 
 #LiveCD stuff (like creating user) is done by fedora-live-base.ks
