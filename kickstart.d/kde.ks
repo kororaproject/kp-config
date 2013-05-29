@@ -1,7 +1,4 @@
-# Kickstart file for Kororaa Remix (KDE) x86_64
-# To use this for 32bit build, :4,$s/x86_64/i386/g
-# and build with 'setarch i686 livecd-creator ...'
-
+# kickstart file for Korora (KDE)
 #
 # KP:DESCRIPTION:START
 #
@@ -27,7 +24,7 @@ nss-mdns
 
 # (RE)BRANDING
 korora-backgrounds-kde
-#korora-backgrounds-extras-kde - TODO: fix when f19 artwork updated
+korora-backgrounds-extras-kde
 -desktop-backgrounds-basic
 
 egtk-gtk2-theme
@@ -206,14 +203,9 @@ xine-plugin
 xine-lib-extras
 xine-lib-extras-freeworld
 
-#Flash deps - new  meta-rpm should take care of these
-#pulseaudio-libs.i686
-#alsa-plugins-pulseaudio.i686
-#libcurl.i686
-#nspluginwrapper.i686
 
 #
-#Development tools for out of tree modules
+# development tools for out of tree modules
 gcc
 kernel-devel
 dkms
@@ -226,11 +218,11 @@ time
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
 # KP - build out of kernel modules (so it's not done on first boot)
-echo -e "***\nBUILDING AKMODS\n****"
+echo -e "\n***\nBUILDING AKMODS\n***"
 /usr/sbin/akmods --force
 
 # KP - import keys
-echo -e "***\nIMPORTING KEYS\n****"
+echo -e "\n***\nIMPORTING KEYS\n***"
 for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
 do
   KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
@@ -245,14 +237,11 @@ done
 #KDE - stop Klipper from starting
 #sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
 
-#Start yum-updatesd
+# KP - start yum-updatesd
 systemctl enable yum-updatesd.service
 
-#Update locate database
+# KP - update locate database
 /usr/bin/updatedb
-
-#Rebuild initrd to remove Generic branding (necessary?)
-#/sbin/dracut -f
 
 # KP - let's run prelink (makes things faster)
 echo -e "***\nPRELINKING\n****"
@@ -291,7 +280,13 @@ chmod a+x /home/liveuser/.xsession
 chown liveuser:liveuser /home/liveuser/.xsession
 
 # KP - run xhost + to ensure anaconda can start in live session
-echo -e '#!/bin/bash\nif [ -n "$(env |grep DISPLAY)" ]; then xhost +; fi' >> /home/liveuser/.bashrc
+cat >> /home/liveuser/.bashrc <<FOE
+#!/bin/bash
+if [ -n "$(env |grep DISPLAY)" ]
+then
+  xhost +
+fi
+FOE
 
 # set up autologin for user liveuser
 sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
@@ -309,14 +304,14 @@ FavoriteURLs=/usr/share/applications/kde4/konqbrowser.desktop,/usr/share/applica
 MENU_EOF
 
 # show liveinst.desktop on desktop and in menu
-sed -i 's/NoDisplay=true/NoDisplay=false/g' /usr/share/applications/liveinst.desktop
-sed -i 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anaconda.svg/g' /usr/share/applications/liveinst.desktop
+sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
+#sed -i 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anaconda.svg/g' /usr/share/applications/liveinst.desktop
 
 # chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
 
-# ensure liveuser desktop exists
-mkdir -p ~liveuser/Desktop 2>/dev/null
+# KP - ensure liveuser desktop exists
+mkdir ~liveuser/Desktop
 
 # copy over the icons for liveinst to hicolor
 cp /usr/share/icons/gnome/16x16/apps/system-software-install.png /usr/share/icons/hicolor/16x16/apps/
@@ -389,22 +384,18 @@ NEPOMUK_EOF
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
 
-# KP - TODO CHECK
-# are these necessary?
-
-# don't use prelink on a running KDE live image
-#sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink #this doesn't stop prelink, in fact it forces it to run to undo prelinking (see /etc/sysconfig/prelink)
+# KP - don't use prelink on a running KDE live image
 mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
 
-#un-mute sound card (fixes some issues reported)
+# KP - un-mute sound card (fixes some issues reported)
 amixer set Master 85% unmute 2>/dev/null
 amixer set PCM 85% unmute 2>/dev/null
 pactl set-sink-mute 0 0
 pactl set-sink-volume 0 50000
 
 
-#Disable screensaver on live system
+# KP - disable screensaver
 mkdir -p /home/liveuser/.kde/share/config
 cat > /home/liveuser/.kde/share/config/kscreensaverrc << SCREEN_EOF
 [ScreenSaver]
@@ -415,13 +406,12 @@ PlasmaEnabled=false
 Timeout=60
 SCREEN_EOF
 
-#Disable screen lock
+# KP - disable screen lock
 cat > /home/liveuser/.kde/share/config/powerdevilrc << LOCK_EOF
 [General]
 configLockScreen=false
 LOCK_EOF
 
-# KP - END CHECK
 
 restorecon -R /home/liveuser/
 
@@ -431,26 +421,19 @@ if strstr "\`cat /proc/cmdline\`" netbook ; then
    sed -i 's/desktop/netbook/g' /usr/share/autostart/plasma-netbook.desktop
 fi
 
-# KP - TODO CHECK
-# are these necessary?
-
-#disable yumupdatesd on live CD
-#service yum-updatesd stop
+# KP - disable yumupdatesd
 systemctl stop yum-updatesd.service
 
-#disable jockey from autostarting in live CD
+# KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*
 
-# Turn off PackageKit-command-not-found in live CD
+# turn off PackageKit-command-not-found
 if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
-        sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
+  sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 fi
 
 # Turn on liveinst file
 sed -i s/NoDisplay=true/NoDisplay=false/g /usr/local/share/applications/liveinst.desktop
-
-# KP - END CHECK
-
 EOF
 
 %end

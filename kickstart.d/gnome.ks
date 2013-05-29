@@ -29,7 +29,7 @@ nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-gnome
-#korora-backgrounds-extras-gnome - TODO: fix when f19 artwork updated.
+korora-backgrounds-extras-gnome
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -181,7 +181,7 @@ simple-scan
 -smartmontools
 #synaptic
 #system-config-lvm  - N/A - f19
-# use gnome-control-center's printer panel instead
+# We use gnome-control-center's printer and input sources panels instead
 -system-config-printer
 -im-chooser
 #tilda
@@ -270,14 +270,8 @@ xscreensaver-base
 xorg-x11-resutils
 xvidcore
 
-#Flash deps - new meta-rpm should take care of these
-#pulseaudio-libs.i686
-#alsa-plugins-pulseaudio.i686
-#libcurl.i686
-#nspluginwrapper.i686
-
 #
-#Development tools for out of tree modules
+# development tools for out of tree modules
 gcc
 kernel-devel
 dkms
@@ -289,15 +283,12 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
-# TODO: KP-CHECK
-# Are the following required for Korora?
-
 # KP - build out of kernel modules (so it's not done on first boot)
-echo -e "***\nBUILDING AKMODS\n****"
+echo -e "\n***\nBUILDING AKMODS\n***"
 /usr/sbin/akmods --force
 
 # KP - import keys
-echo -e "***\nIMPORTING KEYS\n****"
+echo -e "\n***\nIMPORTING KEYS\n***"
 for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
 do
   KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
@@ -309,35 +300,24 @@ do
   fi
 done
 
-#Start yum-updatesd
+# KP - start yum-updatesd
 systemctl enable yum-updatesd.service
 
 # KP - update locate database
 /usr/bin/updatedb
 
-#Rebuild initrd to remove Generic branding (necessary?)
-#/sbin/dracut -f
-
 # KP - let's run prelink (makes things faster)
 echo -e "***\nPRELINKING\n****"
 /usr/sbin/prelink -av -mR -q
 
-#LiveCD stuff (like creating user) is done by fedora-live-base.ks
-#Modify LiveCD stuff, i.e. set autologin, enable installer (this is done in /etc/rc.d/init.d/livesys)
+# KP
+# live image setup is done by fedora-live-base.ks, such as:
+#   - create user
+# live imate modification is done in this init script, such as:
+#   - set autologin,
+#   - enable installer
 cat >> /etc/rc.d/init.d/livesys << EOF
-# disable screensaver locking
-cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.override << FOE
-[org.gnome.desktop.screensaver]
-lock-enabled=false
-FOE
 
-# and hide the lock screen option
-cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.override << FOE
-[org.gnome.desktop.lockdown]
-disable-lock-screen=true
-FOE
-
-# TODO: KP-CHECK-END
 
 # disable updates plugin
 cat >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.updates.gschema.override << FOE
@@ -346,27 +326,44 @@ active=false
 FOE
 
 # don't run gnome-initial-setup
-[ -d "~liveuser/.config" ] || mkdir -p ~liveuser/.config
+mkdir ~liveuser/.config
 touch ~liveuser/.config/gnome-initial-setup-done
-chown -R liveuser:liveuser /home/liveuser/.config
+
+# KP - disable screensaver locking
+cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.override << FOE
+[org.gnome.desktop.screensaver]
+lock-enabled=false
+FOE
+
+# KP - hide the lock screen option
+cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.override << FOE
+[org.gnome.desktop.lockdown]
+disable-lock-screen=true
+FOE
 
 # make the installer show up
 if [ -f /usr/share/applications/liveinst.desktop ]; then
   # Show harddisk install in shell dash
-  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-#  sed -i -e 's/Icon=liveinst/Icon=\/usr\/share\/icons\/Fedora\/scalable\/apps\/anaconda.svg/' /usr/share/applications/liveinst.desktop
+  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
   # need to move it to anaconda.desktop to make shell happy
-  #cp /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
+  mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
+
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 [org.gnome.shell]
 favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
 FOE
+fi
+
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
-#Set up autologin
-sed -i '/^\[daemon\]/a AutomaticLoginEnable=true\nAutomaticLogin=liveuser' /etc/gdm/custom.conf
+# set up auto-login
+cat > /etc/gdm/custom.conf << FOE
+[daemon]
+AutomaticLoginEnable=True
+AutomaticLogin=liveuser
+FOE
 
 # Turn off PackageKit-command-not-found while uninstalled
 if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
@@ -384,29 +381,22 @@ amixer set PCM 85% unmute 2>/dev/null
 pactl set-sink-mute 0 0
 pactl set-sink-volume 0 50000
 
-# TODO: KP-CHECK
-# Are the following required for Korora?
+# KP - ensure liveuser desktop exists
+mkdir ~liveuser/Desktop
 
-chmod +x /usr/share/applications/liveinst.desktop
-
-# ensure liveuser desktop exists with correct permissions
-mkdir -p /home/liveuser/Desktop 2>/dev/null
-chown -Rf liveuser:liveuser /home/liveuser/Desktop
-
-restorecon -R /home/liveuser/
-
-# turn off screensaver in live mode
+# KP - turn off screensaver
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
 
-# disable yumupdatesd on live CD
+# KP - disable yum update service
 systemctl stop yum-updatesd.service
 
-# disable jockey from autostarting in live CD
+# KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*
 
-glib-compile-schemas /usr/share/glib-2.0/schemas
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+restorecon -R /home/liveuser/
 
-# TODO: KP-CHECK-END
 EOF
 
 %end
