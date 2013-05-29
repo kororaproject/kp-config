@@ -341,6 +341,9 @@ cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.override <
 disable-lock-screen=true
 FOE
 
+# KP - ensure liveuser desktop exists
+mkdir ~liveuser/Desktop
+
 # make the installer show up
 if [ -f /usr/share/applications/liveinst.desktop ]; then
   # Show harddisk install in shell dash
@@ -348,12 +351,16 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
   # need to move it to anaconda.desktop to make shell happy
   mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
 
+  # KP - show installer on the desktop
+  cp /usr/share/applications/anaconda.desktop ~liveuser/Desktop
+  chmod +x ~liveuser/Desktop/anaconda.desktop
+
+  # KP - tweak our favourites
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'liveinst.desktop']
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'anaconda.desktop']
 FOE
 fi
-
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -380,9 +387,6 @@ amixer set Master 85% unmute 2>/dev/null
 amixer set PCM 85% unmute 2>/dev/null
 pactl set-sink-mute 0 0
 pactl set-sink-volume 0 50000
-
-# KP - ensure liveuser desktop exists
-mkdir ~liveuser/Desktop
 
 # KP - turn off screensaver
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
