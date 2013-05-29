@@ -300,7 +300,7 @@ sed -i 's/#DefaultUser=johndoe/DefaultUser=liveuser/' /etc/kde/kdm/kdmrc
 mkdir -p /home/liveuser/.kde/share/config/
 cat > /home/liveuser/.kde/share/config/kickoffrc << MENU_EOF
 [Favorites]
-FavoriteURLs=/usr/share/applications/kde4/konqbrowser.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/liveinst.desktop
+FavoriteURLs=/usr/share/applications/kde4/apper.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop,/usr/share/applications/liveinst.desktop
 MENU_EOF
 
 # show liveinst.desktop on desktop and in menu
@@ -381,9 +381,6 @@ autostart=false
 autostart=false
 NEPOMUK_EOF
 
-# make sure to set the right permissions and selinux contexts
-chown -R liveuser:liveuser /home/liveuser/
-
 # KP - don't use prelink on a running KDE live image
 mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
@@ -413,6 +410,8 @@ configLockScreen=false
 LOCK_EOF
 
 
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
 
 # small hack to enable plasma-netbook workspace on boot
