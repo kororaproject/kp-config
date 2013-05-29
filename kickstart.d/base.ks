@@ -44,7 +44,7 @@ repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/%%KP_VERSION%%/%
 
 # KP - development repositories
 
-repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Development" --baseurl=ftp://mirror.optus.net/fedora/linux/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Development" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
 repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
 repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
 
