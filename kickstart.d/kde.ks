@@ -167,7 +167,7 @@ yakuake
 yumex
 #yum-plugin-fastestmirror
 yum-plugin-priorities
-yum-plugin-security
+#yum-plugin-security
 yum-plugin-refresh-updatesd
 yum-plugin-versionlock
 yum-updatesd
