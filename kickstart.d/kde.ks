@@ -49,7 +49,7 @@ btrfs-progs
 calibre
 choqok
 chrony
-cups-pdf
+#cups-pdf
 dolphin-root-actions
 digikam
 eekboard

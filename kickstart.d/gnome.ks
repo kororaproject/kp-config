@@ -47,7 +47,7 @@ brltty
 btrfs-progs
 chrony
 control-center
-cups-pdf
+#cups-pdf
 dconf-editor
 eekboard
 ekiga
