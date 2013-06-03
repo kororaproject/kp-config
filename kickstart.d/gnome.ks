@@ -123,7 +123,7 @@ libreoffice-ogltrans
 libreoffice-opensymbol-fonts
 libreoffice-pdfimport
 #libreoffice-presenter-screen - N/A - f19
-libreoffice-report-builder
+#libreoffice-report-builder
 libreoffice-ure
 libreoffice-writer
 libreoffice-xsltfilter
