@@ -264,9 +264,9 @@ xine-lib-extras
 xine-lib-extras-freeworld
 xine-plugin
 xorg-x11-apps
-xscreensaver-gl-extras
-xscreensaver-extras
-xscreensaver-base
+#xscreensaver-gl-extras
+#xscreensaver-extras
+#xscreensaver-base
 xorg-x11-resutils
 xvidcore
 

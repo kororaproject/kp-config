@@ -83,6 +83,7 @@ kamoso
 kaudiocreator
 kde-l10n-*
 kdeartwork
+kdeartwork-screensavers
 kdeartwork-wallpapers
 kdebase-workspace-ksplash-themes
 -kdegames
@@ -159,9 +160,9 @@ skanlite
 kde-print-manager
 vim
 xorg-x11-apps
-xscreensaver-gl-extras
-xscreensaver-extras
-xscreensaver-base
+#xscreensaver-gl-extras
+#xscreensaver-extras
+#xscreensaver-base
 xorg-x11-resutils
 yakuake
 yumex
