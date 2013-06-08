@@ -83,7 +83,7 @@ kamoso
 kaudiocreator
 kde-l10n-*
 kdeartwork
-kdeartwork-screensavers
+#kdeartwork-screensavers #remove this too because it pulls in xscreensaver stuff
 kdeartwork-wallpapers
 kdebase-workspace-ksplash-themes
 -kdegames
