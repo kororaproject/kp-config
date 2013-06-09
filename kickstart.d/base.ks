@@ -122,6 +122,12 @@ powertop
 # SYSTEM CONFIG
 system-config-samba
 system-config-services
+systemd-ui
+-system-config-language
+-system-config-date
+-system-config-firewall*
+-system-config-keyboard
+-system-config-users
 
 #
 # MULTIMEDIA
