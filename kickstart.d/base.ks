@@ -141,6 +141,9 @@ flash-plugin
 #removed due to bad selinux requirements. only people who want steam will get that
 #steam
 
+# Office
+libreoffice-base
+
 #
 # CLOUD
 owncloud-client
