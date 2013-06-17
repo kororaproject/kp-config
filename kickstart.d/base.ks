@@ -33,6 +33,8 @@ repo --name="Adobe Systems Incorporated - 32bit" --baseurl=http://linuxdownload.
 #repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
 repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/%%KP_BASEARCH%%/ --cost=1000
+
+# KORORA REPOS, set to remote for release, local for testing
 #repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
@@ -110,6 +112,9 @@ korora-videos
 undistract-me
 unburden-home-dir
 etckeeper
+
+# Dev
+openssh-askpass
 
 # fpaste is very useful for debugging and very small
 fpaste

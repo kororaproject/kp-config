@@ -67,6 +67,7 @@ fontconfig-infinality
 gconf-editor
 gimp
 git
+gnome-classic-session
 gnome-disk-utility
 #gnome-games* - N/A - f19
 #gnome-lirc-properties - N/A - f19
