@@ -107,6 +107,7 @@ konversation
 korora-settings-kde
 krename
 krusader
+ktorrent
 libdvdcss
 libdvdnav
 libdvdread
