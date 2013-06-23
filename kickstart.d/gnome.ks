@@ -130,6 +130,7 @@ libreoffice-writer
 libreoffice-xsltfilter
 libimobiledevice
 libsane-hpaio
+liferea
 lirc
 lirc-remotes
 liveusb-creator
