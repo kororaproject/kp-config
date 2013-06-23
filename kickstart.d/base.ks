@@ -104,6 +104,7 @@ korora-release-notes
 korora-welcome
 plymouth-theme-korora
 korora-videos
+grub2-starfield-theme
 
 #
 # TERMINAL ENHANCEMENTS
