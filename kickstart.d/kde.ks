@@ -192,7 +192,7 @@ kio-ftps
 kio_mtp
 lame
 libmpg123
-Miro
+#miro
 PackageKit-gstreamer-plugin
 pavucontrol
 phonon-backend-vlc

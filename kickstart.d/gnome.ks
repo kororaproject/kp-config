@@ -239,7 +239,7 @@ libmatroska
 libmpg123
 #me-tv (this pulls in xine-ui)
 #mencoder
-Miro
+#miro
 #mozilla-vlc
 mpg321
 nautilus-sound-converter
