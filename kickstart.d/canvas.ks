@@ -12,8 +12,8 @@
 #
 
 %include /home/chris/kpbuild/conf/kickstart.d/canvas-base.ks
-%include /home/chris/kpbuild/conf/kickstart.d/fedora-live-minimization.ks
-%include /home/chris/kpbuild/conf/kickstart.d/fedora-livecd-desktop.ks
+#%include /home/chris/kpbuild/conf/kickstart.d/fedora-live-minimization.ks
+#%include /home/chris/kpbuild/conf/kickstart.d/fedora-livecd-desktop.ks
 
 #
 # PACKAGES
@@ -77,6 +77,7 @@ plymouth-theme-korora
 #@input-methods
 bash-completion
 chrony
+cups
 empathy
 evince
 evolution
@@ -85,10 +86,10 @@ firefox
 font-manager
 gedit
 gnome-screenshot
-gnome-shell-extension-weather
+#gnome-shell-extension-weather
 gnome-shell-extension-alternative-status-menu
 gnome-shell-extension-xrandr-indicator
-gnome-shell-extension-presentation-mode
+#gnome-shell-extension-presentation-mode
 gnome-shell-extension-drive-menu
 gnome-shell-extension-user-theme
 gnome-shell-extension-places-menu
