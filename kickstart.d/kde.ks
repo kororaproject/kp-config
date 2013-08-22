@@ -19,6 +19,14 @@
 @kde-desktop
 @libreoffice
 
+@kde-apps
+@kde-telepathy
+
+# make sure mariadb lands instead of MySQL (hopefully a temporary hack)
+mariadb-embedded
+mariadb-libs
+mariadb-server
+
 # FIXME; apparently the glibc maintainers dislike this
 nss-mdns
 
@@ -100,8 +108,11 @@ kde-settings-plasma
 kdemultimedia-extras-freeworld
 kdeplasma-addons
 kipi-plugins
+kde-plasma-networkmanagement-mobile
+kde-plasma-networkmanagement-openconnect
 kde-plasma-networkmanagement-openvpn
 kde-plasma-networkmanagement-pptp
+kde-plasma-networkmanagement-vpnc
 kdiff3
 konversation
 korora-settings-kde
@@ -269,6 +280,8 @@ EOF
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
+# KP - ensure liveuser desktop exists
+mkdir ~liveuser/Desktop
 
 if [ -e /usr/share/icons/hicolor/96x96/apps/fedora-logo-icon.png ] ; then
     # use image also for kdm
@@ -281,14 +294,15 @@ echo "startkde" > /home/liveuser/.xsession
 chmod a+x /home/liveuser/.xsession
 chown liveuser:liveuser /home/liveuser/.xsession
 
-# KP - run xhost + to ensure anaconda can start in live session
-cat >> /home/liveuser/.bashrc <<FOE
-#!/bin/bash
-if [ -n "$(env |grep DISPLAY)" ]
-then
-  xhost +
-fi
-FOE
+# Shouldn't be needed now, fixed upstream by setting hostname on boot
+## KP - run xhost + to ensure anaconda can start in live session
+#cat >> /home/liveuser/.bashrc <<FOE
+##!/bin/bash
+#if [ -n "$(env |grep DISPLAY)" ]
+#then
+#  xhost +
+#fi
+#FOE
 
 # set up autologin for user liveuser
 sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
@@ -311,9 +325,6 @@ sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desk
 
 # chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
-
-# KP - ensure liveuser desktop exists
-mkdir ~liveuser/Desktop
 
 # copy over the icons for liveinst to hicolor
 cp /usr/share/icons/gnome/16x16/apps/system-software-install.png /usr/share/icons/hicolor/16x16/apps/
@@ -345,7 +356,8 @@ sed -e "s|^X-KDE-PluginInfo-EnabledByDefault=true|X-KDE-PluginInfo-EnabledByDefa
    /usr/share/kde4/services/plasma-applet-updater.desktop > \
    /home/liveuser/.kde/share/kde4/services/plasma-applet-updater.desktop
 
-# Disable apper kded module (#948099)
+# Disable some kded modules
+# apperd: http://bugzilla.redhat.com/948099
 cat > /home/liveuser/.kde/share/config/kdedrc << KDEDRC_EOF
 [Module-apperd]
 autoload=false
@@ -357,27 +369,10 @@ cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
 Enabled=false
 KRES_EOF
 
-# KP - TODO: does this need to be global or liveuser specifif?
-cat > /usr/share/kde-settings/kde-profile/default/share/config/kres-migratorrc << KRES_EOF
-[Migration]
-Enabled=false
-KRES_EOF
-
 # Disable nepomuk
 cat > /home/liveuser/.kde/share/config/nepomukserverrc << NEPOMUK_EOF
 [Basic Settings]
 Start Nepomuk=false
-
-[Service-nepomukstrigiservice]
-autostart=false
-NEPOMUK_EOF
-
-cat > /usr/share/kde-settings/kde-profile/default/share/config/nepomukserverrc << NEPOMUK_EOF
-[Basic Settings]
-Start Nepomuk=false
-
-[Service-nepomukstrigiservice]
-autostart=false
 
 [Service-nepomukfileindexer]
 autostart=false

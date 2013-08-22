@@ -60,6 +60,7 @@ repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.
 @critical-path-base
 @dial-up
 @fonts
+@guest-desktop-agents
 @input-methods
 @hardware-support
 -@multimedia
@@ -155,11 +156,17 @@ libreoffice-base
 
 #
 # CLOUD
-owncloud-client
+mirall
 
 %end
 
 %post
+# This is a huge file and things work ok without it
+rm -f /usr/share/icons/HighContrast/icon-theme.cache
+
+#Make home dir
+mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
+
 #Set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf
 
@@ -292,12 +299,6 @@ usermod -aG wheel liveuser > /dev/null
 # Remove root password lock
 passwd -d root > /dev/null
 
-# turn off firstboot for livecd boots
-systemctl --no-reload disable firstboot-text.service 2> /dev/null || :
-systemctl --no-reload disable firstboot-graphical.service 2> /dev/null || :
-systemctl stop firstboot-text.service 2> /dev/null || :
-systemctl stop firstboot-graphical.service 2> /dev/null || :
-
 # don't use prelink on a running live image
 sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink &>/dev/null || :
 
@@ -306,6 +307,12 @@ systemctl --no-reload disable mdmonitor.service 2> /dev/null || :
 systemctl --no-reload disable mdmonitor-takeover.service 2> /dev/null || :
 systemctl stop mdmonitor.service 2> /dev/null || :
 systemctl stop mdmonitor-takeover.service 2> /dev/null || :
+
+# turn off firstboot for livecd boots
+systemctl --no-reload disable firstboot-text.service 2> /dev/null || :
+systemctl --no-reload disable firstboot-graphical.service 2> /dev/null || :
+systemctl stop firstboot-text.service 2> /dev/null || :
+systemctl stop firstboot-graphical.service 2> /dev/null || :
 
 # don't enable the gnome-settings-daemon packagekit plugin
 gsettings set org.gnome.settings-daemon.plugins.updates active 'false' || :
@@ -334,6 +341,10 @@ if strstr "\`cat /proc/cmdline\`" CDLABEL= ; then
 FOE
 chmod +x /sbin/halt.local
 fi
+
+# add static hostname to work around xauth bug
+# https://bugzilla.redhat.com/show_bug.cgi?id=679486
+echo "localhost" > /etc/hostname
 
 EOF
 
