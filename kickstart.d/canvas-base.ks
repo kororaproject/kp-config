@@ -51,6 +51,11 @@ repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.
 #repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/19/x86_64/os/ --cost=1000
 
 %post
+# This is a huge file and things work ok without it
+rm -f /usr/share/icons/HighContrast/icon-theme.cache
+
+#Make home dir
+mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
 
 #Set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf

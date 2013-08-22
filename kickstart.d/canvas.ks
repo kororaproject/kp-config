@@ -76,12 +76,14 @@ plymouth-theme-korora
 @hardware-support
 #@input-methods
 bash-completion
+bridge-utils
 chrony
 cups
 empathy
 evince
 evolution
 evolution-mapi
+evolution-ews
 firefox
 font-manager
 gedit
@@ -95,6 +97,11 @@ gnome-shell-extension-user-theme
 gnome-shell-extension-places-menu
 gnome-tweak-tool
 gparted
+gvfs-archive
+gvfs-goa
+gvfs-gphoto2
+gvfs-mtp
+gvfs-smb
 jockey-gtk
 jockey-selinux
 #jockey-akmods
@@ -104,6 +111,7 @@ mozilla-adblock-plus
 mozilla-downthemall
 mozilla-flashblock
 mozilla-xclear
+net-tools
 network-manager-applet
 NetworkManager-l2tp
 NetworkManager-openconnect
@@ -124,7 +132,9 @@ simple-scan
 strongswan
 system-config-printer
 system-config-printer-udev
+tar
 totem
+wget
 
 %end
 
