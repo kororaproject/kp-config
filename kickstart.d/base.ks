@@ -99,7 +99,7 @@ rpmfusion-nonfree-release
 korora-extras
 korora-release
 korora-logos
-korora-release-notes
+-korora-release-notes
 korora-welcome
 plymouth-theme-korora
 korora-videos
