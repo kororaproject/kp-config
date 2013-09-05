@@ -14,7 +14,7 @@ selinux --enforcing
 authconfig --enableshadow --passalgo=sha512 --enablefingerprint
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
 xconfig --startxonboot
-services --enabled=lirc,NetworkManager,restorecond --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
+services --enabled=chronyd,lirc,NetworkManager,restorecond,yum-updatesd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
 #Partitioning, for Live CD
 part / --size 8192 --fstype ext4
@@ -109,7 +109,7 @@ grub2-starfield-theme
 # TERMINAL ENHANCEMENTS
 
 # undistract-me is great for notification on completion of long running terminal commands
-undistract-me
+#undistract-me
 unburden-home-dir
 etckeeper
 
