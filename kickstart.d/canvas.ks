@@ -75,6 +75,7 @@ plymouth-theme-korora
 @guest-desktop-agents
 @hardware-support
 #@input-methods
+alsa-utils
 bash-completion
 bridge-utils
 chrony
@@ -84,9 +85,14 @@ evince
 evolution
 evolution-mapi
 evolution-ews
+file-roller
+file-roller-nautilus
 firefox
+firewall-config
 font-manager
 gedit
+gnome-calculator
+gnome-initial-setup
 gnome-screenshot
 #gnome-shell-extension-weather
 gnome-shell-extension-alternative-status-menu
@@ -97,6 +103,7 @@ gnome-shell-extension-user-theme
 gnome-shell-extension-places-menu
 gnome-tweak-tool
 gparted
+gucharmap
 gvfs-archive
 gvfs-goa
 gvfs-gphoto2
@@ -111,6 +118,7 @@ mozilla-adblock-plus
 mozilla-downthemall
 mozilla-flashblock
 mozilla-xclear
+nautilus-sendto
 net-tools
 network-manager-applet
 NetworkManager-l2tp
@@ -127,6 +135,8 @@ PackageKit-gtk3-module
 PackageKit-yum-plugin
 prelink
 rhythmbox
+seahorse
+setroubleshoot
 shotwell
 simple-scan
 strongswan
@@ -134,7 +144,10 @@ system-config-printer
 system-config-printer-udev
 tar
 totem
+totem-nautilus
+totem-mozplugin
 wget
+yum-updatesd
 
 %end
 
@@ -158,9 +171,6 @@ do
     echo "IMPORT KEY NOT FOUND: $KEY (${x})"
   fi
 done
-
-# KP - start yum-updatesd
-systemctl enable yum-updatesd.service
 
 # KP - update locate database
 /usr/bin/updatedb
@@ -212,7 +222,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'anaconda.desktop']
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'totem.desktop', 'shotwell.desktop', 'nautilus.desktop', 'gpk-application.desktop', 'anaconda.desktop']
 FOE
 fi
 
