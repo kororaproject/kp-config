@@ -93,7 +93,7 @@ google-talkplugin-release
 #ksplice-uptrack
 rpmfusion-free-release
 rpmfusion-nonfree-release
-#virtualbox-release
+virtualbox-release
 
 #
 # (RE)BRANDING
