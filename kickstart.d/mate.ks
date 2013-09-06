@@ -35,6 +35,24 @@ egtk-gtk3-theme
 elementary-icon-theme
 
 #
+# MATE specific packages
+compiz
+compiz-plugins-main
+compiz-plugins-extra
+compiz-manager
+compizconfig-python
+compiz-plugins-unsupported
+compiz-bcop
+compiz-mate
+libcompizconfig
+compiz-plugins-main
+ccsm
+emerald-themes
+emerald
+fusion-icon
+fusion-icon-gtk
+
+#
 # EXTRA PACKAGES
 akmods
 alacarte
@@ -391,6 +409,14 @@ systemctl stop yum-updatesd.service 2> /dev/null || :
 
 # KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*
+
+# set up lightdm autologin
+sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
+
+# set MATE as default session, otherwise login will fail
+sed -i 's/^#user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
