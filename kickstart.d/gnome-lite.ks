@@ -2,7 +2,6 @@
 # To use this for 32bit build, :4,$s/x86_64/i386/g
 # and build with 'setarch i686 livecd-creator ...'
 
-
 %include fedora-live-base.ks
 #%include fedora-livecd-kde.ks
 
