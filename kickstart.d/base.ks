@@ -54,6 +54,7 @@ repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.
 # PACKAGES
 
 %packages
+-b43-firmware-helper
 @admin-tools
 @base-x
 @core
