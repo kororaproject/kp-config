@@ -1,19 +1,19 @@
-# Kickstart file for Korora Remix (GNOME) x86_64
+# Kickstart file for Korora Remix Canvas (GNOME) x86_64
 # To use this for 32bit build, :4,$s/x86_64/i386/g
 # and build with 'setarch i686 livecd-creator ...'
 
 #
 # KP:DESCRIPTION:START
 #
-# var KP_RELEASE_META_LABEL=gnome
+# var KP_RELEASE_META_LABEL=canvas
 #
 #
 # KP:DESCRIPTION:END
 #
 
-%include /home/chris/kpbuild/conf/kickstart.d/canvas-base.ks
-#%include /home/chris/kpbuild/conf/kickstart.d/fedora-live-minimization.ks
-#%include /home/chris/kpbuild/conf/kickstart.d/fedora-livecd-desktop.ks
+%include %%KP_KICKSTART_DIR%%/canvas-base.ks
+#%include %%KP_KICKSTART_DIR%%/fedora-live-minimization.ks
+#%include %%KP_KICKSTART_DIR%%/fedora-livecd-desktop.ks
 
 #
 # PACKAGES
@@ -86,7 +86,9 @@ evolution-mapi
 evolution-ews
 firefox
 font-manager
+fprintd-pam
 gedit
+gnome-initial-setup
 gnome-screenshot
 #gnome-shell-extension-weather
 gnome-shell-extension-alternative-status-menu
