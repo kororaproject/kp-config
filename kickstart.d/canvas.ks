@@ -75,6 +75,7 @@ plymouth-theme-korora
 @guest-desktop-agents
 @hardware-support
 #@input-methods
+alsa-utils
 bash-completion
 bridge-utils
 chrony
@@ -99,6 +100,7 @@ gnome-shell-extension-drive-menu
 gnome-shell-extension-user-theme
 gnome-shell-extension-places-menu
 gnome-tweak-tool
+gnome-user-docs
 gparted
 gvfs-archive
 gvfs-goa
@@ -132,6 +134,8 @@ prelink
 rhythmbox
 shotwell
 simple-scan
+spice-server
+spice-vdagent
 strongswan
 system-config-printer
 system-config-printer-udev
@@ -215,7 +219,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'anaconda.desktop']
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'gnome-documents.desktop', 'nautilus.desktop', 'anaconda.desktop']
 FOE
 fi
 
