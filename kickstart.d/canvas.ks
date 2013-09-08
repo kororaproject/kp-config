@@ -88,6 +88,7 @@ firefox
 font-manager
 fprintd-pam
 gedit
+gnome-documents
 gnome-initial-setup
 gnome-screenshot
 #gnome-shell-extension-weather

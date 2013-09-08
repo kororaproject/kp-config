@@ -9,7 +9,7 @@
 
 lang en_US.UTF-8
 keyboard us
-timezone --utc Australia/Sydney
+timezone Etc/UTC --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
 selinux --enforcing
 authconfig --enableshadow --passalgo=sha512 --enablefingerprint
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
@@ -72,6 +72,7 @@ repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.
 # <notting> walters: because otherwise dependency loops cause yum issues.
 kernel
 kernel-modules-extra
+shim
 
 # This was added a while ago, I think it falls into the category of
 # "Diagnosis/recovery tool useful from a Live OS image".  Leaving this untouched
