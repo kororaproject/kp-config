@@ -230,8 +230,8 @@ yum-updatesd
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
-#brasero
-#brasero-nautilus
+-brasero
+-brasero-nautilus
 faac
 fbreader-gtk
 ffmpeg
