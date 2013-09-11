@@ -253,7 +253,8 @@ pavucontrol
 #pitivi
 policycoreutils-gui
 pulseaudio-module-bluetooth
-rawtherapee
+#rawtherapee
+darktable
 rhythmbox
 soundconverter
 sound-juicer

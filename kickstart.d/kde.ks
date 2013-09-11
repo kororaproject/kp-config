@@ -160,7 +160,8 @@ prelink
 pybluez
 qtcurve-kde4
 qtcurve-gtk2
-rawtherapee
+#rawtherapee
+darktable
 samba
 samba-winbind
 sane-backends
