@@ -152,6 +152,7 @@ liferea
 lirc
 lirc-remotes
 liveusb-creator
+-mate-file-manager-open-terminal
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
@@ -373,6 +374,8 @@ FOE
 
 # KP - ensure liveuser desktop exists
 mkdir ~liveuser/Desktop
+cp /usr/share/applications/anaconda.desktop ~liveuser/Desktop/
+chmod a+x ~liveuser/Desktop/anaconda.desktop
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas

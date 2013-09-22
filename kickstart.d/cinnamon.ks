@@ -13,6 +13,8 @@
 
 %include %%KP_KICKSTART_DIR%%/base.ks
 
+#repo --name="Cinnamon" --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/Cinnamon/fedora-%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+
 #
 # PACKAGES
 #
@@ -341,7 +343,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 
 [org.cinnamon]
-favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'mozilla-thunderbird.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gpk-application.desktop', 'anaconda.desktop']
+favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'mozilla-thunderbird.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'anaconda.desktop']
 FOE
 fi
 
@@ -394,6 +396,14 @@ gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandator
 # KP - disable yum update service
 systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
 systemctl stop yum-updatesd.service 2> /dev/null || :
+
+# set up lightdm autologin
+sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
+
+# set Cinnamon as default session, otherwise login will fail
+sed -i 's/^#user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
 
 # KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*

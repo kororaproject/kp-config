@@ -150,6 +150,8 @@ flash-plugin
 #remove 32bit, now that we don't ship steam
 #flash-plugin.i386
 
+lzma
+
 #
 # GAMING PLATFORM
 #removed due to bad selinux requirements. only people who want steam will get that
