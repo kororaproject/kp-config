@@ -136,6 +136,7 @@ systemd-ui
 -system-config-keyboard
 -system-config-users
 setools-console
+fonts-tweak-tool
 
 #
 # Hardware
