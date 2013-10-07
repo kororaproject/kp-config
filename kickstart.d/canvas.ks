@@ -1,19 +1,19 @@
-# Kickstart file for Korora Remix (GNOME) x86_64
+# Kickstart file for Korora Remix Canvas (GNOME) x86_64
 # To use this for 32bit build, :4,$s/x86_64/i386/g
 # and build with 'setarch i686 livecd-creator ...'
 
 #
 # KP:DESCRIPTION:START
 #
-# var KP_RELEASE_META_LABEL=gnome
+# var KP_RELEASE_META_LABEL=canvas
 #
 #
 # KP:DESCRIPTION:END
 #
 
-%include /home/chris/kpbuild/conf/kickstart.d/canvas-base.ks
-#%include /home/chris/kpbuild/conf/kickstart.d/fedora-live-minimization.ks
-#%include /home/chris/kpbuild/conf/kickstart.d/fedora-livecd-desktop.ks
+%include %%KP_KICKSTART_DIR%%/canvas-base.ks
+#%include %%KP_KICKSTART_DIR%%/fedora-live-minimization.ks
+#%include %%KP_KICKSTART_DIR%%/fedora-livecd-desktop.ks
 
 #
 # PACKAGES
@@ -90,8 +90,9 @@ file-roller-nautilus
 firefox
 firewall-config
 font-manager
+fprintd-pam
 gedit
-gnome-calculator
+gnome-documents
 gnome-initial-setup
 gnome-screenshot
 #gnome-shell-extension-weather
@@ -102,6 +103,7 @@ gnome-shell-extension-drive-menu
 gnome-shell-extension-user-theme
 gnome-shell-extension-places-menu
 gnome-tweak-tool
+gnome-user-docs
 gparted
 gucharmap
 gvfs-archive
@@ -139,6 +141,8 @@ seahorse
 setroubleshoot
 shotwell
 simple-scan
+spice-server
+spice-vdagent
 strongswan
 system-config-printer
 system-config-printer-udev
@@ -222,7 +226,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'totem.desktop', 'shotwell.desktop', 'nautilus.desktop', 'gpk-application.desktop', 'anaconda.desktop']
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'gnome-documents.desktop', 'nautilus.desktop', 'anaconda.desktop']
 FOE
 fi
 

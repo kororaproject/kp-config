@@ -13,14 +13,15 @@
 
 %include %%KP_KICKSTART_DIR%%/base.ks
 
+#repo --name="Cinnamon" --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/Cinnamon/fedora-%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+
 #
 # PACKAGES
 #
 
 %packages
 @firefox
-@gnome-desktop
-@gnome-games
+@cinnamon-desktop
 @libreoffice
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
@@ -37,6 +38,7 @@ elementary-icon-theme
 
 #
 # EXTRA PACKAGES
+adwaita-nemo
 akmods
 -alacarte
 argyllcms
@@ -46,15 +48,14 @@ beesu
 brltty
 btrfs-progs
 chrony
-control-center
+-control-center
 #cups-pdf
 dconf-editor
 eekboard
 ekiga
 empathy
 evince
-evolution
-evolution-mapi
+-evolution*
 expect
 firefox
 *firmware*
@@ -67,29 +68,29 @@ fontconfig-infinality
 gconf-editor
 gimp
 git
-gnome-classic-session
+#gnome-classic-session
 gnome-disk-utility
 #gnome-games* - N/A - f19
 #gnome-lirc-properties - N/A - f19
 gnome-packagekit
--gnome-shell-extension-gpaste
--gnome-shell-extension-pidgin
-#gnome-shell-extension-apps-menu
-#gnome-shell-extension-auto-move-windows
-gnome-shell-extension-user-theme
-#gnome-shell-extension-theme-selector
-gnome-shell-extension-workspacesmenu
-gnome-shell-extension-alternative-status-menu
-#gnome-shell-extension-dock - N/A - f19
-gnome-shell-extension-drive-menu
-gnome-shell-extension-places-menu
--gnome-shell-extension-native-window-placement
-gnome-shell-extension-presentation-mode
-gnome-shell-extension-xrandr-indicator
-gnome-shell-extension-weather
-gnome-shell-theme-*
-gnome-system-log
-gnome-tweak-tool
+#-gnome-shell-extension-gpaste
+#-gnome-shell-extension-pidgin
+##gnome-shell-extension-apps-menu
+##gnome-shell-extension-auto-move-windows
+#gnome-shell-extension-user-theme
+##gnome-shell-extension-theme-selector
+#gnome-shell-extension-workspacesmenu
+#gnome-shell-extension-alternative-status-menu
+##gnome-shell-extension-dock - N/A - f19
+#gnome-shell-extension-drive-menu
+#gnome-shell-extension-places-menu
+#-gnome-shell-extension-native-window-placement
+#gnome-shell-extension-presentation-mode
+#gnome-shell-extension-xrandr-indicator
+#gnome-shell-extension-weather
+#gnome-shell-theme-*
+#gnome-system-log
+#gnome-tweak-tool
 gnote
 gloobus-preview
 
@@ -140,14 +141,14 @@ mozilla-downthemall
 mozilla-flashblock
 mozilla-xclear
 mtools
-nautilus-actions
-nautilus-extensions
-nautilus-image-converter
-nautilus-open-terminal
+#nautilus-actions
+#nautilus-extensions
+#nautilus-image-converter
+#nautilus-open-terminal
 #nautilus-pastebin
 #nautilus-search-tool
-nautilus-sendto
-nautilus-sound-converter
+#nautilus-sendto
+#nautilus-sound-converter
 ncftp
 #NetworkManager-gnome
 network-manager-applet
@@ -189,7 +190,7 @@ simple-scan
 #tilda
 -totem*
 -transmission-gtk
--thunderbird
+thunderbird
 deluge
 vim
 #vinagre
@@ -211,14 +212,14 @@ alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
 brasero
-brasero-nautilus
+#brasero-nautilus
 faac
 fbreader-gtk
 ffmpeg
 flac
 frei0r-plugins
 #gecko-mediaplayer
-deja-dup
+-deja-dup
 -gnome-mplayer
 -mplayer
 -mencoder
@@ -242,10 +243,10 @@ libmpg123
 #miro
 #mozilla-vlc
 mpg321
-nautilus-sound-converter
--nemo
--nemo-open-terminal
--nemo-extensions
+#nautilus-sound-converter
+nemo
+nemo-open-terminal
+nemo-extensions
 openshot
 PackageKit-browser-plugin
 PackageKit-gstreamer-plugin
@@ -340,8 +341,9 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
   mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
 
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
-[org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gnome-documents.desktop', 'anaconda.desktop']
+
+[org.cinnamon]
+favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'mozilla-thunderbird.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'anaconda.desktop']
 FOE
 fi
 
@@ -359,6 +361,8 @@ FOE
 
 # KP - ensure liveuser desktop exists
 mkdir ~liveuser/Desktop
+cp /usr/share/applications/anaconda.desktop ~liveuser/Desktop/
+chmod a+x ~liveuser/Desktop/anaconda.desktop
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -392,6 +396,14 @@ gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandator
 # KP - disable yum update service
 systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
 systemctl stop yum-updatesd.service 2> /dev/null || :
+
+# set up lightdm autologin
+sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
+
+# set Cinnamon as default session, otherwise login will fail
+sed -i 's/^#user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
 
 # KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*

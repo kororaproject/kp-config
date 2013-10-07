@@ -9,12 +9,12 @@
 
 lang en_US.UTF-8
 keyboard us
-timezone Australia/Sydney --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
+timezone Etc/UTC --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
 selinux --enforcing
 authconfig --enableshadow --passalgo=sha512 --enablefingerprint
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
 xconfig --startxonboot
-services --enabled=chronyd,lirc,NetworkManager,restorecond,yum-updatesd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
+services --enabled=chronyd,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
 #Partitioning, for Live CD
 part / --size 8192 --fstype ext4
@@ -23,32 +23,32 @@ part / --size 8192 --fstype ext4
 # REPOS
 
 # KP - production repositories
-repo --name="Adobe Systems Incorporated" --baseurl=http://linuxdownload.adobe.com/linux/x86_64/ --cost=1000
+repo --name="Adobe Systems Incorporated" --baseurl=http://linuxdownload.adobe.com/linux/%%KP_BASEARCH%%/ --cost=1000
 # We need 32bit for 64bit images also
 #repo --name="Adobe Systems Incorporated - 32bit" --baseurl=http://linuxdownload.adobe.com/linux/i386/ --cost=1000
 
-repo --name="Fedora 19 - x86_64" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/releases/19/Everything/x86_64/os/ --cost=1000
-repo --name="Fedora 19 - x86_64 - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/19/x86_64/ --cost=1000
-#repo --name="Fedora 19 - x86_64 - Updates Testing" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/19/x86_64/ --cost=1000
+repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates Testing" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
-repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64/ --cost=1000
+repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/%%KP_BASEARCH%%/ --cost=1000
 
 # KORORA REPOS, set to remote for release, local for testing
-repo --name="Korora 19" --baseurl=file:///home/chris/kpbuild/repository/19/x86_64/ --cost=10
-#repo --name="Korora 19" --baseurl=http://dl.kororaproject.org/pub/korora/releases/19/x86_64/ --cost=10
+repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
+#repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
-repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/19/Everything/x86_64/os/ --cost=1000
-repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/19/x86_64/ --cost=1000
+repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
-repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/19/Everything/x86_64/os/ --cost=1000
-repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/19/x86_64/ --cost=1000
-#repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/19/x86_64/ --cost=1000
+repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+#repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
 # KP - development repositories
-#repo --name="Fedora 19 - x86_64 Updates Testing" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/testing/19/x86_64/ --cost=1000
-#repo --name="Fedora 19 - x86_64" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/development/19/x86_64/os/ --cost=1000
-#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/19/x86_64/os/ --cost=1000
-#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/19/x86_64/os/ --cost=1000
+#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Testing" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
 
 %post
 # This is a huge file and things work ok without it

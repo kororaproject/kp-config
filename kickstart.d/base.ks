@@ -9,12 +9,12 @@
 
 lang en_US.UTF-8
 keyboard us
-timezone --utc Australia/Sydney
+timezone Etc/UTC --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
 selinux --enforcing
 authconfig --enableshadow --passalgo=sha512 --enablefingerprint
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
 xconfig --startxonboot
-services --enabled=chronyd,lirc,NetworkManager,restorecond,yum-updatesd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
+services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
 #Partitioning, for Live CD
 part / --size 8192 --fstype ext4
@@ -54,6 +54,7 @@ repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfus
 # PACKAGES
 
 %packages
+-b43-firmware-helper
 @admin-tools
 @base-x
 @core
@@ -92,7 +93,7 @@ google-talkplugin-release
 #ksplice-uptrack
 rpmfusion-free-release
 rpmfusion-nonfree-release
-#virtualbox-release
+virtualbox-release
 
 #
 # (RE)BRANDING
@@ -122,6 +123,7 @@ fpaste
 #
 # HARDWARE MONITORING/CONTROLLING
 powertop
+ksm
 
 #
 # SYSTEM CONFIG
@@ -134,9 +136,12 @@ systemd-ui
 -system-config-keyboard
 -system-config-users
 setools-console
+fonts-tweak-tool
 
 #
 # Hardware
+spice-server
+spice-vdagent
 splix
 
 #
@@ -145,6 +150,8 @@ flash-plugin-helper
 flash-plugin
 #remove 32bit, now that we don't ship steam
 #flash-plugin.i386
+
+lzma
 
 #
 # GAMING PLATFORM

@@ -19,8 +19,7 @@
 
 %packages
 @firefox
-@gnome-desktop
-@gnome-games
+@mate-desktop
 @libreoffice
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
@@ -28,17 +27,35 @@
 nss-mdns
 
 # (RE)BRANDING - KP
-korora-backgrounds-gnome
-korora-backgrounds-extras-gnome
+korora-backgrounds-mate
+korora-backgrounds-extras-mate
 
 egtk-gtk2-theme
 egtk-gtk3-theme
 elementary-icon-theme
 
 #
+# MATE specific packages
+compiz
+compiz-plugins-main
+compiz-plugins-extra
+compiz-manager
+compizconfig-python
+compiz-plugins-unsupported
+compiz-bcop
+compiz-mate
+libcompizconfig
+compiz-plugins-main
+ccsm
+emerald-themes
+emerald
+fusion-icon
+fusion-icon-gtk
+
+#
 # EXTRA PACKAGES
 akmods
--alacarte
+alacarte
 argyllcms
 bash-completion
 beesu
@@ -46,52 +63,53 @@ beesu
 brltty
 btrfs-progs
 chrony
-control-center
+#control-center
 #cups-pdf
 dconf-editor
 eekboard
 ekiga
-empathy
-evince
-evolution
-evolution-mapi
+#empathy
+#evince
+#evolution
+#evolution-mapi
 expect
 firefox
 *firmware*
-font-manager
+#font-manager
 fprintd-pam
 fuse
 #libXft-infinality
 freetype-infinality
 fontconfig-infinality
 gconf-editor
+-geany
 gimp
 git
-gnome-classic-session
+#gnome-classic-session
 gnome-disk-utility
 #gnome-games* - N/A - f19
 #gnome-lirc-properties - N/A - f19
-gnome-packagekit
--gnome-shell-extension-gpaste
--gnome-shell-extension-pidgin
+#gnome-packagekit
+#-gnome-shell-extension-gpaste
+#-gnome-shell-extension-pidgin
 #gnome-shell-extension-apps-menu
 #gnome-shell-extension-auto-move-windows
-gnome-shell-extension-user-theme
+#gnome-shell-extension-user-theme
 #gnome-shell-extension-theme-selector
-gnome-shell-extension-workspacesmenu
-gnome-shell-extension-alternative-status-menu
+#gnome-shell-extension-workspacesmenu
+#gnome-shell-extension-alternative-status-menu
 #gnome-shell-extension-dock - N/A - f19
-gnome-shell-extension-drive-menu
-gnome-shell-extension-places-menu
--gnome-shell-extension-native-window-placement
-gnome-shell-extension-presentation-mode
-gnome-shell-extension-xrandr-indicator
-gnome-shell-extension-weather
-gnome-shell-theme-*
-gnome-system-log
-gnome-tweak-tool
+#gnome-shell-extension-drive-menu
+#gnome-shell-extension-places-menu
+#-gnome-shell-extension-native-window-placement
+#gnome-shell-extension-presentation-mode
+#gnome-shell-extension-xrandr-indicator
+#gnome-shell-extension-weather
+#gnome-shell-theme-*
+#gnome-system-log
+#gnome-tweak-tool
 gnote
-gloobus-preview
+#gloobus-preview
 
 gparted
 gpgme
@@ -134,20 +152,21 @@ liferea
 lirc
 lirc-remotes
 liveusb-creator
+-mate-file-manager-open-terminal
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
 mozilla-flashblock
 mozilla-xclear
 mtools
-nautilus-actions
-nautilus-extensions
-nautilus-image-converter
-nautilus-open-terminal
+#nautilus-actions
+#nautilus-extensions
+#nautilus-image-converter
+#nautilus-open-terminal
 #nautilus-pastebin
 #nautilus-search-tool
-nautilus-sendto
-nautilus-sound-converter
+#nautilus-sendto
+#nautilus-sound-converter
 ncftp
 #NetworkManager-gnome
 network-manager-applet
@@ -184,7 +203,7 @@ simple-scan
 #synaptic
 #system-config-lvm  - N/A - f19
 # We use gnome-control-center's printer and input sources panels instead
--system-config-printer
+#-system-config-printer
 -im-chooser
 #tilda
 -totem*
@@ -197,6 +216,8 @@ vim
 #wammu
 wget
 xfsprogs
+-xpdf
+-xterm
 yumex
 #yum-plugin-fastestmirror
 yum-plugin-priorities
@@ -210,8 +231,8 @@ yum-updatesd
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
-brasero
-brasero-nautilus
+-brasero
+-brasero-nautilus
 faac
 fbreader-gtk
 ffmpeg
@@ -242,7 +263,7 @@ libmpg123
 #miro
 #mozilla-vlc
 mpg321
-nautilus-sound-converter
+#nautilus-sound-converter
 -nemo
 -nemo-open-terminal
 -nemo-extensions
@@ -253,8 +274,7 @@ pavucontrol
 #pitivi
 policycoreutils-gui
 pulseaudio-module-bluetooth
-#rawtherapee
-darktable
+rawtherapee
 rhythmbox
 soundconverter
 sound-juicer
@@ -338,11 +358,6 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
   sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
   # need to move it to anaconda.desktop to make shell happy
   mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
-
-  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
-[org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gnome-documents.desktop', 'anaconda.desktop']
-FOE
 fi
 
 # KP - disable screensaver locking
@@ -359,6 +374,8 @@ FOE
 
 # KP - ensure liveuser desktop exists
 mkdir ~liveuser/Desktop
+cp /usr/share/applications/anaconda.desktop ~liveuser/Desktop/
+chmod a+x ~liveuser/Desktop/anaconda.desktop
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -395,6 +412,14 @@ systemctl stop yum-updatesd.service 2> /dev/null || :
 
 # KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*
+
+# set up lightdm autologin
+sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
+
+# set MATE as default session, otherwise login will fail
+sed -i 's/^#user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
