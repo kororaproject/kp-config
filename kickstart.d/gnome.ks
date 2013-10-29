@@ -1,15 +1,8 @@
-# Kickstart file for Korora Remix (GNOME) x86_64
-# To use this for 32bit build, :4,$s/x86_64/i386/g
-# and build with 'setarch i686 livecd-creator ...'
+# Korora GNOME Desktop
+# Maintained by the Korora Project:
+# http://kororaproject.org
+#
 
-#
-# KP:DESCRIPTION:START
-#
-# var KP_RELEASE_META_LABEL=gnome
-#
-#
-# KP:DESCRIPTION:END
-#
 
 %include %%KP_KICKSTART_DIR%%/base.ks
 
@@ -28,8 +21,8 @@
 nss-mdns
 
 # (RE)BRANDING - KP
-korora-backgrounds-gnome
-korora-backgrounds-extras-gnome
+#korora-backgrounds-gnome
+#TODO: korora-backgrounds-extras-gnome
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -69,24 +62,30 @@ gimp
 git
 gnome-classic-session
 gnome-disk-utility
-#gnome-games* - N/A - f19
-#gnome-lirc-properties - N/A - f19
 gnome-packagekit
--gnome-shell-extension-gpaste
--gnome-shell-extension-pidgin
-#gnome-shell-extension-apps-menu
-#gnome-shell-extension-auto-move-windows
-gnome-shell-extension-user-theme
-#gnome-shell-extension-theme-selector
-gnome-shell-extension-workspacesmenu
-gnome-shell-extension-alternative-status-menu
-#gnome-shell-extension-dock - N/A - f19
+
+# Add GNOME shell extensions
+gnome-shell-extension-cpu-temperature
 gnome-shell-extension-drive-menu
 gnome-shell-extension-places-menu
--gnome-shell-extension-native-window-placement
-gnome-shell-extension-presentation-mode
-gnome-shell-extension-xrandr-indicator
+gnome-shell-extension-pomodoro
+gnome-shell-extension-user-theme
 gnome-shell-extension-weather
+# TODO: no packages yet available in f20
+#gnome-shell-extension-alternative-status-menu
+#gnome-shell-extension-apps-menu
+#gnome-shell-extension-auto-move-windows
+#gnome-shell-extension-presentation-mode
+#gnome-shell-extension-theme-selector
+#gnome-shell-extension-workspacesmenu
+#gnome-shell-extension-xrandr-indicator
+
+# Remove GNOME shell extensions
+-gnome-shell-extension-gpaste
+-gnome-shell-extension-pidgin
+-gnome-shell-extension-native-window-placement
+
+
 gnome-shell-theme-*
 gnome-system-log
 gnome-tweak-tool
@@ -97,21 +96,20 @@ gparted
 gpgme
 gtk-murrine-engine
 gtk-unico-engine
-gvfs-obexftp
+#gvfs-obexftp - TODO: deprecated in f20?
 gwibber
 hardlink
 htop
-#-ibus-pinyin-db-open-phrase - N/A - f19
-#ibus-pinyin-db-android - N/A - f19
 inkscape
 iok
 jack-audio-connection-kit
 java-1.7.0-openjdk
-#java-1.7.0-openjdk-plugin
-jockey
-jockey-gtk
-jockey-selinux
-jockey-akmods
+#jockey
+#jockey-gtk
+#jockey-selinux
+#jockey-akmods
+pharlap
+
 korora-settings-gnome
 libreoffice-calc
 libreoffice-draw
@@ -123,7 +121,6 @@ libreoffice-math
 libreoffice-ogltrans
 libreoffice-opensymbol-fonts
 libreoffice-pdfimport
-#libreoffice-presenter-screen - N/A - f19
 #libreoffice-report-builder
 libreoffice-ure
 libreoffice-writer
@@ -157,7 +154,7 @@ NetworkManager-openswan
 NetworkManager-openvpn
 NetworkManager-pptp
 NetworkManager-vpnc
-NetworkManager-wimax
+#NetworkManager-wimax - TODO: depreacted in f20?
 strongswan
 libproxy-networkmanager
 -ntp
@@ -168,8 +165,6 @@ PackageKit-command-not-found
 PackageKit-gtk3-module
 pcsc-lite
 pcsc-lite-ccid
-#pidgin
-#pidgin-rhythmbox
 planner
 polkit-desktop-policy
 prelink
@@ -181,8 +176,6 @@ screen
 shotwell
 simple-scan
 -smartmontools
-#synaptic
-#system-config-lvm  - N/A - f19
 # We use gnome-control-center's printer and input sources panels instead
 -system-config-printer
 -im-chooser
@@ -244,7 +237,6 @@ libmpg123
 mpg321
 nautilus-sound-converter
 -nemo
--nemo-open-terminal
 -nemo-extensions
 openshot
 PackageKit-browser-plugin
@@ -267,11 +259,14 @@ xine-lib-extras
 xine-lib-extras-freeworld
 xine-plugin
 xorg-x11-apps
-#xscreensaver-gl-extras
-#xscreensaver-extras
-#xscreensaver-base
 xorg-x11-resutils
 xvidcore
+
+# Remove screensaver additions
+-xscreensaver-gl-extras
+-xscreensaver-extras
+-xscreensaver-base
+
 
 #
 # development tools for out of tree modules
@@ -284,6 +279,10 @@ time
 
 %post
 
+# This is a huge file and things work ok without it
+rm -f /usr/share/icons/HighContrast/icon-theme.cache
+
+## KP START
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
 # KP - build out of kernel modules (so it's not done on first boot)
@@ -399,6 +398,8 @@ rm /etc/xdg/autostart/jockey*
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
+
+## KP EOF
 
 EOF
 
