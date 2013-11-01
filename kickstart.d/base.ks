@@ -34,7 +34,7 @@ part / --size 8192 --fstype ext4
 repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/%%KP_BASEARCH%%/ --cost=1000
 
 # KORORA REPOS, set to remote for release, local for testing
-repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/release/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
+repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 #repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
 #repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
@@ -104,6 +104,7 @@ korora-extras
 korora-release
 korora-logos
 -korora-release-notes
+-fedora-release-notes
 korora-welcome
 plymouth-theme-korora
 korora-videos

@@ -96,8 +96,8 @@ gnome-documents
 gnome-initial-setup
 gnome-screenshot
 #gnome-shell-extension-weather
-gnome-shell-extension-alternative-status-menu
-gnome-shell-extension-xrandr-indicator
+#gnome-shell-extension-alternative-status-menu
+#gnome-shell-extension-xrandr-indicator
 #gnome-shell-extension-presentation-mode
 gnome-shell-extension-drive-menu
 gnome-shell-extension-user-theme
@@ -111,8 +111,9 @@ gvfs-goa
 gvfs-gphoto2
 gvfs-mtp
 gvfs-smb
-jockey-gtk
-jockey-selinux
+pharlap
+#jockey-gtk
+#jockey-selinux
 #jockey-akmods
 libproxy-networkmanager
 mlocate
@@ -129,7 +130,7 @@ NetworkManager-openswan
 NetworkManager-openvpn
 NetworkManager-pptp
 NetworkManager-vpnc
-NetworkManager-wimax
+#NetworkManager-wimax
 PackageKit-browser-plugin
 PackageKit-command-not-found
 PackageKit-gstreamer-plugin

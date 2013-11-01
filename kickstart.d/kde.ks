@@ -31,8 +31,8 @@ mariadb-server
 nss-mdns
 
 # (RE)BRANDING
-korora-backgrounds-kde
-korora-backgrounds-extras-kde
+#korora-backgrounds-kde
+#korora-backgrounds-extras-kde
 -desktop-backgrounds-basic
 
 egtk-gtk2-theme
@@ -82,10 +82,10 @@ inkscape
 jack-audio-connection-kit
 java-1.7.0-openjdk
 #java-1.7.0-openjdk-plugin
-jockey
-jockey-kde
-jockey-selinux
-jockey-akmods
+#jockey
+#jockey-kde
+#jockey-selinux
+#jockey-akmods
 k3b-extras-freeworld
 kamoso
 kaudiocreator
