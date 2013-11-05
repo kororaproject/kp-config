@@ -108,11 +108,7 @@ kde-settings-plasma
 kdemultimedia-extras-freeworld
 kdeplasma-addons
 kipi-plugins
-kde-plasma-networkmanagement-mobile
-kde-plasma-networkmanagement-openconnect
-kde-plasma-networkmanagement-openvpn
-kde-plasma-networkmanagement-pptp
-kde-plasma-networkmanagement-vpnc
+kde-plasma-nm*
 kdiff3
 konversation
 korora-settings-kde
@@ -281,6 +277,10 @@ EOF
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
+# KP - disable yumupdatesd
+systemctl --no-reload yum-updatesd.service 2> /dev/null || :
+systemctl stop yum-updatesd.service 2> /dev/null || :
+
 # KP - ensure liveuser desktop exists
 mkdir ~liveuser/Desktop
 
@@ -306,18 +306,17 @@ chown liveuser:liveuser /home/liveuser/.xsession
 #FOE
 
 # set up autologin for user liveuser
-sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
-sed -i 's/#AutoLoginUser=fred/AutoLoginUser=liveuser/' /etc/kde/kdm/kdmrc
+sed -i 's/^AutoUser=.*/AutoUser=liveuser/' /etc/sddm.conf
 
 # set up user liveuser as default user and preselected user
-sed -i 's/#PreselectUser=Default/PreselectUser=Default/' /etc/kde/kdm/kdmrc
-sed -i 's/#DefaultUser=johndoe/DefaultUser=liveuser/' /etc/kde/kdm/kdmrc
+sed -i 's/^LastUser=.*/LastUser=liveuser/' /etc/sddm.conf
+sed -i 's/^LastSession=.*/LastSession=kde-plasma.desktop/' /etc/sddm.conf
 
 # add liveinst.desktop to favorites menu
 mkdir -p /home/liveuser/.kde/share/config/
 cat > /home/liveuser/.kde/share/config/kickoffrc << MENU_EOF
 [Favorites]
-FavoriteURLs=/usr/share/applications/kde4/apper.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop,/usr/share/applications/liveinst.desktop
+FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop,/usr/share/applications/liveinst.desktop
 MENU_EOF
 
 # show liveinst.desktop on desktop and in menu
@@ -418,8 +417,6 @@ if strstr "\`cat /proc/cmdline\`" netbook ; then
    sed -i 's/desktop/netbook/g' /usr/share/autostart/plasma-netbook.desktop
 fi
 
-# KP - disable yumupdatesd
-systemctl stop yum-updatesd.service
 
 # KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*
