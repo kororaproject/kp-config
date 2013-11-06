@@ -30,7 +30,7 @@ nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-gnome
-korora-backgrounds-extras-gnome
+#korora-backgrounds-extras-gnome
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -98,7 +98,7 @@ gparted
 gpgme
 gtk-murrine-engine
 gtk-unico-engine
-gvfs-obexftp
+gvfs-*
 gwibber
 hardlink
 htop
@@ -109,10 +109,11 @@ iok
 jack-audio-connection-kit
 java-1.7.0-openjdk
 #java-1.7.0-openjdk-plugin
-jockey
-jockey-gtk
-jockey-selinux
-jockey-akmods
+#jockey
+#jockey-gtk
+#jockey-selinux
+#jockey-akmods
+pharlap
 korora-settings-gnome
 libreoffice-calc
 libreoffice-draw
@@ -158,7 +159,8 @@ NetworkManager-openswan
 NetworkManager-openvpn
 NetworkManager-pptp
 NetworkManager-vpnc
-NetworkManager-wimax
+#NetworkManager-wimax
+NetworkManager-*
 strongswan
 libproxy-networkmanager
 -ntp
@@ -245,8 +247,9 @@ libmpg123
 mpg321
 #nautilus-sound-converter
 nemo
-nemo-open-terminal
+#nemo-open-terminal
 nemo-extensions
+nemo-fileroller
 openshot
 PackageKit-browser-plugin
 PackageKit-gstreamer-plugin

@@ -447,6 +447,9 @@ rm -f /core*
 # convince readahead not to collect
 # FIXME: for systemd
 
+# This is a huge file and things work ok without it
+rm -f /usr/share/icons/HighContrast/icon-theme.cache
+
 %end
 
 
@@ -460,7 +463,7 @@ Thank you for downloading Korora!
 
 This is a Live DVD, simply reboot your computer to run from this DVD.
 
-To install Kororaa, simply run the installer on the desktop or in the left menu (under GNOME).
+To install Korora, simply click "Install" in the Welcome screen, run the installer from the desktop or from the left menu (under GNOME).
 
 Please provide us with feedback and any suggestions at https://kororaproject.org
 

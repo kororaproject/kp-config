@@ -28,7 +28,7 @@ nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-mate
-korora-backgrounds-extras-mate
+#korora-backgrounds-extras-mate
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -51,6 +51,9 @@ emerald-themes
 emerald
 fusion-icon
 fusion-icon-gtk
+
+-realmd                     # only seems to be used in GNOME
+-PackageKit*                # we switched to yumex, so we don't need this
 
 #
 # EXTRA PACKAGES
@@ -115,7 +118,8 @@ gparted
 gpgme
 gtk-murrine-engine
 gtk-unico-engine
-gvfs-obexftp
+gvfs-*
+-gvfs-devel
 gwibber
 hardlink
 htop
@@ -176,7 +180,9 @@ NetworkManager-openswan
 NetworkManager-openvpn
 NetworkManager-pptp
 NetworkManager-vpnc
-NetworkManager-wimax
+#NetworkManager-wimax
+NetworkManager-*
+-NetworkManager-devel
 strongswan
 libproxy-networkmanager
 -ntp
@@ -343,8 +349,6 @@ touch ~liveuser/.config/gnome-initial-setup-done
 if [ -f /usr/share/applications/liveinst.desktop ]; then
   # Show harddisk install in shell dash
   sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
-  # need to move it to anaconda.desktop to make shell happy
-  mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
 fi
 
 # KP - disable screensaver locking

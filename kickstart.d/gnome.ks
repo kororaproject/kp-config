@@ -97,6 +97,7 @@ gpgme
 gtk-murrine-engine
 gtk-unico-engine
 #gvfs-obexftp - TODO: deprecated in f20?
+gvfs-*
 gwibber
 hardlink
 htop
