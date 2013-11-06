@@ -21,7 +21,7 @@
 nss-mdns
 
 # (RE)BRANDING - KP
-#korora-backgrounds-gnome
+korora-backgrounds-gnome
 #TODO: korora-backgrounds-extras-gnome
 
 egtk-gtk2-theme
