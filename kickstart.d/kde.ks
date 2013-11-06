@@ -231,19 +231,6 @@ echo -e "\n*****\nPOST SECTION\n*****\n"
 echo -e "\n***\nBUILDING AKMODS\n***"
 /usr/sbin/akmods --force
 
-# KP - import keys
-echo -e "\n***\nIMPORTING KEYS\n***"
-for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
-do
-  KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
-  if [ -r "${KEY}" ];
-  then
-    rpm --import "${KEY}"
-  else
-    echo "IMPORT KEY NOT FOUND: $KEY (${x})"
-  fi
-done
-
 #KDE - stop Klipper from starting
 #sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
 

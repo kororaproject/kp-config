@@ -291,15 +291,18 @@ echo -e "\n***\nBUILDING AKMODS\n***"
 
 # KP - import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
+for x in 18 19 20
 do
-  KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
-  if [ -r "${KEY}" ];
-  then
-    rpm --import "${KEY}"
-  else
-    echo "IMPORT KEY NOT FOUND: $KEY (${x})"
-  fi
+  for y in fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin virtualbox adobe rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary korora-$x-primary korora-$x-secondary
+  do
+    KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${y}"
+    if [ -r "${KEY}" ];
+    then
+      rpm --import "${KEY}" && echo "IMPORTED: $KEY (${y})"
+    else
+      echo "IMPORT KEY NOT FOUND: $KEY (${y})"
+    fi
+  done
 done
 
 # KP - start yum-updatesd

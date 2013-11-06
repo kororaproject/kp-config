@@ -174,6 +174,22 @@ mirall
 %end
 
 %post
+# KP - import keys
+echo -e "\n***\nIMPORTING KEYS\n***"
+for x in 18 19 20
+do
+  for y in adobe fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin korora-$x-primary korora-$x-secondary rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary virtualbox
+  do
+    KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${y}"
+    if [ -r "${KEY}" ];
+    then
+      rpm --import "${KEY}" && echo "IMPORTED: $KEY (${y})"
+    else
+      echo "IMPORT KEY NOT FOUND: $KEY (${y})"
+    fi
+  done
+done
+
 ## KP START
 # make home dir
 mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
@@ -413,7 +429,8 @@ systemctl enable tmp.mount
 # work around for poor key import UI in PackageKit
 rm -f /var/lib/rpm/__db*
 #rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-secondary
 echo "Packages within this LiveCD"
 rpm -qa
 # Note that running rpm recreates the rpm db files which aren't needed or wanted
