@@ -108,6 +108,7 @@ kde-workspace-ksplash-themes
 kde-settings-plasma
 kdemultimedia-extras-freeworld
 kdeplasma-addons
+kdm
 kipi-plugins
 kde-plasma-nm*
 kdiff3

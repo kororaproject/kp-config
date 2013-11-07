@@ -130,10 +130,11 @@ iok
 jack-audio-connection-kit
 java-1.7.0-openjdk
 #java-1.7.0-openjdk-plugin
-jockey
-jockey-gtk
-jockey-selinux
-jockey-akmods
+#jockey
+#jockey-gtk
+#jockey-selinux
+#jockey-akmods
+pharlap
 korora-settings-gnome
 libreoffice-calc
 libreoffice-draw
