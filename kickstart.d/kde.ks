@@ -229,6 +229,8 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
+systemctl enable kdm.service
+
 # KP - build out of kernel modules (so it's not done on first boot)
 echo -e "\n***\nBUILDING AKMODS\n***"
 /usr/sbin/akmods --force
