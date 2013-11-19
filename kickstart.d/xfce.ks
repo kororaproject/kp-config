@@ -196,6 +196,10 @@ yum-plugin-priorities
 yum-plugin-refresh-updatesd
 yum-plugin-versionlock
 yum-updatesd
+xscreensaver-base
+xscreensaver-gl-base
+xscreensaver-extras-base
+xscreensaver-gl-extras
 
 #
 # MULTIMEDIA
@@ -300,14 +304,6 @@ EOF
 #   - enable installer
 cat >> /etc/rc.d/init.d/livesys << EOF
 
-mkdir -p /home/liveuser/.config/xfce4
-
-cat > /home/liveuser/.config/xfce4/helpers.rc << FOE
-MailReader=sylpheed-claws
-FileManager=Thunar
-WebBrowser=midori
-FOE
-
 # disable screensaver locking (#674410)
 cat >> /home/liveuser/.xscreensaver << FOE
 mode:           off
@@ -319,8 +315,8 @@ FOE
 rm -f /etc/xdg/autostart/xfconf-migration-4.6.desktop || :
 
 # deactivate xfce4-panel first-run dialog (#693569)
-mkdir -p /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml
-cp /etc/xdg/xfce4/panel/default.xml /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+#mkdir -p /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml
+#cp /etc/xdg/xfce4/panel/default.xml /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 
 # set up lightdm autologin
 sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
@@ -333,10 +329,8 @@ sed -i 's/^#user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
 mkdir /home/liveuser/Desktop
+chmod a+x /usr/share/applications/liveinst.desktop
 cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
-
-# and mark it as executable (new Xfce security feature)
-chmod +x /home/liveuser/Desktop/liveinst.desktop
 
 # KP - don't let prelink run on the live image
 #sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
