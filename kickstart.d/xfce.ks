@@ -29,6 +29,9 @@ nss-mdns
 # (RE)BRANDING - KP
 korora-backgrounds-xfce
 #korora-backgrounds-extras-xfce
+-fedora-icon-theme
+
+korora-settings-xfce
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -39,6 +42,9 @@ elementary-xfce-icon-theme
 
 #
 # EXTRA PACKAGES
+-abrt*
+-gnome-abrt
+-dconf-editor
 akmods
 argyllcms
 bash-completion
@@ -204,7 +210,6 @@ ffmpeg
 flac
 frei0r-plugins
 #gecko-mediaplayer
-deja-dup
 -mplayer
 -mencoder
 gstreamer-ffmpeg
@@ -236,6 +241,7 @@ rawtherapee
 rhythmbox
 soundconverter
 sound-juicer
+thunderbird
 #transcode
 vlc
 vlc-extras
