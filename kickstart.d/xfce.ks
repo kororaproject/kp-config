@@ -32,7 +32,7 @@ korora-backgrounds-xfce
 
 egtk-gtk2-theme
 egtk-gtk3-theme
-elementary-icon-theme
+elementary-xfce-icon-theme
 
 -realmd                     # only seems to be used in GNOME
 -PackageKit*                # we switched to yumex, so we don't need this
@@ -145,6 +145,7 @@ NetworkManager-*
 strongswan
 libproxy-networkmanager
 -ntp
+owncloud
 p7zip
 p7zip-plugins
 pcsc-lite
@@ -160,10 +161,12 @@ samba-winbind
 sane-backends
 screen
 shotwell
+simple-mtpfs
 simple-scan
 -smartmontools
 #synaptic
 #system-config-lvm  - N/A - f19
+system-config-users
 # We use gnome-control-center's printer and input sources panels instead
 #-system-config-printer
 -im-chooser
