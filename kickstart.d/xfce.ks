@@ -19,8 +19,13 @@
 
 %packages
 @firefox
-@xfce-desktop
 @libreoffice
+@xfce-desktop
+@xfce-apps
+@xfce-extra-plugins
+@xfce-media
+#@xfce-office
+
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.
@@ -32,6 +37,9 @@ korora-backgrounds-xfce
 -fedora-icon-theme
 
 korora-settings-xfce
+
+# unlock default keyring. FIXME: Should probably be done in comps
+gnome-keyring-pam
 
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -83,9 +91,9 @@ gparted
 gpgme
 gtk-murrine-engine
 gtk-unico-engine
-gvfs-*
--gvfs-devel
-gwibber
+#gvfs-*
+#-gvfs-devel
+#gwibber
 hardlink
 htop
 #-ibus-pinyin-db-open-phrase - N/A - f19
@@ -154,6 +162,14 @@ libproxy-networkmanager
 owncloud
 p7zip
 p7zip-plugins
+pidgin
+pidgin-otr
+pidgin-privacy-please
+#pidgin-rhythmbox
+pidgin-sipe
+pidgin-musictracker
+pidgin-guifications
+purple-microblog
 pcsc-lite
 pcsc-lite-ccid
 #pidgin
@@ -203,8 +219,18 @@ xscreensaver-gl-extras
 
 #
 # MULTIMEDIA
+-pragha
+-parole
+-ristretto
+-midori
+-claws-mail
+-deluge
 alsa-plugins-pulseaudio
 alsa-utils
+audacious
+audacious-plugins*
+-audacious-plugins-amidi
+-libreoffice-base
 audacity-freeworld
 -brasero
 -brasero-nautilus
@@ -242,9 +268,9 @@ pavucontrol
 policycoreutils-gui
 pulseaudio-module-bluetooth
 rawtherapee
-rhythmbox
+#rhythmbox
 soundconverter
-sound-juicer
+#sound-juicer
 thunderbird
 #transcode
 vlc
