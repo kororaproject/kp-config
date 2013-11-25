@@ -167,7 +167,7 @@ xz-lzma-compat
 #steam
 
 # Office
-libreoffice-base
+-libreoffice-base
 
 #
 # CLOUD

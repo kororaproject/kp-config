@@ -258,6 +258,12 @@ gstreamer-plugins-bad-free-extras
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-good
 gstreamer-plugins-ugly
+gstreamer1-plugins-bad-free
+gstreamer1-plugins-bad-free-extras
+gstreamer1-plugins-bad-freeworld
+gstreamer1-plugins-good
+gstreamer1-plugins-good-extras
+gstreamer1-plugins-ugly
 HandBrake-gui
 lame
 libdvdcss
