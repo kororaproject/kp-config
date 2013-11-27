@@ -132,6 +132,9 @@ fpaste
 powertop
 ksm
 
+# fix 32bit breaking X when pulling in nvidia packages
+mesa-libEGL
+
 #
 # SYSTEM CONFIG
 system-config-samba
