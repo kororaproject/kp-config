@@ -86,6 +86,7 @@ git
 gnome-disk-utility
 #gnote
 #gloobus-preview
+gvfs-mtp
 
 gparted
 gpgme

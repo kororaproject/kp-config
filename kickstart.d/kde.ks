@@ -211,6 +211,7 @@ libmpg123
 #miro
 PackageKit-gstreamer-plugin
 pavucontrol
+pharlap
 phonon-backend-vlc
 vlc
 vlc-extras

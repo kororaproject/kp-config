@@ -86,6 +86,10 @@ memtest86+
 anaconda
 @anaconda-tools
 
+# syslog replaced with journald
+-rsyslog
+-syslog-ng*
+
 # Make live images easy to shutdown and the like in libvirt
 qemu-guest-agent
 
@@ -153,6 +157,8 @@ fonts-tweak-tool
 spice-server
 spice-vdagent
 splix
+sane-backends-drivers-scanners
+sane-backends-drivers-cameras
 
 #
 # MULTIMEDIA
