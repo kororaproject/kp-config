@@ -170,6 +170,7 @@ flash-plugin
 #remove 32bit, now that we don't ship steam
 #flash-plugin.i386
 dvb-apps
+ffmpeg
 
 xz-lzma-compat
 
