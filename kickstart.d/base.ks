@@ -90,6 +90,9 @@ anaconda
 -rsyslog
 -syslog-ng*
 
+# Include fedup so that future releases ca just run it and will always have the latest version
+fedup
+
 # Make live images easy to shutdown and the like in libvirt
 qemu-guest-agent
 
