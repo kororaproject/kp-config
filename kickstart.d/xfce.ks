@@ -60,6 +60,7 @@ beesu
 #bootconf-gui
 brltty
 btrfs-progs
+catfish
 chrony
 #control-center
 #cups-pdf
@@ -67,7 +68,7 @@ dconf-editor
 eekboard
 ekiga
 #empathy
-#evince
+evince
 #evolution
 #evolution-mapi
 expect
@@ -87,6 +88,7 @@ gnome-disk-utility
 #gnote
 #gloobus-preview
 gvfs-mtp
+gwibber
 
 gparted
 gpgme
@@ -110,6 +112,8 @@ java-1.7.0-openjdk
 #jockey-akmods
 pharlap
 #korora-settings-xfce
+-leafpad
+mousepad
 libreoffice-calc
 libreoffice-draw
 libreoffice-emailmerge
@@ -213,6 +217,7 @@ yum-plugin-priorities
 yum-plugin-refresh-updatesd
 yum-plugin-versionlock
 yum-updatesd
+xfce4-volumed
 xscreensaver-base
 xscreensaver-gl-base
 xscreensaver-extras-base
