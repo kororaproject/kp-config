@@ -97,7 +97,6 @@ gtk-murrine-engine
 gtk-unico-engine
 #gvfs-*
 #-gvfs-devel
-#gwibber
 hardlink
 htop
 #-ibus-pinyin-db-open-phrase - N/A - f19
