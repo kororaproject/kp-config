@@ -54,6 +54,7 @@ elementary-xfce-icon-theme
 -gnome-abrt
 -dconf-editor
 akmods
+alacarte
 argyllcms
 bash-completion
 beesu
