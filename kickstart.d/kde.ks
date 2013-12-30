@@ -168,6 +168,7 @@ skanlite
 -synaptic
 #system-config-lvm - f19 - N/A
 -system-config-printer
+system-config-users
 kde-print-manager
 vim
 xorg-x11-apps
