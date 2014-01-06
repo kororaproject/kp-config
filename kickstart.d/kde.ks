@@ -158,6 +158,7 @@ prelink
 pybluez
 qtcurve-kde4
 qtcurve-gtk2
+qt-recordmydesktop
 #rawtherapee
 darktable
 samba

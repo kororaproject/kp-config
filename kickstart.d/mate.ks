@@ -116,6 +116,7 @@ gnote
 
 gparted
 gpgme
+gtk-recordmydesktop
 gtk-murrine-engine
 gtk-unico-engine
 gvfs-*

@@ -171,6 +171,7 @@ flash-plugin
 #flash-plugin.i386
 dvb-apps
 ffmpeg
+libaacs
 
 xz-lzma-compat
 

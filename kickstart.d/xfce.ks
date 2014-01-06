@@ -88,6 +88,7 @@ git
 gnome-disk-utility
 #gnote
 #gloobus-preview
+gtk-recordmydesktop
 gvfs-mtp
 gwibber
 

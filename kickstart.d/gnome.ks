@@ -94,6 +94,7 @@ gloobus-preview
 
 gparted
 gpgme
+gtk-recordmydesktop
 gtk-murrine-engine
 gtk-unico-engine
 #gvfs-obexftp - TODO: deprecated in f20?
