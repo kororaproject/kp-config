@@ -166,16 +166,22 @@ echo -e "\n***\nBUILDING AKMODS\n***"
 
 # KP - import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in fedora google-chrome virtualbox korora adobe rpmfusion-free-fedora-19-primary rpmfusion-nonfree-fedora-19-primary korora-19-primary korora-19-secondary rpmfusion-free-fedora-18-primary rpmfusion-nonfree-fedora-18-primary korora-18-primary
+for x in 18 19 20
 do
-  KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${x}"
-  if [ -r "${KEY}" ];
-  then
-    rpm --import "${KEY}"
-  else
-    echo "IMPORT KEY NOT FOUND: $KEY (${x})"
-  fi
+  for y in fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin virtualbox adobe rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary korora-$x-primary korora-$x-secondary
+  do
+    KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${y}"
+    if [ -r "${KEY}" ];
+    then
+      rpm --import "${KEY}" && echo "IMPORTED: $KEY (${y})"
+    else
+      echo "IMPORT KEY NOT FOUND: $KEY (${y})"
+    fi
+  done
 done
+
+# KP - start yum-updatesd
+systemctl enable yum-updatesd.service
 
 # KP - update locate database
 /usr/bin/updatedb
@@ -203,6 +209,19 @@ FOE
 mkdir ~liveuser/.config
 touch ~liveuser/.config/gnome-initial-setup-done
 
+# make the installer show up
+if [ -f /usr/share/applications/liveinst.desktop ]; then
+  # Show harddisk install in shell dash
+  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
+  # need to move it to anaconda.desktop to make shell happy
+  mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
+
+  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
+[org.gnome.shell]
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gnome-documents.desktop', 'anaconda.desktop']
+FOE
+fi
+
 # KP - disable screensaver locking
 cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.override << FOE
 [org.gnome.desktop.screensaver]
@@ -217,19 +236,6 @@ FOE
 
 # KP - ensure liveuser desktop exists
 mkdir ~liveuser/Desktop
-
-# make the installer show up
-if [ -f /usr/share/applications/liveinst.desktop ]; then
-  # Show harddisk install in shell dash
-  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
-  # need to move it to anaconda.desktop to make shell happy
-  mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
-
-  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
-[org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'gnome-documents.desktop', 'nautilus.desktop', 'anaconda.desktop']
-FOE
-fi
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -261,7 +267,8 @@ pactl set-sink-volume 0 50000
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
 
 # KP - disable yum update service
-systemctl stop yum-updatesd.service
+systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
+systemctl stop yum-updatesd.service 2> /dev/null || :
 
 # KP - disable jockey from autostarting
 rm /etc/xdg/autostart/jockey*

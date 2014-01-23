@@ -11,10 +11,10 @@ lang en_US.UTF-8
 keyboard us
 timezone Etc/UTC --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
 selinux --enforcing
-authconfig --enableshadow --passalgo=sha512 --enablefingerprint
+auth --enableshadow --passalgo=sha512 --enablefingerprint
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
 xconfig --startxonboot
-services --enabled=chronyd,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
+services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
 #Partitioning, for Live CD
 part / --size 8192 --fstype ext4
@@ -23,42 +23,62 @@ part / --size 8192 --fstype ext4
 # REPOS
 
 # KP - production repositories
-#repo --name="Adobe Systems Incorporated" --baseurl=http://linuxdownload.adobe.com/linux/%%KP_BASEARCH%%/ --cost=1000
+repo --name="Adobe Systems Incorporated" --baseurl=http://linuxdownload.adobe.com/linux/%%KP_BASEARCH%%/ --cost=1000
 # We need 32bit for 64bit images also
 #repo --name="Adobe Systems Incorporated - 32bit" --baseurl=http://linuxdownload.adobe.com/linux/i386/ --cost=1000
 
-#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 #repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates Testing" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
 #repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/%%KP_BASEARCH%%/ --cost=1000
 
 # KORORA REPOS, set to remote for release, local for testing
-repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
+repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 #repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
-#repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
-#repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 #repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
 # KP - development repositories
-repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Testing" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Released" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Testing" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+
+#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+# RAWHIDE - use when RPM Fusion has not yet branched (usually because fedora is still pre-beta)
+#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
 
 %post
-# This is a huge file and things work ok without it
-rm -f /usr/share/icons/HighContrast/icon-theme.cache
+# KP - import keys
+echo -e "\n***\nIMPORTING KEYS\n***"
+for x in 18 19 20 21
+do
+  for y in adobe fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin korora-$x-primary korora-$x-secondary rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary virtualbox
+  do
+    KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${y}"
+    if [ -r "${KEY}" ];
+    then
+      rpm --import "${KEY}" && echo "IMPORTED: $KEY (${y})"
+    else
+      echo "IMPORT KEY NOT FOUND: $KEY (${y})"
+    fi
+  done
+done
 
-#Make home dir
+## KP START
+# make home dir
 mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
 
-#Set the korora plymouth theme
+# set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf
+## KP END
 
 # FIXME: it'd be better to get this installed from a package
 cat > /etc/rc.d/init.d/livesys << EOF
@@ -86,8 +106,6 @@ exists() {
     which \$1 >/dev/null 2>&1 || return
     \$*
 }
-
-touch /.liveimg-configured
 
 # Make sure we don't mangle the hardware clock on shutdown
 ln -sf /dev/null /etc/systemd/system/hwclock-save.service
@@ -189,6 +207,12 @@ usermod -aG wheel liveuser > /dev/null
 # Remove root password lock
 passwd -d root > /dev/null
 
+# turn off firstboot for livecd boots
+systemctl --no-reload disable firstboot-text.service 2> /dev/null || :
+systemctl --no-reload disable firstboot-graphical.service 2> /dev/null || :
+systemctl stop firstboot-text.service 2> /dev/null || :
+systemctl stop firstboot-graphical.service 2> /dev/null || :
+
 # don't use prelink on a running live image
 sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink &>/dev/null || :
 
@@ -208,23 +232,8 @@ systemctl --no-reload disable atd.service 2> /dev/null || :
 systemctl stop crond.service 2> /dev/null || :
 systemctl stop atd.service 2> /dev/null || :
 
-# and hack so that we eject the cd on shutdown if we're using a CD...
-if strstr "\`cat /proc/cmdline\`" CDLABEL= ; then
-  cat >> /sbin/halt.local << FOE
-#!/bin/bash
-# XXX: This often gets stuck during shutdown because /etc/init.d/halt
-#      (or something else still running) wants to read files from the block\
-#      device that was ejected.  Disable for now.  Bug #531924
-# we want to eject the cd on halt, but let's also try to avoid
-# io errors due to not being able to get files...
-#cat /sbin/halt > /dev/null
-#cat /sbin/reboot > /dev/null
-#/usr/sbin/eject -p -m \$(readlink -f /run/initramfs/livedev) >/dev/null 2>&1
-#echo "Please remove the CD from your drive and press Enter to finish restarting"
-#read -t 30 < /dev/console
-FOE
-chmod +x /sbin/halt.local
-fi
+# Mark things as configured
+touch /.liveimg-configured
 
 # add static hostname to work around xauth bug
 # https://bugzilla.redhat.com/show_bug.cgi?id=679486
@@ -280,8 +289,8 @@ fi
 if [ -n "\$xdriver" ]; then
    cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Device"
-        Identifier      "Videocard0"
-        Driver  "\$xdriver"
+	Identifier	"Videocard0"
+	Driver	"\$xdriver"
 EndSection
 FOE
 fi
@@ -301,7 +310,9 @@ systemctl enable tmp.mount
 
 # work around for poor key import UI in PackageKit
 rm -f /var/lib/rpm/__db*
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora
+#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-secondary
 echo "Packages within this LiveCD"
 rpm -qa
 # Note that running rpm recreates the rpm db files which aren't needed or wanted
@@ -318,19 +329,23 @@ rm -f /core*
 # convince readahead not to collect
 # FIXME: for systemd
 
+# This is a huge file and things work ok without it
+rm -f /usr/share/icons/HighContrast/icon-theme.cache
+
 %end
 
 
 %post --nochroot
 cp $INSTALL_ROOT/usr/share/doc/*-release-*/GPL $LIVE_ROOT/GPL
 
+## KP START
 # add a korora README
 cat > $LIVE_ROOT/README.txt << EOF
 Thank you for downloading Korora!
 
 This is a Live DVD, simply reboot your computer to run from this DVD.
 
-To install Kororaa, simply run the installer on the desktop or in the left menu (under GNOME).
+To install Korora, simply click "Install" in the Welcome screen, run the installer from the desktop or from the left menu (under GNOME).
 
 Please provide us with feedback and any suggestions at https://kororaproject.org
 
@@ -338,6 +353,7 @@ Enjoy!
 
 Note: The Korora Project is not provided or supported by the Fedora Project. Official, unmodified Fedora software is available through the Fedora Project website (http://fedoraproject.org).
 EOF
+## KP EOF
 
 # only works on x86, x86_64
 if [ "$(uname -i)" = "i386" -o "$(uname -i)" = "x86_64" ]; then
@@ -345,4 +361,3 @@ if [ "$(uname -i)" = "i386" -o "$(uname -i)" = "x86_64" ]; then
   cp /usr/bin/livecd-iso-to-disk $LIVE_ROOT/LiveOS
 fi
 %end
-
