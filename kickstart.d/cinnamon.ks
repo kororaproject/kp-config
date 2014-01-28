@@ -188,7 +188,7 @@ simple-scan
 #synaptic
 #system-config-lvm  - N/A - f19
 # We use gnome-control-center's printer and input sources panels instead
--system-config-printer
+system-config-printer
 -im-chooser
 #tilda
 -totem*
