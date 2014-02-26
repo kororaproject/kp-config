@@ -165,6 +165,7 @@ mozilla-downthemall
 mozilla-flashblock
 mozilla-xclear
 mtools
+-nautilus
 #nautilus-actions
 #nautilus-extensions
 #nautilus-image-converter
@@ -248,7 +249,7 @@ ffmpeg
 flac
 frei0r-plugins
 #gecko-mediaplayer
-deja-dup
+#deja-dup # TODO: pulls in nautilus f20
 -gnome-mplayer
 -mplayer
 -mencoder
