@@ -119,6 +119,7 @@ korora-welcome
 plymouth-theme-korora
 korora-videos
 grub2-starfield-theme
+open-sans-fonts
 
 #
 # TERMINAL ENHANCEMENTS
