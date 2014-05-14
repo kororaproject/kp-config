@@ -122,6 +122,11 @@ grub2-starfield-theme
 open-sans-fonts
 
 #
+# FILESYSTEMS
+exfat-utils
+fuse-exfat
+
+#
 # TERMINAL ENHANCEMENTS
 
 # undistract-me is great for notification on completion of long running terminal commands
