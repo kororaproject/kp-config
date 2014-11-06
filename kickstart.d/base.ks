@@ -37,11 +37,11 @@ repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http:/
 repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 #repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
-repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+#repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
-repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
+#repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
+#repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 #repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
 # KP - development repositories
@@ -49,8 +49,8 @@ repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.
 #repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Released" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 #repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Testing" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
 
-#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
+repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
 # RAWHIDE - use when RPM Fusion has not yet branched (usually because fedora is still pre-beta)
 #repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
 #repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
@@ -62,15 +62,15 @@ repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.
 -b43-firmware-helper
 @admin-tools
 @base-x
+@guest-desktop-agents
+@standard
 @core
 @fonts
-@guest-desktop-agents
 @input-methods
 @dial-up
 -@multimedia
 @hardware-support
 @printing
-@standard
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
@@ -200,7 +200,7 @@ mirall
 %post
 # KP - import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in 18 19 20
+for x in 18 19 20 21
 do
   for y in adobe fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin korora-$x-primary korora-$x-secondary rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary virtualbox
   do
@@ -248,9 +248,6 @@ exists() {
     which \$1 >/dev/null 2>&1 || return
     \$*
 }
-
-# Make sure we don't mangle the hardware clock on shutdown
-ln -sf /dev/null /etc/systemd/system/hwclock-save.service
 
 livedir="LiveOS"
 for arg in \`cat /proc/cmdline\` ; do
@@ -331,12 +328,6 @@ if ! strstr "\`cat /proc/cmdline\`" nopersistenthome && [ -n "\$homedev" ] ; the
   action "Mounting persistent /home" mountPersistentHome
 fi
 
-# make it so that we don't do writing to the overlay for things which
-# are just tmpdirs/caches
-mount -t tmpfs -o mode=0755 varcacheyum /var/cache/yum
-mount -t tmpfs vartmp /var/tmp
-[ -x /sbin/restorecon ] && /sbin/restorecon /var/cache/yum /var/tmp >/dev/null 2>&1
-
 if [ -n "\$configdone" ]; then
   exit 0
 fi
@@ -365,7 +356,7 @@ systemctl stop mdmonitor.service 2> /dev/null || :
 systemctl stop mdmonitor-takeover.service 2> /dev/null || :
 
 # don't enable the gnome-settings-daemon packagekit plugin
-gsettings set org.gnome.settings-daemon.plugins.updates active 'false' || :
+gsettings set org.gnome.software download-updates 'false' || :
 
 # don't start cron/at as they tend to spawn things which are
 # disk intensive that are painful on a live image
@@ -450,11 +441,19 @@ chmod 755 /etc/rc.d/init.d/livesys-late
 # enable tmpfs for /tmp
 systemctl enable tmp.mount
 
+# make it so that we don't do writing to the overlay for things which
+# are just tmpdirs/caches
+# note https://bugzilla.redhat.com/show_bug.cgi?id=1135475
+cat >> /etc/fstab << EOF
+vartmp   /var/tmp    tmpfs   defaults   0  0
+varcacheyum /var/cache/yum  tmpfs   mode=0755,context=system_u:object_r:rpm_var_cache_t:s0   0   0
+EOF
+
 # work around for poor key import UI in PackageKit
 rm -f /var/lib/rpm/__db*
-#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-secondary
+releasever=$(rpm -q --qf '%{version}\n' --whatprovides system-release)
+basearch=$(uname -i)
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 echo "Packages within this LiveCD"
 rpm -qa
 # Note that running rpm recreates the rpm db files which aren't needed or wanted
@@ -478,24 +477,7 @@ rm -f /usr/share/icons/HighContrast/icon-theme.cache
 
 
 %post --nochroot
-cp $INSTALL_ROOT/usr/share/doc/*-release-*/GPL $LIVE_ROOT/GPL
-
-## KP START
-# add a korora README
-cat > $LIVE_ROOT/README.txt << EOF
-Thank you for downloading Korora!
-
-This is a Live DVD, simply reboot your computer to run from this DVD.
-
-To install Korora, simply click "Install" in the Welcome screen, run the installer from the desktop or from the left menu (under GNOME).
-
-Please provide us with feedback and any suggestions at https://kororaproject.org
-
-Enjoy!
-
-Note: The Korora Project is not provided or supported by the Fedora Project. Official, unmodified Fedora software is available through the Fedora Project website (http://fedoraproject.org).
-EOF
-## KP EOF
+cp $INSTALL_ROOT/usr/share/licenses/*-release/* $LIVE_ROOT/
 
 # only works on x86, x86_64
 if [ "$(uname -i)" = "i386" -o "$(uname -i)" = "x86_64" ]; then
