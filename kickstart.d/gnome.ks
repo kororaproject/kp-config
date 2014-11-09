@@ -65,7 +65,6 @@ gnome-disk-utility
 gnome-packagekit
 
 # Add GNOME shell extensions
--gnome-shell-extension-cpu-temperature
 gnome-shell-extension-drive-menu
 gnome-shell-extension-places-menu
 gnome-shell-extension-pomodoro
@@ -105,12 +104,12 @@ htop
 inkscape
 iok
 jack-audio-connection-kit
-java-1.7.0-openjdk
+java-1.8.0-openjdk
 #jockey
 #jockey-gtk
 #jockey-selinux
 #jockey-akmods
-pharlap
+#pharlap
 
 korora-settings-gnome
 libreoffice-calc
@@ -139,14 +138,14 @@ mozilla-downthemall
 mozilla-flashblock
 mozilla-xclear
 mtools
-nautilus-actions
+#nautilus-actions   #FC21
 nautilus-extensions
 nautilus-image-converter
 nautilus-open-terminal
 #nautilus-pastebin
 #nautilus-search-tool
 nautilus-sendto
-nautilus-sound-converter
+#nautilus-sound-converter   #FC21
 ncftp
 #NetworkManager-gnome
 network-manager-applet
@@ -243,7 +242,6 @@ libmpg123
 #miro
 #mozilla-vlc
 mpg321
-nautilus-sound-converter
 -nemo
 -nemo-extensions
 openshot
@@ -299,7 +297,7 @@ echo -e "\n***\nBUILDING AKMODS\n***"
 
 # KP - import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in 18 19 20
+for x in 18 19 20 21
 do
   for y in fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin virtualbox adobe rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary korora-$x-primary korora-$x-secondary
   do
