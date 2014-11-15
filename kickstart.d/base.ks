@@ -120,6 +120,8 @@ plymouth-theme-korora
 #korora-videos
 grub2-starfield-theme
 open-sans-fonts
+korora-icon-theme-base
+korora-icon-theme
 
 #
 # FILESYSTEMS
