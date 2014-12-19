@@ -22,6 +22,7 @@ nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-gnome
+korora-icon-theme
 #TODO: korora-backgrounds-extras-gnome
 
 egtk-gtk2-theme
@@ -109,7 +110,7 @@ java-1.8.0-openjdk
 #jockey-gtk
 #jockey-selinux
 #jockey-akmods
-#pharlap
+pharlap
 
 korora-settings-gnome
 libreoffice-calc
@@ -241,7 +242,7 @@ libmpg123
 #mencoder
 #miro
 #mozilla-vlc
-mpg321
+#mpg321
 -nemo
 -nemo-extensions
 openshot
