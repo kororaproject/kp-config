@@ -36,9 +36,9 @@ nss-mdns
 #korora-backgrounds-extras-kde
 -desktop-backgrounds-basic
 
-egtk-gtk2-theme
-egtk-gtk3-theme
-elementary-icon-theme
+#egtk-gtk2-theme
+#egtk-gtk3-theme
+#elementary-icon-theme
 adwaita-gtk3-theme
 
 #
@@ -66,8 +66,8 @@ expect
 firefox
 *firmware*
 #libXft-infinality
-freetype-infinality
-fontconfig-infinality
+#freetype-infinality
+#fontconfig-infinality
 font-manager
 fprintd-pam
 frei0r-plugins
@@ -75,13 +75,13 @@ fuse
 gimp
 git
 gparted
--gnome-packagekit*
+-NetworkManager*-gnome
 HandBrake-gui
 htop
 hugin-base
 inkscape
 jack-audio-connection-kit
-java-1.7.0-openjdk
+java-1.8.0-openjdk
 #java-1.7.0-openjdk-plugin
 #jockey
 #jockey-kde
@@ -143,7 +143,7 @@ mlocate
 mozilla-adblock-plus
 mozilla-downthemall
 mozilla-flashblock
-mozilla-oxygen-kde
+#mozilla-oxygen-kde
 #mozilla-plasma-notify
 mozilla-xclear
 -ntp
@@ -241,8 +241,8 @@ echo -e "\n*****\nPOST SECTION\n*****\n"
 systemctl enable kdm.service
 
 # KP - build out of kernel modules (so it's not done on first boot)
-echo -e "\n***\nBUILDING AKMODS\n***"
-/usr/sbin/akmods --force
+#echo -e "\n***\nBUILDING AKMODS\n***"
+#/usr/sbin/akmods --force
 
 #KDE - stop Klipper from starting
 #sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
@@ -295,22 +295,17 @@ echo "startkde" > /home/liveuser/.xsession
 chmod a+x /home/liveuser/.xsession
 chown liveuser:liveuser /home/liveuser/.xsession
 
-# Shouldn't be needed now, fixed upstream by setting hostname on boot
-## KP - run xhost + to ensure anaconda can start in live session
-#cat >> /home/liveuser/.bashrc <<FOE
-##!/bin/bash
-#if [ -n "$(env |grep DISPLAY)" ]
-#then
-#  xhost +
-#fi
-#FOE
-
 # set up autologin for user liveuser
-sed -i 's/^AutoUser=.*/AutoUser=liveuser/' /etc/sddm.conf
-
-# set up user liveuser as default user and preselected user
-sed -i 's/^LastUser=.*/LastUser=liveuser/' /etc/sddm.conf
-sed -i 's/^LastSession=.*/LastSession=kde-plasma.desktop/' /etc/sddm.conf
+if [ -f /etc/sddm.conf ]; then
+sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
+sed -i 's/^#Session=.*/Session=kde-plasma.desktop/' /etc/sddm.conf
+else
+cat > /etc/sddm.conf << SDDM_EOF
+[Autologin]
+User=liveuser
+Session=kde-plasma.desktop
+SDDM_EOF
+fi
 
 # set up autologin for user liveuser
 sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
@@ -371,6 +366,12 @@ cat > /home/liveuser/.kde/share/config/kdedrc << KDEDRC_EOF
 autoload=false
 KDEDRC_EOF
 
+# Disable baloo
+cat > /home/liveuser/.kde/share/config/baloofilerc << BALOO_EOF
+[Basic Settings]
+Indexing-Enabled=false
+BALOO_EOF
+
 # Disable kres-migrator
 cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
 [Migration]
@@ -391,10 +392,10 @@ mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
 
 # KP - un-mute sound card (fixes some issues reported)
-amixer set Master 85% unmute 2>/dev/null
-amixer set PCM 85% unmute 2>/dev/null
-pactl set-sink-mute 0 0
-pactl set-sink-volume 0 50000
+#amixer set Master 85% unmute 2>/dev/null
+#amixer set PCM 85% unmute 2>/dev/null
+#pactl set-sink-mute 0 0
+#pactl set-sink-volume 0 50000
 
 
 # KP - disable screensaver
@@ -427,15 +428,13 @@ fi
 
 
 # KP - disable jockey from autostarting
-rm /etc/xdg/autostart/jockey*
+#rm /etc/xdg/autostart/jockey*
 
 # turn off PackageKit-command-not-found
 if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
   sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 fi
 
-# Turn on liveinst file
-sed -i s/NoDisplay=true/NoDisplay=false/g /usr/local/share/applications/liveinst.desktop
 EOF
 
 %end
