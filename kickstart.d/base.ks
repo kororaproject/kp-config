@@ -10,51 +10,14 @@
 lang en_US.UTF-8
 keyboard us
 timezone Etc/UTC --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
-selinux --enforcing
 auth --enableshadow --passalgo=sha512 --enablefingerprint
+selinux --enforcing
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
 xconfig --startxonboot
+part / --size 8192 --fstype ext4
 services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
-#Partitioning, for Live CD
-part / --size 8192 --fstype ext4
-
-#
-# REPOS
-
-# KP - production repositories
-repo --name="Adobe Systems Incorporated" --baseurl=http://linuxdownload.adobe.com/linux/%%KP_BASEARCH%%/ --cost=1000
-# We need 32bit for 64bit images also
-#repo --name="Adobe Systems Incorporated - 32bit" --baseurl=http://linuxdownload.adobe.com/linux/i386/ --cost=1000
-
-repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates Testing" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-
-#repo --name="Google Chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/%%KP_BASEARCH%%/ --cost=1000
-
-# KORORA REPOS, set to remote for release, local for testing
-repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
-#repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
-
-repo --name="RPMFusion Free" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="RPMFusion Free - Updates" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-
-repo --name="RPMFusion Non-Free" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/%%KP_VERSION%%/Everything/%%KP_BASEARCH%%/os/ --cost=1000
-repo --name="RPMFusion Non-Free - Updates" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-#repo --name="VirtualBox" --baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-
-#
-# KP - development repositories
-#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%%" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/testing/%%KP_VERSION%%/Everything/%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Released" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-#repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% Updates Testing" --baseurl=http://dl.fedoraproject.org/pub/fedora/linux/updates/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-
-#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/%%KP_VERSION%%/%%KP_BASEARCH%%/os/ --cost=1000
-# RAWHIDE - use when RPM Fusion has not yet branched (usually because fedora is still pre-beta)
-#repo --name="RPMFusion Free - Development" --baseurl=http://download1.rpmfusion.org/free/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
-#repo --name="RPMFusion Non-Free - Development" --baseurl=http://download1.rpmfusion.org/nonfree/fedora/development/rawhide/%%KP_BASEARCH%%/os/ --cost=1000
+%include %%KP_KICKSTART_DIR%%/korora-repo.ks
 
 #
 # PACKAGES
@@ -87,6 +50,9 @@ memtest86+
 # The point of a live image is to install
 anaconda
 @anaconda-tools
+
+# Need aajohan-comfortaa-fonts for the SVG rnotes images
+aajohan-comfortaa-fonts
 
 # syslog replaced with journald
 -rsyslog
@@ -178,7 +144,7 @@ sane-backends-drivers-cameras
 
 #
 # MULTIMEDIA
-flash-plugin-helper
+#flash-plugin-helper
 flash-plugin
 #remove 32bit, now that we don't ship steam
 #flash-plugin.i386
@@ -207,7 +173,7 @@ mirall
 %post
 # KP - import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in 18 19 20 21
+for x in 20 21
 do
   for y in adobe fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin korora-$x-primary korora-$x-secondary rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary virtualbox
   do
@@ -476,6 +442,12 @@ rm -f /core*
 
 # convince readahead not to collect
 # FIXME: for systemd
+
+# forcibly regenerate fontconfig cache (so long as this live image has
+# fontconfig) - see #1169979
+if [ -x /usr/bin/fc-cache ] ; then
+   fc-cache -f
+fi
 
 # This is a huge file and things work ok without it
 rm -f /usr/share/icons/HighContrast/icon-theme.cache
