@@ -25,9 +25,9 @@ korora-backgrounds-gnome
 korora-icon-theme
 #TODO: korora-backgrounds-extras-gnome
 
-egtk-gtk2-theme
-egtk-gtk3-theme
-elementary-icon-theme
+#egtk-gtk2-theme
+#egtk-gtk3-theme
+#elementary-icon-theme
 
 #
 # EXTRA PACKAGES
@@ -56,8 +56,8 @@ font-manager
 fprintd-pam
 fuse
 #libXft-infinality
-freetype-infinality
-fontconfig-infinality
+#freetype-infinality
+#fontconfig-infinality
 gconf-editor
 gimp
 git
@@ -150,13 +150,18 @@ nautilus-sendto
 ncftp
 #NetworkManager-gnome
 network-manager-applet
+NetworkManager-adsl
+NetworkManager-bluetooth
+NetworkManager-iodine-gnome
 NetworkManager-l2tp
 NetworkManager-openconnect
-NetworkManager-openswan
-NetworkManager-openvpn
-NetworkManager-pptp
-NetworkManager-vpnc
-#NetworkManager-wimax - TODO: depreacted in f20?
+NetworkManager-openswan-gnome
+NetworkManager-openvpn-gnome
+NetworkManager-pptp-gnome
+NetworkManager-ssh-gnome
+NetworkManager-vpnc-gnome
+NetworkManager-wifi
+NetworkManager-wwan
 strongswan
 libproxy-networkmanager
 -ntp
@@ -293,24 +298,8 @@ rm -f /usr/share/icons/HighContrast/icon-theme.cache
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
 # KP - build out of kernel modules (so it's not done on first boot)
-echo -e "\n***\nBUILDING AKMODS\n***"
-/usr/sbin/akmods --force
-
-# KP - import keys
-echo -e "\n***\nIMPORTING KEYS\n***"
-for x in 18 19 20 21
-do
-  for y in fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin virtualbox adobe rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary korora-$x-primary korora-$x-secondary
-  do
-    KEY="/etc/pki/rpm-gpg/RPM-GPG-KEY-${y}"
-    if [ -r "${KEY}" ];
-    then
-      rpm --import "${KEY}" && echo "IMPORTED: $KEY (${y})"
-    else
-      echo "IMPORT KEY NOT FOUND: $KEY (${y})"
-    fi
-  done
-done
+#echo -e "\n***\nBUILDING AKMODS\n***"
+#/usr/sbin/akmods --force
 
 # KP - start yum-updatesd
 systemctl enable yum-updatesd.service
@@ -337,6 +326,11 @@ cat >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.updates.gsc
 active=false
 FOE
 
+cat >> /usr/share/glib-2.0/schemas/org.gnome.software.gschema.override << FOE
+[org.gnome.software]
+download-updates=false
+FOE
+
 # don't run gnome-initial-setup
 mkdir ~liveuser/.config
 touch ~liveuser/.config/gnome-initial-setup-done
@@ -350,7 +344,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'gnome-documents.desktop', 'anaconda.desktop']
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'anaconda.desktop']
 FOE
 fi
 
@@ -390,10 +384,10 @@ mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
 
 # KP - un-mute sound card (fixes some issues reported)
-amixer set Master 85% unmute 2>/dev/null
-amixer set PCM 85% unmute 2>/dev/null
-pactl set-sink-mute 0 0
-pactl set-sink-volume 0 50000
+#amixer set Master 85% unmute 2>/dev/null
+#amixer set PCM 85% unmute 2>/dev/null
+#pactl set-sink-mute 0 0
+#pactl set-sink-volume 0 50000
 
 # KP - turn off screensaver
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
@@ -403,7 +397,7 @@ systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
 systemctl stop yum-updatesd.service 2> /dev/null || :
 
 # KP - disable jockey from autostarting
-rm /etc/xdg/autostart/jockey*
+#rm /etc/xdg/autostart/jockey*
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
