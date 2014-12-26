@@ -14,7 +14,7 @@ auth --enableshadow --passalgo=sha512 --enablefingerprint
 selinux --enforcing
 firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
 xconfig --startxonboot
-part / --size 8192 --fstype ext4
+part / --size 10240 --fstype ext4
 services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
 %include %%KP_KICKSTART_DIR%%/korora-repo.ks

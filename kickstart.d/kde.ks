@@ -35,6 +35,8 @@ nss-mdns
 #korora-backgrounds-kde
 #korora-backgrounds-extras-kde
 -desktop-backgrounds-basic
+-f21-kde-theme
+-f21-backgrounds-kde
 
 #egtk-gtk2-theme
 #egtk-gtk3-theme

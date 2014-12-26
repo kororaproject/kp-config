@@ -24,6 +24,7 @@
 @xfce-apps
 @xfce-extra-plugins
 @xfce-media
+@networkmanager-submodules
 #@xfce-office
 
 
@@ -79,8 +80,8 @@ firefox
 fprintd-pam
 fuse
 #libXft-infinality
-freetype-infinality
-fontconfig-infinality
+#freetype-infinality
+#fontconfig-infinality
 gconf-editor
 -geany
 gimp
@@ -105,7 +106,7 @@ htop
 inkscape
 iok
 jack-audio-connection-kit
-java-1.7.0-openjdk
+java-1.8.0-openjdk
 #java-1.7.0-openjdk-plugin
 #jockey
 #jockey-gtk
@@ -151,17 +152,19 @@ mtools
 #nautilus-sendto
 #nautilus-sound-converter
 ncftp
-#NetworkManager-gnome
 network-manager-applet
+NetworkManager-adsl
+NetworkManager-bluetooth
+NetworkManager-iodine
 NetworkManager-l2tp
 NetworkManager-openconnect
 NetworkManager-openswan
 NetworkManager-openvpn
 NetworkManager-pptp
+NetworkManager-ssh
 NetworkManager-vpnc
-#NetworkManager-wimax
-NetworkManager-*
--NetworkManager-devel
+NetworkManager-wifi
+NetworkManager-wwan
 strongswan
 libproxy-networkmanager
 -ntp
@@ -219,6 +222,7 @@ yum-plugin-refresh-updatesd
 yum-plugin-versionlock
 yum-updatesd
 xfce4-volumed
+xfce4-whiskermenu-plugin
 xscreensaver-base
 xscreensaver-gl-base
 xscreensaver-extras-base
@@ -273,7 +277,7 @@ libmpg123
 #mencoder
 #miro
 #mozilla-vlc
-mpg321
+#mpg321
 #nautilus-sound-converter
 openshot
 pavucontrol
@@ -314,8 +318,8 @@ time
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
 # KP - build out of kernel modules (so it's not done on first boot)
-echo -e "\n***\nBUILDING AKMODS\n***"
-/usr/sbin/akmods --force
+#echo -e "\n***\nBUILDING AKMODS\n***"
+#/usr/sbin/akmods --force
 
 # KP - start yum-updatesd
 systemctl enable yum-updatesd.service
@@ -342,6 +346,14 @@ EOF
 #   - set autologin,
 #   - enable installer
 cat >> /etc/rc.d/init.d/livesys << EOF
+
+mkdir -p /home/liveuser/.config/xfce4
+
+#cat > /home/liveuser/.config/xfce4/helpers.rc << FOE
+#MailReader=thunderbird
+#FileManager=Thunar
+#WebBrowser=firefox
+#FOE
 
 # disable screensaver locking (#674410)
 cat >> /home/liveuser/.xscreensaver << FOE
@@ -377,17 +389,17 @@ mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
 
 # KP - un-mute sound card (fixes some issues reported)
-amixer set Master 85% unmute 2>/dev/null
-amixer set PCM 85% unmute 2>/dev/null
-pactl set-sink-mute 0 0
-pactl set-sink-volume 0 50000
+#amixer set Master 85% unmute 2>/dev/null
+#amixer set PCM 85% unmute 2>/dev/null
+#pactl set-sink-mute 0 0
+#pactl set-sink-volume 0 50000
 
 # KP - disable yum update service
 systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
 systemctl stop yum-updatesd.service 2> /dev/null || :
 
 # KP - disable jockey from autostarting
-rm /etc/xdg/autostart/jockey*
+#rm /etc/xdg/autostart/jockey*
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
