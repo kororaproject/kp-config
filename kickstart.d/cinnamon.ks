@@ -152,16 +152,19 @@ mtools
 #nautilus-sendto
 #nautilus-sound-converter
 ncftp
-#NetworkManager-gnome
 network-manager-applet
+NetworkManager-adsl
+NetworkManager-bluetooth
+NetworkManager-iodine
 NetworkManager-l2tp
 NetworkManager-openconnect
 NetworkManager-openswan
 NetworkManager-openvpn
 NetworkManager-pptp
+NetworkManager-ssh
 NetworkManager-vpnc
-#NetworkManager-wimax
-NetworkManager-*
+NetworkManager-wifi
+NetworkManager-wwan
 strongswan
 libproxy-networkmanager
 -ntp
@@ -297,6 +300,41 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
+cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
+#
+# background = Background file to use, either an image path or a color (e.g. #772953)
+# theme-name = GTK+ theme to use
+# icon-theme-name = Icon theme to use
+# font-name = Font to use
+# xft-antialias = Whether to antialias Xft fonts (true or false)
+# xft-dpi = Resolution for Xft in dots per inch (e.g. 96)
+# xft-hintstyle = What degree of hinting to use (none, slight, medium, or hintfull)
+# xft-rgba = Type of subpixel antialiasing (none, rgb, bgr, vrgb or vbgr)
+# show-indicators = semi-colon ";" separated list of allowed indicator modules. Built-in indicators include "~a11y", "~language", "~session", "~power". Unity indicators can be represented by short name (e.g. "sound", "power"), service file name, or absolute path
+# show-clock (true or false)
+# clock-format = strftime-format string, e.g. %H:%M
+# keyboard = command to launch on-screen keyboard
+# position = main window position: x y
+# default-user-image = Image used as default user icon, path or #icon-name
+# screensaver-timeout = Timeout (in seconds) until the screen blanks when the greeter is called as lockscreen
+# 
+[greeter]
+background=/usr/share/backgrounds/korora/default/standard/korora.png
+default-user-image=/usr/share/icons/hicolor/64x64/apps/korora-icon-generic.png
+#theme-name=Greybird
+icon-theme-name=korora
+#font-name=Sans Bold 9
+#xft-antialias=
+#xft-dpi=
+#xft-hintstyle=
+#xft-rgba=
+#show-indicators=
+#show-clock=
+#clock-format=
+#keyboard=
+#position=
+#screensaver-timeout=
+EOF
 # KP - build out of kernel modules (so it's not done on first boot)
 echo -e "\n***\nBUILDING AKMODS\n***"
 /usr/sbin/akmods --force
