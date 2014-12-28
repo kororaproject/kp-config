@@ -63,8 +63,8 @@ font-manager
 fprintd-pam
 fuse
 #libXft-infinality
-freetype-infinality
-fontconfig-infinality
+#freetype-infinality
+#fontconfig-infinality
 gconf-editor
 gimp
 git
@@ -108,7 +108,7 @@ htop
 inkscape
 iok
 jack-audio-connection-kit
-java-1.7.0-openjdk
+java-1.8.0-openjdk
 #java-1.7.0-openjdk-plugin
 #jockey
 #jockey-gtk
@@ -255,7 +255,7 @@ libmpg123
 #mencoder
 #miro
 #mozilla-vlc
-mpg321
+#mpg321
 #nautilus-sound-converter
 nemo
 #nemo-open-terminal
