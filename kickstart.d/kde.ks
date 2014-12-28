@@ -216,6 +216,7 @@ libmpg123
 PackageKit-gstreamer-plugin
 pavucontrol
 pharlap
+python3-PyQt4
 phonon-backend-vlc
 vlc
 vlc-extras
