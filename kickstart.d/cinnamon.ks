@@ -115,6 +115,7 @@ java-1.7.0-openjdk
 #jockey-selinux
 #jockey-akmods
 pharlap
+webkitgtk4
 korora-settings-gnome
 libreoffice-calc
 libreoffice-draw

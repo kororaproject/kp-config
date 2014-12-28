@@ -113,6 +113,7 @@ java-1.8.0-openjdk
 #jockey-selinux
 #jockey-akmods
 pharlap
+webkitgtk4
 #korora-settings-xfce
 -leafpad
 mousepad
