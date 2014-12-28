@@ -67,7 +67,7 @@ qemu-guest-agent
 ## KP START
 #Install 3rd party repo releases
 adobe-release
-dropbox-release
+#dropbox-release
 google-chrome-release
 google-earth-release
 google-talkplugin-release
