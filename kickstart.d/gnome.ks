@@ -22,7 +22,6 @@ nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-gnome
-korora-icon-theme
 #TODO: korora-backgrounds-extras-gnome
 
 #egtk-gtk2-theme
@@ -66,6 +65,7 @@ gnome-disk-utility
 gnome-packagekit
 
 # Add GNOME shell extensions
+gnome-shell-extension-dash-to-dock
 gnome-shell-extension-drive-menu
 gnome-shell-extension-places-menu
 gnome-shell-extension-pomodoro
@@ -97,7 +97,6 @@ gpgme
 gtk-recordmydesktop
 gtk-murrine-engine
 gtk-unico-engine
-#gvfs-obexftp - TODO: deprecated in f20?
 gvfs-*
 gwibber
 hardlink
