@@ -241,6 +241,13 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
+# work around KDE bug
+mkdir -p /etc/skel/.kde/share/config
+cat > /etc/skel/.kde/share/config/kwalletrc << \EOF
+[Wallet]
+Launch Manager[$d]
+EOF
+
 systemctl enable kdm.service
 
 # KP - build out of kernel modules (so it's not done on first boot)
