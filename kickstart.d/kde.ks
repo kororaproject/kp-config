@@ -241,12 +241,13 @@ time
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
+#this is fixed now 21-2
 # work around KDE bug
-mkdir -p /etc/skel/.kde/share/config
-cat > /etc/skel/.kde/share/config/kwalletrc << \EOF
-[Wallet]
-Launch Manager[$d]
-EOF
+#mkdir -p /etc/skel/.kde/share/config
+#cat > /etc/skel/.kde/share/config/kwalletrc << \EOF
+#[Wallet]
+#Launch Manager[$d]
+#EOF
 
 systemctl enable kdm.service
 
