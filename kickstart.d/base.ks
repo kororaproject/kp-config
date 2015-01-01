@@ -25,6 +25,7 @@ services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --dis
 %packages
 #redhat-lsb-core
 -b43-firmware-helper
+b43-firmware
 @admin-tools
 @base-x
 @guest-desktop-agents
@@ -187,6 +188,9 @@ do
     fi
   done
 done
+
+# Enable magic keys
+echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
 ## KP START
 # make home dir
