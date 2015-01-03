@@ -135,6 +135,7 @@ systemd-ui
 -system-config-users
 setools-console
 fonts-tweak-tool
+screenfetch
 
 #
 # Hardware
