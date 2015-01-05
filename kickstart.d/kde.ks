@@ -149,6 +149,7 @@ mozilla-flashblock
 #mozilla-plasma-notify
 mozilla-xclear
 -ntp
+okular
 p7zip
 p7zip-plugins
 PackageKit-browser-plugin
