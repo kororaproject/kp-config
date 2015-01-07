@@ -90,6 +90,7 @@ java-1.8.0-openjdk
 #jockey-selinux
 #jockey-akmods
 k3b-extras-freeworld
+kalarm
 kamoso
 kaudiocreator
 kde-l10n-*
@@ -112,12 +113,14 @@ kdemultimedia-extras-freeworld
 kdeplasma-addons
 kdm
 kipi-plugins
+kjots
 kde-plasma-nm*
 kdiff3
 konversation
 korora-settings-kde
 krename
 krusader
+ktimetracker
 ktorrent
 libdvdcss
 libdvdnav
