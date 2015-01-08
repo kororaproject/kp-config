@@ -92,6 +92,7 @@ open-sans-fonts
 korora-icon-theme-base
 korora-icon-theme
 -f21-backgrounds*
+freetype-freeworld
 
 #
 # FILESYSTEMS
@@ -104,7 +105,7 @@ fuse-exfat
 # undistract-me is great for notification on completion of long running terminal commands
 #undistract-me
 unburden-home-dir
-etckeeper
+#etckeeper
 
 #Networking
 pptp-setup
