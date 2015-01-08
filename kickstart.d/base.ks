@@ -121,6 +121,13 @@ fpaste
 powertop
 ksm
 
+# archiving
+arj
+lha
+unace
+unrar
+
+
 # fix 32bit breaking X when pulling in nvidia packages
 mesa-libEGL
 
