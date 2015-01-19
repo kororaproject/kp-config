@@ -38,7 +38,7 @@ elementary-icon-theme
 
 #
 # EXTRA PACKAGES
-adwaita-nemo
+-adwaita-nemo
 akmods
 -alacarte
 argyllcms
