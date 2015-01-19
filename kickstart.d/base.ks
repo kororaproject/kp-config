@@ -23,7 +23,7 @@ services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --dis
 # PACKAGES
 
 %packages
-#redhat-lsb-core
+redhat-lsb-core
 -b43-firmware-helper
 b43-firmware
 @admin-tools
@@ -182,6 +182,12 @@ mirall
 %end
 
 %post
+
+# disable all abrt services, we can't upload to bugzilla
+for x in abrtd abrt-ccpp abrt-oops abrt-vmcore abrt-xorg ; do
+  systemctl disable $x
+done
+
 # KP - import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
 for x in 20 21
