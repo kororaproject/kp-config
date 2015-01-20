@@ -118,6 +118,7 @@ kde-plasma-nm*
 kdiff3
 konversation
 korora-settings-kde
+krdc
 krename
 krusader
 ktimetracker
