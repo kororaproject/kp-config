@@ -88,6 +88,8 @@ korora-welcome
 plymouth-theme-korora
 #korora-videos
 grub2-starfield-theme
+grub2-efi
+efibootmgr
 open-sans-fonts
 korora-icon-theme-base
 korora-icon-theme
@@ -152,11 +154,12 @@ spice-vdagent
 splix
 sane-backends-drivers-scanners
 sane-backends-drivers-cameras
+libva-intel-driver
 
 #
 # MULTIMEDIA
 #flash-plugin-helper
-flash-plugin
+flash-plugin.%%KP_BASEARCH%%
 #remove 32bit, now that we don't ship steam
 #flash-plugin.i386
 dvb-apps
