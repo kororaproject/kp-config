@@ -100,6 +100,7 @@ freetype-freeworld
 # FILESYSTEMS
 exfat-utils
 fuse-exfat
+hdparm
 
 #
 # TERMINAL ENHANCEMENTS
