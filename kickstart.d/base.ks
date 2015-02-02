@@ -171,7 +171,11 @@ dvb-apps
 ffmpeg
 libaacs
 
+strace
+ltrace
+
 xz-lzma-compat
+ntfsprogs
 
 #
 # GAMING PLATFORM
