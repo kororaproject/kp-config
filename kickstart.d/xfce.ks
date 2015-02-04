@@ -26,6 +26,7 @@
 @xfce-media
 @networkmanager-submodules
 #@xfce-office
+-xfdashboard
 
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
@@ -34,7 +35,7 @@ nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-xfce
-#korora-backgrounds-extras-xfce
+f21-backgrounds-extras-xfce
 -fedora-icon-theme
 
 korora-settings-xfce
