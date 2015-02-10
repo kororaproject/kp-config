@@ -199,6 +199,7 @@ yum-updatesd
 audacity-freeworld
 faac
 flac
+gstreamer1-libav
 gstreamer-ffmpeg
 gstreamer-plugins-bad
 gstreamer-plugins-bad-free

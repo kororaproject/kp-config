@@ -222,6 +222,7 @@ deja-dup
 -mplayer
 -mencoder
 -gnome-mplayer-nautilus
+gstreamer1-libav
 gstreamer-ffmpeg
 gstreamer-plugins-bad
 gstreamer-plugins-bad-free

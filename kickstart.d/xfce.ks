@@ -255,6 +255,7 @@ frei0r-plugins
 #gecko-mediaplayer
 -mplayer
 -mencoder
+gstreamer1-libav
 gstreamer-ffmpeg
 gstreamer-plugins-bad
 gstreamer-plugins-bad-free
