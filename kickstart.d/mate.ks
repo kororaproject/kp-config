@@ -30,9 +30,11 @@ nss-mdns
 korora-backgrounds-mate
 #korora-backgrounds-extras-mate
 
-egtk-gtk2-theme
-egtk-gtk3-theme
-elementary-icon-theme
+#egtk-gtk2-theme
+#egtk-gtk3-theme
+#elementary-icon-theme
+
+plank-theme-korora
 
 #
 # MATE specific packages
@@ -82,8 +84,8 @@ firefox
 fprintd-pam
 fuse
 #libXft-infinality
-freetype-infinality
-fontconfig-infinality
+#freetype-infinality
+#fontconfig-infinality
 gconf-editor
 -geany
 gimp
@@ -129,7 +131,7 @@ htop
 inkscape
 iok
 jack-audio-connection-kit
-java-1.7.0-openjdk
+java-1.8.0-openjdk
 #java-1.7.0-openjdk-plugin
 #jockey
 #jockey-gtk
@@ -158,7 +160,7 @@ liferea
 lirc
 lirc-remotes
 liveusb-creator
--mate-file-manager-open-terminal
+#-mate-file-manager-open-terminal - N/A - f21
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
@@ -276,15 +278,15 @@ libdvdcss
 libdvdnav
 libdvdread
 libmatroska
-libmpg123
+#libmpg123
 #me-tv (this pulls in xine-ui)
 #mencoder
 #miro
 #mozilla-vlc
-mpg321
+#mpg321
 #nautilus-sound-converter
 -nemo
--nemo-open-terminal
+#-nemo-open-terminal - N/A - f21
 -nemo-extensions
 openshot
 PackageKit-browser-plugin
