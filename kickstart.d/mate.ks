@@ -27,12 +27,13 @@
 nss-mdns
 
 # (RE)BRANDING - KP
+korora-settings-mate
 korora-backgrounds-mate
 #korora-backgrounds-extras-mate
 
-#egtk-gtk2-theme
-#egtk-gtk3-theme
-#elementary-icon-theme
+greybird-gtk2-theme
+greybird-gtk3-theme
+greybird-metacity-theme
 
 plank-theme-korora
 
@@ -161,6 +162,7 @@ lirc
 lirc-remotes
 liveusb-creator
 #-mate-file-manager-open-terminal - N/A - f21
+mintmenu
 mlocate
 mozilla-adblock-plus
 mozilla-downthemall
@@ -221,9 +223,10 @@ system-config-users
 -im-chooser
 #tilda
 -totem*
--transmission-gtk
--thunderbird
-deluge
+-claws-mail # K21 replace with thunderbird
+thunderbird
+#deluge - K21 - replace with transmission
+transmission-gtk
 vim
 #vinagre
 #vino
@@ -296,9 +299,11 @@ pavucontrol
 policycoreutils-gui
 pulseaudio-module-bluetooth
 rawtherapee
-rhythmbox
+#rhythmbox - K21 replaced with Audacious
+audacious
 soundconverter
-sound-juicer
+#sound-juicer - K21 replace with Asunder
+asunder
 transcode
 vlc
 vlc-extras
