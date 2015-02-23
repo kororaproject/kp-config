@@ -202,7 +202,7 @@ PackageKit-command-not-found
 PackageKit-gtk3-module
 pcsc-lite
 pcsc-lite-ccid
-#pidgin
+pidgin
 #pidgin-rhythmbox
 planner
 polkit-desktop-policy
