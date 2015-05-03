@@ -139,6 +139,7 @@ java-1.8.0-openjdk
 #jockey-selinux
 #jockey-akmods
 pharlap
+python3-lens-gtk
 korora-settings-gnome
 libreoffice-calc
 libreoffice-draw
