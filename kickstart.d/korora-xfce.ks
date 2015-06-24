@@ -39,6 +39,7 @@ alacarte
 argyllcms
 bash-completion
 beesu
+blueman
 #bootconf-gui
 brltty
 btrfs-progs
