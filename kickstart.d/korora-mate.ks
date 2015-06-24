@@ -1,17 +1,5 @@
-# Kickstart file for Korora Remix (GNOME) x86_64
-# To use this for 32bit build, :4,$s/x86_64/i386/g
-# and build with 'setarch i686 livecd-creator ...'
-
-#
-# KP:DESCRIPTION:START
-#
-# var KP_RELEASE_META_LABEL=gnome
-#
-#
-# KP:DESCRIPTION:END
-#
-
-%include %%KP_KICKSTART_DIR%%/base.ks
+%include fedora-live-mate_compiz.ks
+%include korora-base.ks
 
 #
 # PACKAGES
@@ -19,12 +7,7 @@
 
 %packages
 @firefox
-@mate-desktop
 @libreoffice
-
-# FIXME; apparently the glibc maintainers dislike this, but it got put into the
-# desktop image at some point.  We won't touch this one for now.
-nss-mdns
 
 # (RE)BRANDING - KP
 korora-settings-mate
@@ -381,97 +364,5 @@ systemctl enable yum-updatesd.service
 # KP - let's run prelink (makes things faster)
 echo -e "***\nPRELINKING\n****"
 /usr/sbin/prelink -av -mR -q
-
-# KP
-# live image setup is done by fedora-live-base.ks, such as:
-#   - create user
-# live imate modification is done in this init script, such as:
-#   - set autologin,
-#   - enable installer
-cat >> /etc/rc.d/init.d/livesys << EOF
-
-
-# disable updates plugin
-cat >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.updates.gschema.override << FOE
-[org.gnome.settings-daemon.plugins.updates]
-active=false
-FOE
-
-# don't run gnome-initial-setup
-mkdir ~liveuser/.config
-touch ~liveuser/.config/gnome-initial-setup-done
-
-# make the installer show up
-if [ -f /usr/share/applications/liveinst.desktop ]; then
-  # Show harddisk install in shell dash
-  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
-fi
-
-# KP - disable screensaver locking
-cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.override << FOE
-[org.gnome.desktop.screensaver]
-lock-enabled=false
-FOE
-
-# KP - hide the lock screen option
-cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.override << FOE
-[org.gnome.desktop.lockdown]
-disable-lock-screen=true
-FOE
-
-# KP - ensure liveuser desktop exists
-mkdir ~liveuser/Desktop
-cp /usr/share/applications/anaconda.desktop ~liveuser/Desktop/
-chmod a+x ~liveuser/Desktop/anaconda.desktop
-
-# rebuild schema cache with any overrides we installed
-glib-compile-schemas /usr/share/glib-2.0/schemas
-
-# set up auto-login
-cat > /etc/gdm/custom.conf << FOE
-[daemon]
-AutomaticLoginEnable=True
-AutomaticLogin=liveuser
-FOE
-
-# Turn off PackageKit-command-not-found while uninstalled
-if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
-  sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
-fi
-
-# KP - don't let prelink run on the live image
-#sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
-mv /usr/sbin/prelink /usr/sbin/prelink-disabled
-rm /etc/cron.daily/prelink
-
-# KP - un-mute sound card (fixes some issues reported)
-amixer set Master 85% unmute 2>/dev/null
-amixer set PCM 85% unmute 2>/dev/null
-pactl set-sink-mute 0 0
-pactl set-sink-volume 0 50000
-
-# KP - turn off screensaver
-gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
-
-# KP - disable yum update service
-systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
-systemctl stop yum-updatesd.service 2> /dev/null || :
-
-# KP - disable jockey from autostarting
-rm /etc/xdg/autostart/jockey*
-
-# set up lightdm autologin
-sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
-sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
-#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
-
-# set MATE as default session, otherwise login will fail
-sed -i 's/^#user-session=.*/user-session=mate/' /etc/lightdm/lightdm.conf
-
-# make sure to set the right permissions and selinux contexts
-chown -R liveuser:liveuser /home/liveuser/
-restorecon -R /home/liveuser/
-
-EOF
 
 %end

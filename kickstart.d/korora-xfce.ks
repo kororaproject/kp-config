@@ -1,17 +1,5 @@
-# Kickstart file for Korora Remix (Xfce) x86_64
-# To use this for 32bit build, :4,$s/x86_64/i386/g
-# and build with 'setarch i686 livecd-creator ...'
-
-#
-# KP:DESCRIPTION:START
-#
-# var KP_RELEASE_META_LABEL=xfce
-#
-#
-# KP:DESCRIPTION:END
-#
-
-%include %%KP_KICKSTART_DIR%%/base.ks
+%include fedora-live-workstation.ks
+%include korora-base.ks
 
 #
 # PACKAGES
@@ -20,18 +8,9 @@
 %packages
 @firefox
 @libreoffice
-@xfce-desktop
-@xfce-apps
-@xfce-extra-plugins
-@xfce-media
 @networkmanager-submodules
 #@xfce-office
 -xfdashboard
-
-
-# FIXME; apparently the glibc maintainers dislike this, but it got put into the
-# desktop image at some point.  We won't touch this one for now.
-nss-mdns
 
 # (RE)BRANDING - KP
 korora-backgrounds-xfce

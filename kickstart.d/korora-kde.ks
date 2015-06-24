@@ -20,9 +20,6 @@ mariadb-embedded
 mariadb-libs
 mariadb-server
 
-# FIXME; apparently the glibc maintainers dislike this
-nss-mdns
-
 # (RE)BRANDING
 #korora-backgrounds-kde
 #korora-backgrounds-extras-kde
