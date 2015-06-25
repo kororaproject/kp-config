@@ -71,7 +71,6 @@ unrar
 korora-extras
 korora-release
 korora-logos
--korora-release-notes
 -fedora-release-notes
 korora-welcome
 plymouth-theme-korora
