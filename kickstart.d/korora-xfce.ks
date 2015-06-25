@@ -102,7 +102,7 @@ pidgin-otr
 pidgin-privacy-please
 pidgin-sipe
 pulseaudio-module-bluetooth
-purple-microblog
+#purple-microblog - N/A - f22
 rawtherapee
 shotwell
 simple-mtpfs
