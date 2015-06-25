@@ -25,7 +25,7 @@ for x in abrtd abrt-ccpp abrt-oops abrt-vmcore abrt-xorg ; do
   systemctl disable $x
 done
 
-# KP - import keys
+# import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
 for x in 20 21 22
 do
@@ -44,12 +44,18 @@ done
 # enable magic keys
 echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
-## KP START
 # make home dir
 mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
 
 # set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf
-## KP END
+
+cat >> /etc/rc.d/init.d/livesys << EOF
+
+# disable fedora welcome screen
+rm -f /usr/share/applications/fedora-welcome.desktop
+rm -f ~liveuser/.config/autostart/fedora-welcome.desktop
+
+EOF
 
 %end
