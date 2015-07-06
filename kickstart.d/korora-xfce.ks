@@ -122,7 +122,6 @@ xscreensaver-extras-base
 xscreensaver-gl-base
 xscreensaver-gl-extras
 xvidcore
-yumex
 %end
 
 %post
