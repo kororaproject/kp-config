@@ -11,6 +11,7 @@
 -brasero
 -brasero-nautilus
 -claws-mail # K21 replace with thunderbird
+-exaile
 -geany
 -gnome-mplayer
 -gnome-mplayer-nautilus
@@ -21,6 +22,7 @@
 -nautilus
 -nemo
 -nemo-extensions
+-parole
 -realmd                     # only seems to be used in GNOME
 -smartmontools
 -totem*
@@ -114,6 +116,7 @@ wget
 x264
 xfsprogs
 xvidcore
+yumex
 %end
 
 %post
