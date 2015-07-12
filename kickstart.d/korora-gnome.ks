@@ -115,4 +115,16 @@ xvidcore
 
 
 %post
+
+cat >> /etc/rc.d/init.d/livesys << EOF
+
+# KP - configure our favourite apps for live
+  cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
+[org.gnome.shell]
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'anaconda.desktop']
+FOE
+
+EOF
+
+
 %end
