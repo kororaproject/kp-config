@@ -170,7 +170,7 @@ mesa-libEGL
 
 #
 # MULTIMEDIA
-HandBrake
+HandBrake-gui
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld

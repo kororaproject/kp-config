@@ -21,7 +21,6 @@ services --enabled=kdm --disabled=sddm
 @kde-desktop
 @kde-telepathy
 @libreoffice
-HandBrake-gui
 adwaita-gtk3-theme
 amarok
 apper
