@@ -30,4 +30,4 @@ gnome-keyring-pam
 -bluez-cups
 -NetworkManager-bluetooth
 
-
+%end

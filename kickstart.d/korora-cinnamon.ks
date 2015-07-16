@@ -1,13 +1,13 @@
 %include fedora-live-cinnamon.ks
 %include korora-base.ks
 
-#repo --name="Cinnamon" --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/Cinnamon/fedora-%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=1000
-
-#
-# PACKAGES
-#
 
 %packages
+
+# KORORA CINNAMON (GNOME) CONFIGURATION
+korora-backgrounds-gnome
+korora-settings-cinnamon
+korora-settings-gnome
 
 -adwaita-nemo
 -alacarte
@@ -62,15 +62,12 @@ gvfs-*
 gwibber
 hardlink
 iok
-korora-backgrounds-gnome
-korora-settings-gnome
 libmatroska
 libmpg123
 libproxy-networkmanager
 libsane-hpaio
 liferea
 lirc
-lirc-remotes
 mtools
 ncftp
 nemo
@@ -81,6 +78,7 @@ openshot
 pcsc-lite
 pcsc-lite-ccid
 pharlap
+plank-theme-korora
 pulseaudio-module-bluetooth
 rhythmbox
 shotwell
