@@ -14,6 +14,7 @@ services --enabled=kdm --disabled=sddm
 -f22-backgrounds-kde
 -f22-kde-theme
 -kdegames
+-kde-l10n-* #kde-l10n-* - CONFLICTS - plasma-desktop - f22
 -synaptic
 -system-config-printer
 @firefox
@@ -37,19 +38,17 @@ k3b-extras-freeworld
 kalarm
 kamoso
 kaudiocreator
-kde-l10n-*
-kde-plasma-daisy
-kde-plasma-nm*
-kde-plasma-yawp
+#kde-plasma-daisy - N/A - f22
+#kde-plasma-yawp - N/A - f22
 kde-print-manager
 kde-settings
 kde-settings-ksplash
 kde-settings-plasma
 kde-settings-pulseaudio
-kde-workspace-ksplash-themes
-kdeartwork
-kdeartwork-wallpapers
-kdebase-workspace-ksplash-themes
+#kde-workspace-ksplash-themes - N/A - f22
+#kdeartwork - N/A - f22
+#kdeartwork-wallpapers - N/A - f22
+#kdebase-workspace-ksplash-themes - N/A - f22
 kdegames-minimal
 kdemultimedia-extras-freeworld
 kdenlive
@@ -76,6 +75,7 @@ mariadb-libs
 mariadb-server
 okular
 phonon-backend-vlc
+plasma-nm*
 python3-PyQt4
 qt-recordmydesktop
 qtcurve-gtk2
