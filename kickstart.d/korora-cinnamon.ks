@@ -50,7 +50,6 @@ fbreader-gtk
 ffmpeg
 font-manager
 gconf-editor
-gloobus-preview
 gnome-disk-utility
 gnome-packagekit
 gnote

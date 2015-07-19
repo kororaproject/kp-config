@@ -59,7 +59,6 @@ fbreader-gtk
 ffmpeg
 font-manager
 gconf-editor
-gloobus-preview
 gnome-classic-session
 gnome-disk-utility
 gnome-packagekit
