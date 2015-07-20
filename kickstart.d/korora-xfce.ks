@@ -58,6 +58,7 @@ audacious-plugins*
 blueman
 brltty
 catfish
+darktable
 dconf-editor
 egtk-gtk2-theme
 egtk-gtk3-theme
@@ -103,7 +104,6 @@ pidgin-privacy-please
 pidgin-sipe
 pulseaudio-module-bluetooth
 #purple-microblog - N/A - f22
-rawtherapee
 shotwell
 simple-mtpfs
 simple-scan

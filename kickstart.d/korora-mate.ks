@@ -60,6 +60,7 @@ compiz-plugins-main
 compiz-plugins-main
 compiz-plugins-unsupported
 compizconfig-python
+darktable
 dconf-editor
 ekiga
 emerald
@@ -103,7 +104,6 @@ pidgin
 plank-theme-korora
 pulseaudio-module-bluetooth
 python3-lens-gtk
-rawtherapee
 shotwell
 simple-scan
 soundconverter
