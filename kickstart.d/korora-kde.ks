@@ -9,6 +9,11 @@ services --enabled=kdm --disabled=sddm
 
 %packages
 
+# KORORA KDE CONFIGURATION
+korora-settings-kde
+korora-kde-theme
+korora-kdm-theme
+
 -NetworkManager*-gnome
 -desktop-backgrounds-basic
 -f22-backgrounds-kde
@@ -61,7 +66,6 @@ kio_mtp
 kipi-plugins
 kjots
 konversation
-korora-settings-kde
 krdc
 krename
 krusader
