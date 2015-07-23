@@ -20,6 +20,7 @@ korora-kdm-theme
 -f22-kde-theme
 -kdegames
 -kde-l10n-* #kde-l10n-* - CONFLICTS - plasma-desktop - f22
+-calligra-l10n*
 -synaptic
 -system-config-printer
 @firefox
