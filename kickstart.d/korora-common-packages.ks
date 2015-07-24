@@ -296,6 +296,7 @@ pavucontrol
 planner
 prelink
 pybluez
+redhat-lsb-core
 time
 xorg-x11-apps
 xorg-x11-resutils
