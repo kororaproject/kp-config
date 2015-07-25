@@ -7,6 +7,12 @@
 
 %packages
 
+# KORORA GNOME CONFIGURATION
+korora-settings-gnome
+korora-settings-mate
+korora-backgrounds-mate
+korora-backgrounds-extras-mate
+
 -PackageKit*                # we switched to yumex, so we don't need this
 -brasero
 -brasero-nautilus
@@ -83,9 +89,6 @@ gvfs-*
 gwibber
 hardlink
 iok
-korora-backgrounds-mate
-korora-settings-gnome
-korora-settings-mate
 libcompizconfig
 libmatroska
 libproxy-networkmanager

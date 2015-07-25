@@ -13,6 +13,8 @@ services --enabled=kdm --disabled=sddm
 korora-settings-kde
 korora-kde-theme
 korora-kdm-theme
+korora-backgrounds-kde
+korora-backgrounds-extras-kde
 
 -NetworkManager*-gnome
 -desktop-backgrounds-basic

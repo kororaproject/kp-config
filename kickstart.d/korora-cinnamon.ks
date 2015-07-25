@@ -5,9 +5,10 @@
 %packages
 
 # KORORA CINNAMON (GNOME) CONFIGURATION
-korora-backgrounds-gnome
 korora-settings-cinnamon
 korora-settings-gnome
+korora-backgrounds-gnome
+korora-backgrounds-extras-gnome
 
 -adwaita-nemo
 -alacarte

@@ -7,6 +7,12 @@
 
 %packages
 
+# KORORA GNOME CONFIGURATION
+korora-settings-xfce
+korora-backgrounds-xfce
+korora-backgrounds-extras-xfce
+
+
 -PackageKit*                # we switched to yumex, so we don't need this
 -abiword
 -abrt*
@@ -76,11 +82,10 @@ gtk-murrine-engine
 gtk-recordmydesktop
 gtk-unico-engine
 gvfs-mtp
+gvfs-smb
 gwibber
 hardlink
 iok
-korora-backgrounds-xfce
-korora-settings-xfce
 libmatroska
 libmpg123
 libproxy-networkmanager

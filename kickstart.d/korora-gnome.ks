@@ -5,8 +5,9 @@
 %packages
 
 # KORORA GNOME CONFIGURATION
-korora-backgrounds-gnome
 korora-settings-gnome
+korora-backgrounds-gnome
+korora-backgrounds-extras-gnome
 
 -alacarte
 -gnome-mplayer
