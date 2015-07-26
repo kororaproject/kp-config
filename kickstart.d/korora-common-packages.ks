@@ -178,7 +178,7 @@ dvb-apps
 faac
 ffmpeg
 flac
-flash-plugin.%%KP_BASEARCH%%
+#flash-plugin.%%KP_BASEARCH%%
 #flash-plugin.i386  # remove 32bit, now that we don't ship steam
 gstreamer-ffmpeg
 gstreamer-plugins-bad
@@ -277,7 +277,7 @@ unburden-home-dir
 firefox
 mozilla-adblock-plus
 mozilla-downthemall
-mozilla-flashblock
+#mozilla-flashblock
 mozilla-xclear
 
 
