@@ -25,6 +25,7 @@ korora-backgrounds-extras-xfce
 -fedora-icon-theme
 -geany
 -gnome-abrt
+-gnumeric
 -im-chooser
 -leafpad
 -libreoffice-base
