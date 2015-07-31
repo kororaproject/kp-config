@@ -94,6 +94,7 @@ libmatroska
 libproxy-networkmanager
 libsane-hpaio
 liferea
+lightdm-gtk-greeter-settings
 lirc
 mintmenu
 mtools

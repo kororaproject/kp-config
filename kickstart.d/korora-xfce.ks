@@ -92,6 +92,7 @@ libmpg123
 libproxy-networkmanager
 libsane-hpaio
 liferea
+lightdm-gtk-greeter-settings
 lirc
 mousepad
 mtools

@@ -233,7 +233,7 @@ libreoffice-xsltfilter
 dnf-plugins-core
 yum-plugin-copr
 
-yumex
+yumex-dnf
 yum-plugin-priorities
 yum-plugin-refresh-updatesd
 yum-plugin-versionlock
