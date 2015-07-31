@@ -50,11 +50,31 @@ mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
 # set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf
 
+# KP - update locate database
+/usr/bin/updatedb
+
+# KP - let's run prelink (makes things faster)
+echo -e "***\nPRELINKING\n****"
+/usr/sbin/prelink -av -mR -q
+
 cat >> /etc/rc.d/init.d/livesys << EOF
 
 # disable fedora welcome screen
 rm -f /usr/share/applications/fedora-welcome.desktop
 rm -f ~liveuser/.config/autostart/fedora-welcome.desktop
+
+# turn off PackageKit-command-not-found
+if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
+  sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
+fi
+
+# KP - don't let prelink run on the live image
+#sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
+mv /usr/sbin/prelink /usr/sbin/prelink-disabled
+rm /etc/cron.daily/prelink
+
+# KP - ensure liveuser desktop exists
+mkdir ~liveuser/Desktop
 
 EOF
 

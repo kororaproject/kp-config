@@ -237,7 +237,7 @@ yumex-dnf
 yum-plugin-priorities
 yum-plugin-refresh-updatesd
 yum-plugin-versionlock
-yum-updatesd
+#yum-updatesd
 
 
 #

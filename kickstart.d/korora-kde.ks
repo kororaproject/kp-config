@@ -99,41 +99,10 @@ yakuake
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
-#this is fixed now 21-2
-# work around KDE bug
-#mkdir -p /etc/skel/.kde/share/config
-#cat > /etc/skel/.kde/share/config/kwalletrc << \EOF
-#[Wallet]
-#Launch Manager[$d]
-#EOF
-
 systemctl enable kdm.service
-
-# KP - build out of kernel modules (so it's not done on first boot)
-#echo -e "\n***\nBUILDING AKMODS\n***"
-#/usr/sbin/akmods --force
-
-#KDE - stop Klipper from starting
-#sed -i 's/AutoStart:true/AutoStart:false/g' /usr/share/autostart/klipper.desktop
-
-# KP - start yum-updatesd
-systemctl enable yum-updatesd.service
-
-# KP - update locate database
-/usr/bin/updatedb
-
-# KP - let's run prelink (makes things faster)
-echo -e "***\nPRELINKING\n****"
-/usr/sbin/prelink -av -mR -q
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
-# KP - disable yumupdatesd
-systemctl --no-reload yum-updatesd.service 2> /dev/null || :
-systemctl stop yum-updatesd.service 2> /dev/null || :
-
-# KP - ensure liveuser desktop exists
-mkdir ~liveuser/Desktop
 
 # set up autologin for user liveuser
 sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
@@ -150,42 +119,22 @@ cat > /home/liveuser/.config/kickoffrc << MENU_EOF
 FavoriteURLs=/usr/share/applications/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/org.kde.konsole.desktop,/usr/share/applications/liveinst.desktop
 MENU_EOF
 
-# KP - don't use prelink on a running KDE live image
-mv /usr/sbin/prelink /usr/sbin/prelink-disabled
-rm /etc/cron.daily/prelink
+# KP - disable screenlock
+cat > /home/liveuser/.config/kscreenlockerrc << SCREEN_EOF
+[$Version]
+update_info=kscreenlocker.upd:0.1-autolock
 
-# KP - un-mute sound card (fixes some issues reported)
-#amixer set Master 85% unmute 2>/dev/null
-#amixer set PCM 85% unmute 2>/dev/null
-#pactl set-sink-mute 0 0
-#pactl set-sink-volume 0 50000
+[Daemon]
+Autolock=false
 
+[Greeter]
+Theme=org.kde.breeze.desktop
 
-# KP - disable screensaver
-cat > /home/liveuser/.config/kscreensaverrc << SCREEN_EOF
-[ScreenSaver]
-Enabled=false
-Lock=false
-LockGrace=60000
-PlasmaEnabled=false
-Timeout=60
 SCREEN_EOF
-
-# KP - disable screen lock
-cat > /home/liveuser/.config/powerdevilrc << LOCK_EOF
-[General]
-configLockScreen=false
-LOCK_EOF
-
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
-
-# turn off PackageKit-command-not-found
-if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
-  sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
-fi
 
 EOF
 

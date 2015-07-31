@@ -118,13 +118,33 @@ xvidcore
 
 cat >> /etc/rc.d/init.d/livesys << EOF
 
+# KP - disable screensaver locking
+cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.override << FOE
+
+[org.gnome.desktop.screensaver]
+lock-enabled=false
+FOE
+
+# KP - hide the lock screen option
+cat >> /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.override << FOE
+
+[org.gnome.desktop.lockdown]
+disable-lock-screen=true
+FOE
+
+# KP - turn off screensaver
+gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --type bool --set /apps/gnome-screensaver/idle_activation_enabled false
+
 # KP - configure our favourite apps for live
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
+
 [org.gnome.shell]
 favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'anaconda.desktop']
 FOE
 
-EOF
+# rebuild schema cache with any overrides we installed
+glib-compile-schemas /usr/share/glib-2.0/schemas
 
+EOF
 
 %end

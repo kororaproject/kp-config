@@ -172,38 +172,10 @@ font-name=Sans Bold 9
 #screensaver-timeout=
 EOF
 
-# KP - start yum-updatesd
-systemctl enable yum-updatesd.service
-
-# KP - update locate database
-/usr/bin/updatedb
-
-# KP - let's run prelink (makes things faster)
-echo -e "***\nPRELINKING\n****"
-/usr/sbin/prelink -av -mR -q
-
-# KP
-# live image setup is done by fedora-live-base.ks, such as:
-#   - create user
-# live imate modification is done in this init script, such as:
-#   - set autologin,
-#   - enable installer
 cat >> /etc/rc.d/init.d/livesys << EOF
 
 # KP - re'sync the /etc/skel settings for xfce and 
 rsync -Pa /etc/skel/.config/xfce4 /home/liveuser/.config
-
-# KP - don't let prelink run on the live image
-#sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
-mv /usr/sbin/prelink /usr/sbin/prelink-disabled
-rm /etc/cron.daily/prelink
-
-# KP - disable yum update service
-systemctl --no-reload disable yum-updatesd.service 2> /dev/null || :
-systemctl stop yum-updatesd.service 2> /dev/null || :
-
-# KP - disable jockey from autostarting
-#rm /etc/xdg/autostart/jockey*
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/

@@ -120,7 +120,6 @@ wget
 x264
 xfsprogs
 xvidcore
-yumex
 %end
 
 %post
@@ -162,18 +161,5 @@ icon-theme-name=korora
 #position=
 #screensaver-timeout=
 EOF
-# KP - build out of kernel modules (so it's not done on first boot)
-echo -e "\n***\nBUILDING AKMODS\n***"
-/usr/sbin/akmods --force
-
-# KP - start yum-updatesd
-systemctl enable yum-updatesd.service
-
-# KP - update locate database
-/usr/bin/updatedb
-
-# KP - let's run prelink (makes things faster)
-echo -e "***\nPRELINKING\n****"
-/usr/sbin/prelink -av -mR -q
 
 %end

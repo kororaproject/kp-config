@@ -135,19 +135,21 @@ icon-theme-name=korora
 #keyboard=
 #position=
 #screensaver-timeout=
+
 EOF
-# KP - build out of kernel modules (so it's not done on first boot)
-echo -e "\n***\nBUILDING AKMODS\n***"
-/usr/sbin/akmods --force
 
-# KP - start yum-updatesd
-systemctl enable yum-updatesd.service
+cat >> /etc/rc.d/init.d/livesys << EOF
 
-# KP - update locate database
-/usr/bin/updatedb
+# make the installer show up
+cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 
-# KP - let's run prelink (makes things faster)
-echo -e "***\nPRELINKING\n****"
-/usr/sbin/prelink -av -mR -q
+[org.cinnamon]
+favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'mozilla-thunderbird.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nemo.desktop', 'gpk-application.desktop', 'anaconda.desktop']
+FOE
+
+# rebuild schema cache with any overrides we installed
+glib-compile-schemas /usr/share/glib-2.0/schemas
+
+EOF
 
 %end
