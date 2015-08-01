@@ -43,9 +43,9 @@ brasero
 brltty
 darktable
 dconf-editor
-deluge
+-deluge
 ekiga
-empathy
+-empathy
 evince
 fbreader-gtk
 ffmpeg
