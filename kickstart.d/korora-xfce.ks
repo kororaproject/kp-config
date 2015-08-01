@@ -13,7 +13,9 @@ korora-backgrounds-xfce
 korora-backgrounds-extras-xfce
 
 
--PackageKit*                # we switched to yumex, so we don't need this
+-PackageKit*                # we switched to yumex-dnf, so we don't need this
+-yumex
+yumex-dnf
 -abiword
 -abrt*
 -audacious-plugins-amidi

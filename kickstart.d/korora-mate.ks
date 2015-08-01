@@ -13,7 +13,9 @@ korora-settings-mate
 korora-backgrounds-mate
 korora-backgrounds-extras-mate
 
--PackageKit*                # we switched to yumex, so we don't need this
+-PackageKit*                # we switched to yumex-dnf, so we don't need this
+-yumex
+yumex-dnf
 -brasero
 -brasero-nautilus
 -claws-mail # K21 replace with thunderbird

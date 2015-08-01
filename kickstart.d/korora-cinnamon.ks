@@ -94,6 +94,8 @@ wget
 x264
 xfsprogs
 xvidcore
+-yumex
+yumex-dnf
 
 %end
 
