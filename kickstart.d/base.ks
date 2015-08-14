@@ -37,6 +37,9 @@ b43-firmware
 -@multimedia
 @hardware-support
 @printing
+# support for extra HP printers
+hpijs
+libsane-hpaio
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
