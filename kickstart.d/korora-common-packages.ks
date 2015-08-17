@@ -282,6 +282,7 @@ mozilla-xclear
 
 
 # TO SORT
+aspell-en
 chrony
 expect
 fprintd-pam
