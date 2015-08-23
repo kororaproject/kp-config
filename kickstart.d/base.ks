@@ -179,6 +179,7 @@ mesa-libEGL
 dvb-apps
 ffmpeg
 libaacs
+ffmpegthumbnailer
 
 #
 # GAMING PLATFORM
