@@ -16,6 +16,16 @@ korora-kdm-theme
 korora-backgrounds-kde
 korora-backgrounds-extras-kde
 
+# REMOVED FROM DEFAULTS
+-kdiff3
+-konqueror
+-@kde-education
+-@kde-office
+okular
+-dragon
+-gparted
+-gnome-disk-utility
+
 -NetworkManager*-gnome
 -desktop-backgrounds-basic
 -f22-backgrounds-kde

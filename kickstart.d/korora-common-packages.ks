@@ -14,6 +14,8 @@
 @printing
 -@multimedia
 
+# DEFAULT REMOVALS
+-abrt*
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
