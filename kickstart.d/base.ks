@@ -37,9 +37,6 @@ b43-firmware
 -@multimedia
 @hardware-support
 @printing
-# support for extra HP printers
-hpijs
-libsane-hpaio
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
@@ -48,7 +45,7 @@ kernel-modules-extra
 
 # manage copr repos
 dnf-plugins-core
-yum-plugin-copr
+#yum-plugin-copr	# deprecated by dnf-plugins-core in F22 because of yum-dnf?
 
 # This was added a while ago, I think it falls into the category of
 # "Diagnosis/recovery tool useful from a Live OS image".  Leaving this untouched
@@ -94,7 +91,7 @@ korora-logos
 korora-welcome
 plymouth-theme-korora
 #korora-videos
-grub2-starfield-theme
+#grub2-starfield-theme		# should be disabled if unused
 grub2-efi
 efibootmgr
 open-sans-fonts
@@ -108,38 +105,39 @@ freetype-freeworld
 exfat-utils
 fuse-exfat
 hdparm
+ntfsprogs
 
 #
 # TERMINAL ENHANCEMENTS
-
 # undistract-me is great for notification on completion of long running terminal commands
 #undistract-me
 unburden-home-dir
 #etckeeper
+# need a newb-friendly text editor since nano was removed from defaults
+moe
 
-#Networking
+# NETWORKING
 pptp-setup
 
-# Dev
+# DEVELOPMENT
 openssh-askpass
-
 # fpaste is very useful for debugging and very small
 fpaste
+strace
+ltrace
 
 #
 # HARDWARE MONITORING/CONTROLLING
 powertop
 ksm
 
-# archiving
+#
+# ARCHIVING
 arj
 lha
 unace
 unrar
-
-
-# fix 32bit breaking X when pulling in nvidia packages
-mesa-libEGL
+xz-lzma-compat
 
 #
 # SYSTEM CONFIG
@@ -163,29 +161,31 @@ splix
 sane-backends-drivers-scanners
 sane-backends-drivers-cameras
 libva-intel-driver
+# support for extra HP printers
+hpijs
+libsane-hpaio
+# support for recent Epson inkjet printers
+epson-inkjet-printer-escpr
+# fix 32bit breaking X when pulling in nvidia packages
+mesa-libEGL
 
 #
 # MULTIMEDIA
 #flash-plugin-helper
-flash-plugin.%%KP_BASEARCH%%
+# if Adobe repo is disabled by default flash shouldn't attempt installation
+#flash-plugin.%%KP_BASEARCH%%
 #remove 32bit, now that we don't ship steam
 #flash-plugin.i386
 dvb-apps
 ffmpeg
 libaacs
 
-strace
-ltrace
-
-xz-lzma-compat
-ntfsprogs
-
 #
 # GAMING PLATFORM
 #removed due to bad selinux requirements. only people who want steam will get that
 #steam
 
-# Office
+# OFFICE
 -libreoffice-base
 
 #
