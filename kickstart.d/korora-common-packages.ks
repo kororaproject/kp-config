@@ -66,6 +66,7 @@ p7zip
 p7zip-plugins
 #unace - N/A - f22
 unrar
+unar
 
 
 #
