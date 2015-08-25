@@ -180,6 +180,7 @@ audacity-freeworld
 dvb-apps
 faac
 ffmpeg
+ffmpegthumbnailer
 flac
 #flash-plugin.%%KP_BASEARCH%%
 #flash-plugin.i386  # remove 32bit, now that we don't ship steam
