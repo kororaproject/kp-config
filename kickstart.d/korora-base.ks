@@ -44,8 +44,11 @@ done
 # enable magic keys
 echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
-# make home dir
-mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
+# enable discards on LVM for trim
+sed 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
+
+# make home dir - NOTE this seems to cause trouble on non-English installs :-(
+#mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
 
 # set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf

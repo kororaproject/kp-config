@@ -12,10 +12,10 @@
 @dial-up
 @hardware-support
 @printing
--@multimedia
 
 # DEFAULT REMOVALS
 -abrt*
+-@multimedia
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
@@ -34,7 +34,7 @@ anaconda
 -rsyslog
 -syslog-ng*
 
-# include fedup so that future releases ca just run it and will always have the latest version
+# include fedup so that future releases can just run it and will always have the latest version
 fedup
 
 # make live images easy to shutdown and the like in libvirt
@@ -43,7 +43,7 @@ qemu-guest-agent
 #
 # THIRD PARTY
 adobe-release
-#dropbox-release
+#dropbox-release # now in rpmfusion
 google-chrome-release
 google-earth-release
 google-talkplugin-release
@@ -67,6 +67,7 @@ p7zip-plugins
 #unace - N/A - f22
 unrar
 unar
+xz-lzma-compat
 
 
 #
@@ -77,12 +78,12 @@ korora-logos
 -fedora-release-notes
 korora-welcome
 plymouth-theme-korora
-grub2-starfield-theme
+#grub2-starfield-theme
 grub2-efi
 efibootmgr
 korora-icon-theme-base
 korora-icon-theme
--f21-backgrounds*
+-f22-backgrounds*
 freetype-freeworld
 
 
@@ -107,7 +108,6 @@ ntfsprogs
 openssh-askpass
 strace
 vim
-xz-lzma-compat
 
 
 #
@@ -152,7 +152,11 @@ pptp-setup
 
 #
 # HARDWARE
+epson-inkjet-printer-escpr # support for recent Epson inkjet printers
+hpijs # support for extra HP printers
+libsane-hpaio # support for extra HP scanners
 libva-intel-driver
+mesa-libEGL # fix 32bit breaking X when pulling in nvidia packages
 sane-backends
 sane-backends-drivers-scanners
 sane-backends-drivers-cameras
@@ -166,10 +170,6 @@ splix
 htop
 ksm
 powertop
-
-# fix 32bit breaking X when pulling in nvidia packages
-mesa-libEGL
-
 
 #
 # MULTIMEDIA
@@ -189,6 +189,7 @@ gstreamer-plugins-bad-free
 gstreamer-plugins-bad-free-extras
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-good
+gstreamer-plugins-good-extras
 gstreamer-plugins-ugly
 gstreamer1-libav
 gstreamer1-plugins-bad-free
@@ -206,26 +207,19 @@ libdvdread
 vlc
 vlc-extras
 vorbis-tools
-xine-lib-extras
-xine-lib-extras-freeworld
-xine-plugin
+#xine-lib-extras
+#xine-lib-extras-freeworld
+#xine-plugin
 
 
 #
 # OFFICE / PRODUCTIVITY SUITE
--libreoffice-base
-libreoffice-calc
-libreoffice-draw
-libreoffice-emailmerge
-libreoffice-graphicfilter
-libreoffice-impress
+@libreoffice
 libreoffice-langpack-en
-libreoffice-math
 libreoffice-ogltrans
 libreoffice-opensymbol-fonts
 libreoffice-pdfimport
 libreoffice-ure
-libreoffice-writer
 libreoffice-xsltfilter
 
 
@@ -234,12 +228,12 @@ libreoffice-xsltfilter
 
 # manage copr repos
 dnf-plugins-core
-yum-plugin-copr
+#yum-plugin-copr
 
 yumex-dnf
-yum-plugin-priorities
-yum-plugin-refresh-updatesd
-yum-plugin-versionlock
+#yum-plugin-priorities
+#yum-plugin-refresh-updatesd
+#yum-plugin-versionlock
 #yum-updatesd
 
 
@@ -251,7 +245,7 @@ yum-plugin-versionlock
 -system-config-keyboard
 -system-config-language
 -system-config-users
-beesu
+#beesu
 fonts-tweak-tool
 liveusb-creator
 policycoreutils-gui
@@ -265,11 +259,13 @@ system-config-services
 tmux
 
 
+
 #
 # TERMINAL ENHANCEMENTS
 
 bash-completion
 #etckeeper
+moe
 unburden-home-dir
 # undistract-me is great for notification on completion of long running terminal commands
 #undistract-me
