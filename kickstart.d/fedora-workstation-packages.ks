@@ -9,6 +9,7 @@
 # workstation-product-environment in comps
 @base-x
 @core
+@firefox
 @fonts
 @guest-desktop-agents
 @hardware-support

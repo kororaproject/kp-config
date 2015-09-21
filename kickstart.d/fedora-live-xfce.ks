@@ -70,8 +70,6 @@ chmod +x /home/liveuser/Desktop/liveinst.desktop
 chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
-
-
 EOF
 
 %end

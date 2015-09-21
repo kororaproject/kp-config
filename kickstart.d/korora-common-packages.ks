@@ -173,7 +173,7 @@ powertop
 
 #
 # MULTIMEDIA
-HandBrake-gui
+#HandBrake-gui - TODO - f23
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
@@ -202,15 +202,12 @@ gstreamer1-plugins-ugly
 jack-audio-connection-kit
 lame
 libaacs
-libdvdcss
-libdvdnav
-libdvdread
+#libdvdcss - TODO - f23
+#libdvdnav - TODO - f23
+#libdvdread - TODO - f23
 vlc
 vlc-extras
 vorbis-tools
-#xine-lib-extras
-#xine-lib-extras-freeworld
-#xine-plugin
 
 
 #

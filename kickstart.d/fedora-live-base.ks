@@ -10,12 +10,12 @@
 lang en_US.UTF-8
 keyboard us
 timezone US/Eastern
-auth --useshadow --enablemd5
+auth --useshadow --passalgo=sha512
 selinux --enforcing
 firewall --enabled --service=mdns
 xconfig --startxonboot
 part / --size 4096 --fstype ext4
-services --enabled=NetworkManager --disabled=network,sshd
+services --enabled=NetworkManager,ModemManager --disabled=network,sshd
 
 %include fedora-repo.ks
 
@@ -46,6 +46,9 @@ anaconda
 
 # Need aajohan-comfortaa-fonts for the SVG rnotes images
 aajohan-comfortaa-fonts
+
+# Without this, initramfs generation during live image creation fails: #1242586
+dracut-live
 
 %end
 
@@ -192,6 +195,9 @@ systemctl --no-reload disable crond.service 2> /dev/null || :
 systemctl --no-reload disable atd.service 2> /dev/null || :
 systemctl stop crond.service 2> /dev/null || :
 systemctl stop atd.service 2> /dev/null || :
+
+# Don't sync the system clock when running live (RHBZ #1018162)
+sed -i 's/rtcsync//' /etc/chrony.conf
 
 # Mark things as configured
 touch /.liveimg-configured
