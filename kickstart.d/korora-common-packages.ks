@@ -226,6 +226,8 @@ libreoffice-xsltfilter
 
 # manage copr repos
 dnf-plugins-core
+dnf-command(repomanage)
+dnf-command(versionlock)
 #yum-plugin-copr
 
 yumex-dnf
@@ -285,6 +287,7 @@ expect
 fprintd-pam
 frei0r-plugins
 java-1.8.0-openjdk
+icedtea-web
 libimobiledevice
 mlocate
 PackageKit-browser-plugin
