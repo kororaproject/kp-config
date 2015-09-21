@@ -48,7 +48,6 @@ ekiga
 -empathy
 evince
 fbreader-gtk
-ffmpeg
 font-manager
 gconf-editor
 gnome-disk-utility

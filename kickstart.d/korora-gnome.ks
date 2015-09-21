@@ -57,7 +57,6 @@ evince
 evolution
 evolution-mapi
 fbreader-gtk
-ffmpeg
 font-manager
 gconf-editor
 gnome-classic-session
@@ -78,7 +77,7 @@ gtk-murrine-engine
 gtk-recordmydesktop
 gtk-unico-engine
 gvfs-*
-gwibber
+#gwibber - N/A - f23
 hardlink
 iok
 libmatroska

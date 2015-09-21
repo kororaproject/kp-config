@@ -76,7 +76,6 @@ elementary-xfce-icon-theme
 evince
 f21-backgrounds-extras-xfce
 fbreader-gtk
-ffmpeg
 gconf-editor
 gnome-disk-utility
 gnome-keyring-pam

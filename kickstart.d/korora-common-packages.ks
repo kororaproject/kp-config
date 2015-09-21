@@ -34,9 +34,6 @@ anaconda
 -rsyslog
 -syslog-ng*
 
-# include fedup so that future releases can just run it and will always have the latest version
-fedup
-
 # make live images easy to shutdown and the like in libvirt
 qemu-guest-agent
 
@@ -89,7 +86,7 @@ freetype-freeworld
 
 #
 # CLOUD
-mirall
+owncloud-client
 
 
 #
@@ -153,7 +150,7 @@ pptp-setup
 #
 # HARDWARE
 epson-inkjet-printer-escpr # support for recent Epson inkjet printers
-hpijs # support for extra HP printers
+hplip # support for extra HP printers
 libsane-hpaio # support for extra HP scanners
 libva-intel-driver
 mesa-libEGL # fix 32bit breaking X when pulling in nvidia packages
@@ -173,19 +170,19 @@ powertop
 
 #
 # MULTIMEDIA
-#HandBrake-gui - TODO - f23
+#HandBrake-gui - TODO - k23
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
 dvb-apps
 faac
-ffmpeg
-ffmpegthumbnailer
+#ffmpeg - TODO - k23
+#ffmpegthumbnailer - TODO - k23
 flac
 #flash-plugin.%%KP_BASEARCH%%
 #flash-plugin.i386  # remove 32bit, now that we don't ship steam
-gstreamer-ffmpeg
-gstreamer-plugins-bad
+#gstreamer-ffmpeg - TODO - f23
+#gstreamer-plugins-bad - TODO - k23
 gstreamer-plugins-bad-free
 gstreamer-plugins-bad-free-extras
 gstreamer-plugins-bad-nonfree
@@ -195,16 +192,16 @@ gstreamer-plugins-ugly
 gstreamer1-libav
 gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-free-extras
-gstreamer1-plugins-bad-freeworld
+# gstreamer1-plugins-bad-freeworlda - TODO - k23
 gstreamer1-plugins-good
 gstreamer1-plugins-good-extras
 gstreamer1-plugins-ugly
 jack-audio-connection-kit
 lame
 libaacs
-#libdvdcss - TODO - f23
-#libdvdnav - TODO - f23
-#libdvdread - TODO - f23
+#libdvdcss - TODO - k23
+#libdvdnav - TODO - k23
+#libdvdread - TODO - k23
 vlc
 vlc-extras
 vorbis-tools
@@ -226,8 +223,10 @@ libreoffice-xsltfilter
 
 # manage copr repos
 dnf-plugins-core
+dnf-plugin-system-upgrade
 dnf-command(repomanage)
 dnf-command(versionlock)
+
 #yum-plugin-copr
 
 yumex-dnf
@@ -283,6 +282,7 @@ mozilla-xclear
 # TO SORT
 aspell-en
 chrony
+execstack
 expect
 fprintd-pam
 frei0r-plugins
@@ -295,7 +295,6 @@ PackageKit-command-not-found
 PackageKit-gstreamer-plugin
 pavucontrol
 planner
-prelink
 pybluez
 redhat-lsb-core
 time

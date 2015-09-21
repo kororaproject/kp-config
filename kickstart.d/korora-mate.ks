@@ -74,7 +74,6 @@ ekiga
 emerald
 emerald-themes
 fbreader-gtk
-ffmpeg
 fusion-icon
 fusion-icon-gtk
 gconf-editor
