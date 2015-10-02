@@ -61,7 +61,8 @@ arj
 lha
 p7zip
 p7zip-plugins
-#unace - N/A - f22
+rar
+#unace
 unrar
 unar
 xz-lzma-compat
@@ -199,9 +200,10 @@ gstreamer1-plugins-ugly
 jack-audio-connection-kit
 lame
 libaacs
-#libdvdcss - TODO - k23
-#libdvdnav - TODO - k23
-#libdvdread - TODO - k23
+libbluray
+libdvdcss
+libdvdnav
+libdvdread
 vlc
 vlc-extras
 vorbis-tools
