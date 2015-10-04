@@ -2,6 +2,7 @@
 %include korora-base.ks
 
 services --enabled=kdm --disabled=sddm
+firewall --enabled --service=kde-connect
 
 #
 # PACKAGES

@@ -251,6 +251,7 @@ fonts-tweak-tool
 liveusb-creator
 policycoreutils-gui
 polkit-desktop-policy
+#prelink
 screen
 screenfetch
 setools-console

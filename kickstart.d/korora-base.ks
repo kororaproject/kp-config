@@ -46,7 +46,7 @@ done
 echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
 # enable discards on LVM for trim
-sed 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
+sed -i 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
 
 # make home dir - NOTE this seems to cause trouble on non-English installs :-(
 #mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
