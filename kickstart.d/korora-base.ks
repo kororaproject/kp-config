@@ -28,7 +28,7 @@ done
 
 # import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in 20 21 22
+for x in 20 21 22 23
 do
   for y in adobe fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin korora-$x-primary korora-$x-secondary rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary virtualbox
   do
