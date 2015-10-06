@@ -1,7 +1,4 @@
 %packages
-PackageKit*                # we switched to yumex, so we don't need this
--ConsoleKit                 # ConsoleKit is deprecated
--ConsoleKit-x11             # ConsoleKit is deprecated
 firefox
 @mate
 compiz
@@ -18,14 +15,13 @@ emerald-themes
 emerald
 fusion-icon
 fusion-icon-gtk
-@libreoffice
 @networkmanager-submodules
+blueman
 
 # some apps from mate-applications
 caja-actions
 mate-disk-usage-analyzer
 mate-netspeed
-mate-themes-extras
 
 # more backgrounds
 f22-backgrounds-mate
@@ -41,19 +37,20 @@ parole
 exaile
 PackageKit-gstreamer-plugin
 
-# blacklist applications which breaks mate-desktop
--audacious
-
 # office
 @libreoffice
 
 # dsl tools
 rp-pppoe
 
+# drop packages
+-PackageKit*                # we switched to yumex, so we don't need this
+
+# blacklist applications which breaks mate-desktop
+-audacious
+
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.
 nss-mdns
 
-# This one needs to be kicked out of @standard
--smartmontools
 %end

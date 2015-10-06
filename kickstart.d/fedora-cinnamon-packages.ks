@@ -16,7 +16,7 @@
 pidgin
 hexchat
 transmission
-totem
+parole
 
 # unlock default keyring. FIXME: Should probably be done in comps
 gnome-keyring-pam
@@ -24,10 +24,5 @@ gnome-keyring-pam
 # save some space
 -fedora-icon-theme
 -PackageKit*                # we switched to yumex, so we don't need this
-
-# no bluetooth support
--bluez
--bluez-cups
--NetworkManager-bluetooth
 
 %end
