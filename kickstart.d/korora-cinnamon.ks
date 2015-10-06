@@ -58,7 +58,7 @@ gtk-murrine-engine
 gtk-recordmydesktop
 gtk-unico-engine
 gvfs-*
-gwibber
+#gwibber # not in f23 yet
 hardlink
 iok
 libmatroska

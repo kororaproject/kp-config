@@ -85,7 +85,7 @@ gtk-recordmydesktop
 gtk-unico-engine
 gvfs-mtp
 gvfs-smb
-gwibber
+#gwibber # not available at the moment
 hardlink
 iok
 libmatroska

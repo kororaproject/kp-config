@@ -98,6 +98,7 @@ inkscape
 
 #
 # DEVELOPMENT / DEBUGGING
+android-tools
 fpaste # fpaste is very useful for debugging and very small
 gcc
 git
@@ -152,6 +153,7 @@ pptp-setup
 # HARDWARE
 epson-inkjet-printer-escpr # support for recent Epson inkjet printers
 hplip # support for extra HP printers
+hpijs
 libsane-hpaio # support for extra HP scanners
 libva-intel-driver
 mesa-libEGL # fix 32bit breaking X when pulling in nvidia packages

@@ -87,7 +87,7 @@ gtk-murrine-engine
 gtk-recordmydesktop
 gtk-unico-engine
 gvfs-*
-gwibber
+#gwibber # not in 23 yet
 hardlink
 iok
 libcompizconfig
