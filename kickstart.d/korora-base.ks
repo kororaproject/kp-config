@@ -10,7 +10,7 @@
 timezone Etc/UTC --isUtc --ntpservers=0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
 auth --enableshadow --passalgo=sha512 --enablefingerprint
 selinux --enforcing
-firewall --enabled --service=ipp-client,mdns,samba,samba-client,ssh
+firewall --enabled --service=ipp-client,kde-connect,mdns,samba,samba-client,ssh
 xconfig --startxonboot
 part / --size 10240 --fstype ext4
 services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd

@@ -163,4 +163,11 @@ icon-theme-name=korora
 #screensaver-timeout=
 EOF
 
+cat >> /etc/rc.d/init.d/livesys << EOF
+
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+restorecon -R /home/liveuser/
+EOF
+
 %end

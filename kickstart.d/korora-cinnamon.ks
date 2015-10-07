@@ -151,6 +151,10 @@ FOE
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+restorecon -R /home/liveuser/
+
 EOF
 
 %end
