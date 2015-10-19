@@ -81,6 +81,7 @@ grub2-efi
 efibootmgr
 korora-icon-theme-base
 korora-icon-theme
+korora-productimg-workstation
 -f22-backgrounds*
 freetype-freeworld
 
