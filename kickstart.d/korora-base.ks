@@ -77,6 +77,9 @@ fi
 mv /usr/sbin/prelink /usr/sbin/prelink-disabled
 rm /etc/cron.daily/prelink
 
+# Copy Anaconda branding in place
+cp -a /usr/share/lorax/product/* /
+
 # KP - ensure liveuser desktop exists
 mkdir ~liveuser/Desktop
 

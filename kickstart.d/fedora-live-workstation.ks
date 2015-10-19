@@ -44,10 +44,12 @@ FOE
     cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
   fi
 
-  # Copy Anaconda branding in place
-  if [ -d /usr/share/lorax/product/usr/share/anaconda ]; then
-    cp -a /usr/share/lorax/product/* /
-  fi
+# KORORA EDIT
+# We do this for all our spins, so don't need to do it twice
+#  # Copy Anaconda branding in place
+#  if [ -d /usr/share/lorax/product/usr/share/anaconda ]; then
+#    cp -a /usr/share/lorax/product/* /
+#  fi
 fi
 
 # rebuild schema cache with any overrides we installed
