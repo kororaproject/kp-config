@@ -15,7 +15,7 @@ xconfig --startxonboot
 part / --size 10240 --fstype ext4
 services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
-%include korora-repo-dev.ks
+%include korora-repo.ks
 #%include korora-repo.ks
 %include korora-common-packages.ks
 

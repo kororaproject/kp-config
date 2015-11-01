@@ -22,10 +22,6 @@ PREFERRED=/usr/bin/cinnamon-session
 DISPLAYMANAGER=/usr/sbin/lightdm
 EOF
 
-# exclude GNOME-specific menu items
-desktop-file-edit --set-key=NoDisplay --set-value=true /usr/share/applications/fedora-release-notes.webapp.desktop
-desktop-file-edit --set-key=NoDisplay --set-value=true /usr/share/applications/yelp.desktop
-
 cat >> /etc/rc.d/init.d/livesys << EOF
 
 # set up lightdm autologin

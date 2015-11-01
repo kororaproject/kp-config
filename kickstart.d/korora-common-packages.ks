@@ -100,12 +100,15 @@ inkscape
 #
 # DEVELOPMENT / DEBUGGING
 android-tools
+#createrepo
 fpaste # fpaste is very useful for debugging and very small
 gcc
 git
 ltrace
+#mock
 ntfsprogs
 openssh-askpass
+#rpm-sign
 strace
 vim
 
@@ -192,14 +195,14 @@ gstreamer-plugins-bad-free-extras
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-good
 gstreamer-plugins-good-extras
-gstreamer-plugins-ugly
+#gstreamer-plugins-ugly
 gstreamer1-libav
 gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-free-extras
-# gstreamer1-plugins-bad-freeworlda - TODO - k23
+# gstreamer1-plugins-bad-freeworld - TODO - k23
 gstreamer1-plugins-good
 gstreamer1-plugins-good-extras
-gstreamer1-plugins-ugly
+#gstreamer1-plugins-ugly
 jack-audio-connection-kit
 lame
 libaacs

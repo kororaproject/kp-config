@@ -8,6 +8,9 @@
 
 ### The KDE-Desktop
 
+### Browser
+firefox
+
 ### fixes
 
 # use kde-print-manager instead of system-config-printer
