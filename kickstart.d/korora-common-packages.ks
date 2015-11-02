@@ -177,32 +177,32 @@ powertop
 
 #
 # MULTIMEDIA
-#HandBrake-gui - TODO - k23
+HandBrake-gui
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
 dvb-apps
 faac
-#ffmpeg - TODO - k23
-#ffmpegthumbnailer - TODO - k23
+ffmpeg
+ffmpegthumbnailer
 flac
 #flash-plugin.%%KP_BASEARCH%%
 #flash-plugin.i386  # remove 32bit, now that we don't ship steam
-#gstreamer-ffmpeg - TODO - f23
-#gstreamer-plugins-bad - TODO - k23
+gstreamer-ffmpeg
+gstreamer-plugins-bad
 gstreamer-plugins-bad-free
 gstreamer-plugins-bad-free-extras
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-good
 gstreamer-plugins-good-extras
-#gstreamer-plugins-ugly
+gstreamer-plugins-ugly
 gstreamer1-libav
 gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-free-extras
-# gstreamer1-plugins-bad-freeworld - TODO - k23
+gstreamer1-plugins-bad-freeworld
 gstreamer1-plugins-good
 gstreamer1-plugins-good-extras
-#gstreamer1-plugins-ugly
+gstreamer1-plugins-ugly
 jack-audio-connection-kit
 lame
 libaacs

@@ -46,9 +46,10 @@ FOE
   fi
 
   # Copy Anaconda branding in place
-  if [ -d /usr/share/lorax/product/usr/share/anaconda ]; then
-    cp -a /usr/share/lorax/product/* /
-  fi
+# Korora edit, we do this in all ours
+#  if [ -d /usr/share/lorax/product/usr/share/anaconda ]; then
+#    cp -a /usr/share/lorax/product/* /
+#  fi
 fi
 
 # rebuild schema cache with any overrides we installed

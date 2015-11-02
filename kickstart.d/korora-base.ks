@@ -13,13 +13,16 @@ selinux --enforcing
 firewall --enabled --service=ipp-client,kde-connect,mdns,samba,samba-client,ssh
 xconfig --startxonboot
 part / --size 10240 --fstype ext4
-services --enabled=ksmtuned,lirc,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
+services --enabled=ksmtuned,lirc,ModemManager,NetworkManager,restorecond,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
 %include korora-repo.ks
 #%include korora-repo.ks
 %include korora-common-packages.ks
 
 %post
+
+# group for any vbox users
+groupadd -r vboxusers
 
 # disable all abrt services, we can't upload to bugzilla
 for x in abrtd abrt-ccpp abrt-oops abrt-vmcore abrt-xorg ; do
@@ -46,7 +49,8 @@ done
 echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
 # enable discards on LVM for trim
-sed -i 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
+# DISABLED - breaks anaconda
+#sed -i 's/issue_discards = 0/issue_discards = 1/g' /etc/lvm/lvm.conf
 
 # make home dir - NOTE this seems to cause trouble on non-English installs :-(
 #mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
@@ -58,8 +62,8 @@ sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf
 /usr/bin/updatedb
 
 # KP - let's run prelink (makes things faster)
-echo -e "***\nPRELINKING\n****"
-/usr/sbin/prelink -av -mR -q
+#echo -e "***\nPRELINKING\n****"
+#/usr/sbin/prelink -av -mR -q
 
 cat >> /etc/rc.d/init.d/livesys << EOF
 
@@ -74,8 +78,8 @@ fi
 
 # KP - don't let prelink run on the live image
 #sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink # actually this forces prelink to run to undo prelinking (see /etc/sysconfig/prelink)
-mv /usr/sbin/prelink /usr/sbin/prelink-disabled
-rm /etc/cron.daily/prelink
+#mv /usr/sbin/prelink /usr/sbin/prelink-disabled
+#rm /etc/cron.daily/prelink
 
 # Copy Anaconda branding in place
 cp -a /usr/share/lorax/product/* /
