@@ -195,14 +195,14 @@ gstreamer-plugins-bad-free-extras
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-good
 gstreamer-plugins-good-extras
-gstreamer-plugins-ugly
+#gstreamer-plugins-ugly
 gstreamer1-libav
 gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-free-extras
 gstreamer1-plugins-bad-freeworld
 gstreamer1-plugins-good
 gstreamer1-plugins-good-extras
-gstreamer1-plugins-ugly
+#gstreamer1-plugins-ugly
 jack-audio-connection-kit
 lame
 libaacs
@@ -225,7 +225,6 @@ libreoffice-pdfimport
 libreoffice-ure
 libreoffice-xsltfilter
 
-
 #
 # PACKAGE MANAGEMENT
 
@@ -246,6 +245,7 @@ yumex-dnf
 
 #
 # SYSTEM ADMINSITRATION / CONFIGURATION
+canvas
 -ntp
 -system-config-date
 -system-config-firewall*
@@ -282,7 +282,8 @@ unburden-home-dir
 #
 # WEB
 firefox
-mozilla-adblock-plus
+#mozilla-adblock-plus
+mozilla-ublock-origin
 mozilla-downthemall
 #mozilla-flashblock
 mozilla-xclear
