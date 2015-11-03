@@ -18,6 +18,7 @@ services --enabled=ksmtuned,lirc,ModemManager,NetworkManager,restorecond,spice-v
 %include korora-repo.ks
 #%include korora-repo.ks
 %include korora-common-packages.ks
+%include snippets/packagekit-cached-metadata.ks
 
 %post
 
@@ -31,7 +32,7 @@ done
 
 # import keys
 echo -e "\n***\nIMPORTING KEYS\n***"
-for x in 20 21 22 23
+for x in 20 21 22 23 24
 do
   for y in adobe fedora-$x-primary fedora-$x-secondary google-chrome google-earth google-talkplugin korora-$x-primary korora-$x-secondary rpmfusion-free-fedora-$x-primary rpmfusion-nonfree-fedora-$x-primary virtualbox
   do
