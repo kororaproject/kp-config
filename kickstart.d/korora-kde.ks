@@ -58,6 +58,7 @@ kamoso
 kaudiocreator
 #kde-plasma-daisy - N/A - f22
 #kde-plasma-yawp - N/A - f22
+kde-connect
 kde-print-manager
 kde-settings
 kde-settings-ksplash
