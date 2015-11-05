@@ -50,7 +50,7 @@ choqok
 darktable
 digikam
 dolphin-root-actions
-font-manager
+-font-manager
 hugin-base
 k3b-extras-freeworld
 kalarm
