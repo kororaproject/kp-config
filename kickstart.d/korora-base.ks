@@ -55,6 +55,7 @@ echo "kernel.sysrq = 1" >> /etc/sysctl.conf
 
 # make home dir - NOTE this seems to cause trouble on non-English installs :-(
 #mkdir /etc/skel/{Documents,Downloads,Music,Pictures,Videos}
+mkdir /etc/skel/Desktop
 
 # set the korora plymouth theme
 sed -i s/^Theme=.*/Theme=korora/ /etc/plymouth/plymouthd.conf
