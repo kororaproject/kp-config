@@ -97,7 +97,7 @@ libsane-hpaio
 liferea
 lightdm-gtk-greeter-settings
 lirc
-mintmenu
+-mintmenu
 mtools
 ncftp
 network-manager-applet
