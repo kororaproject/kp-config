@@ -62,7 +62,7 @@ lha
 p7zip
 p7zip-plugins
 rar
-#unace
+unace
 unrar
 unar
 xz-lzma-compat
