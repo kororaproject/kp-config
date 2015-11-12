@@ -118,6 +118,7 @@ simple-scan
 soundconverter
 strongswan
 system-config-users
+system-config-date
 thunderbird
 webkitgtk4
 wget

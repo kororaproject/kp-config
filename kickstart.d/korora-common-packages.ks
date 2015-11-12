@@ -82,6 +82,8 @@ efibootmgr
 korora-icon-theme-base
 korora-icon-theme
 korora-productimg-workstation
+-korora-release-workstation
+-fedora-release-workstation
 -f22-backgrounds*
 freetype-freeworld
 
