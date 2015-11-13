@@ -61,6 +61,7 @@ font-manager
 gconf-editor
 gnome-classic-session
 gnome-disk-utility
+gnome-logs
 gnome-packagekit
 gnome-shell-extension-dash-to-dock
 gnome-shell-extension-drive-menu
