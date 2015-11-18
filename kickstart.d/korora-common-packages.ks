@@ -286,7 +286,7 @@ unburden-home-dir
 firefox
 #mozilla-adblock-plus
 mozilla-ublock-origin
-mozilla-downthemall
+#mozilla-downthemall
 #mozilla-flashblock
 mozilla-xclear
 
