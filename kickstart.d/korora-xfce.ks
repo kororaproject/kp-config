@@ -120,6 +120,7 @@ strongswan
 system-config-users
 system-config-date
 thunderbird
+tumbler-extras
 webkitgtk4
 wget
 x264
