@@ -101,8 +101,8 @@ qtcurve-gtk2
 qtcurve-kde4
 skanlite
 system-config-users
-xine-lib-extras
-xine-lib-extras-freeworld
+#xine-lib-extras
+#xine-lib-extras-freeworld
 yakuake
 
 %end
