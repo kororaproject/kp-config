@@ -74,6 +74,7 @@ nemo-extensions
 nemo-fileroller
 network-manager-applet
 openshot
+-parole
 pcsc-lite
 pcsc-lite-ccid
 pharlap
