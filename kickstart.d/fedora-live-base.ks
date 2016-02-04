@@ -275,6 +275,15 @@ chmod 755 /etc/rc.d/init.d/livesys-late
 # enable tmpfs for /tmp
 systemctl enable tmp.mount
 
+# As livecd-creator is still yum based, we only get yum's yumdb during the
+# image compose. Migrate this over to dnf so that dnf and PackageKit can keep
+# track where packages came from.
+if [ ! -d /var/lib/dnf ]; then
+  mkdir -p /var/lib/dnf
+  mv /var/lib/yum/yumdb /var/lib/dnf/
+  rm -rf /var/lib/yum/
+fi
+
 # make it so that we don't do writing to the overlay for things which
 # are just tmpdirs/caches
 # note https://bugzilla.redhat.com/show_bug.cgi?id=1135475
