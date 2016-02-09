@@ -1,5 +1,6 @@
 %include fedora-live-cinnamon.ks
 %include korora-base.ks
+%include korora-common-packages.ks
 
 
 %packages

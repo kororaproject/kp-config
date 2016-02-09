@@ -1,5 +1,6 @@
 %include fedora-live-mate_compiz.ks
 %include korora-base.ks
+%include korora-common-packages.ks
 
 #
 # PACKAGES

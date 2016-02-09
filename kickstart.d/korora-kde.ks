@@ -1,5 +1,6 @@
 %include fedora-live-kde.ks
 %include korora-base.ks
+%include korora-common-packages.ks
 
 services --enabled=kdm --disabled=sddm
 

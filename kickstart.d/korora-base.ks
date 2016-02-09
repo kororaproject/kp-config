@@ -17,7 +17,8 @@ services --enabled=fstrim.timer,ksmtuned,lirc,ModemManager,NetworkManager,restor
 
 %include korora-repo.ks
 #%include korora-repo-dev.ks
-%include korora-common-packages.ks
+# move the common packages to the desktops so that canvas doesn't inherit them
+#%include korora-common-packages.ks
 %include snippets/packagekit-cached-metadata.ks
 
 %post
