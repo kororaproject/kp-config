@@ -1,8 +1,6 @@
 %include fedora-live-workstation.ks
 %include korora-base.ks
 
-repo --name=Hack --baseurl=https://copr-be.cloud.fedoraproject.org/results/heliocastro/hack-fonts/fedora-$releasever-$basearch/
-
 %packages
 
 # removing groups brought in by fedora-live-base.ks
@@ -10,7 +8,7 @@ repo --name=Hack --baseurl=https://copr-be.cloud.fedoraproject.org/results/helio
 @guest-desktop-agents
 -@standard
 @core
--@fonts
+@fonts
 -@input-methods
 @dial-up
 -@multimedia
@@ -21,7 +19,7 @@ repo --name=Hack --baseurl=https://copr-be.cloud.fedoraproject.org/results/helio
 @base-x                                                                                          
 @core
 -@firefox
--@fonts
+@fonts
 @guest-desktop-agents
 @hardware-support
 -@libreoffice
@@ -37,7 +35,7 @@ repo --name=Hack --baseurl=https://copr-be.cloud.fedoraproject.org/results/helio
 # removing groups brought in by korora
 -@admin-tools
 -@standard
--@fonts
+@fonts
 -@input-methods
 -@printing
 
@@ -55,6 +53,7 @@ korora-backgrounds-gnome
 korora-backgrounds-extras-gnome
 korora-extras
 korora-icon-theme
+korora-productimg-workstation
 plymouth-theme-korora
 
 # Release packages
@@ -91,16 +90,7 @@ NetworkManager-wifi
 NetworkManager-wwan
 
 # Fonts
-dejavu-sans-fonts
-dejavu-sans-mono-fonts
-dejavu-serif-fonts
-google-droid-sans-fonts
-google-droid-sans-mono-fonts
-google-droid-serif-fonts
 hack-fonts
-liberation-mono-fonts
-liberation-sans-fonts
-liberation-serif-fonts
 open-sans-fonts
 
 # Essential utilities
