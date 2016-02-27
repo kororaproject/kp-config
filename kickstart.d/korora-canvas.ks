@@ -134,7 +134,11 @@ mlocate
 cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << EOF
 
 [org.gnome.shell.extensions.user-theme]
-name="Arc"
+name="Arc-Dark"
+
+[org.gnome.desktop.interface]
+gtk-theme="Arc-Dark"
+monospace-font-name="Hack 11"
 
 [org.gnome.desktop.background]                                                                   
 show-desktop-icons=false
