@@ -40,20 +40,46 @@
 -@printing
 
 # Base GNOME desktop for Canvas
+#avahi
 @critical-path-gnome
+#deja-dup
+#deja-dup-nautilus
+#file-roller
+#file-roller-nautilus
+#firewall-config
+gedit
+gnome-bluetooth
+#gnome-calculator
+#gnome-clocks
 gnome-getting-started-docs
-gnome-software
+gnome-initial-setup
+#gnome-screenshot
+gnome-session-wayland-session
+-gnome-software
+gvfs-afc
+gvfs-afp
+gvfs-archive
+gvfs-fuse
+gvfs-goa
+gvfs-gphoto2
+gvfs-mtp
+gvfs-smb
+mousetweaks
 nautilus-open-terminal
 nautilus-sendto
+orca
 PackageKit-command-not-found
 PackageKit-gstreamer-plugin
+yumex-dnf
 
 # Korora essentials
+canvas
 korora-backgrounds-gnome
-korora-backgrounds-extras-gnome
+-korora-backgrounds-extras-gnome
 korora-extras
 korora-icon-theme
 korora-productimg-workstation
+korora-welcome
 plymouth-theme-korora
 
 # Release packages
@@ -66,7 +92,8 @@ rpmfusion-free-release
 virtualbox-release
 
 # Korora GNOME config
-gnome-shell-theme-korora
+#gnome-shell-theme-korora
+arc-theme
 gnome-shell-extension-dash-to-dock
 gnome-shell-extension-drive-menu
 gnome-shell-extension-places-menu
@@ -95,12 +122,28 @@ open-sans-fonts
 
 # Essential utilities
 bash-completion
+fprintd-pam
 mlocate
 
 %end
 
 
 %post
+
+# set arc theme
+cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << EOF
+
+[org.gnome.shell.extensions.user-theme]
+name="Arc"
+
+[org.gnome.desktop.background]                                                                   
+show-desktop-icons=false
+picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
+
+[org.gnome.desktop.screensaver]
+picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
+
+EOF
 
 cat >> /etc/rc.d/init.d/livesys << EOF
 
