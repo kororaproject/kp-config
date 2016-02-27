@@ -24,7 +24,7 @@ services --enabled=fstrim.timer,ksmtuned,lirc,ModemManager,NetworkManager,restor
 %post
 
 # group for any vbox users
-groupadd -r vboxusers
+/usr/sbin/groupadd -r vboxusers
 
 # disable all abrt services, we can't upload to bugzilla
 for x in abrtd abrt-ccpp abrt-oops abrt-vmcore abrt-xorg ; do
