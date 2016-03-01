@@ -51,8 +51,8 @@ gedit
 gnome-bluetooth
 #gnome-calculator
 #gnome-clocks
-gnome-getting-started-docs
-gnome-initial-setup
+-gnome-getting-started-docs
+-gnome-initial-setup
 #gnome-screenshot
 gnome-session-wayland-session
 -gnome-software
@@ -118,7 +118,7 @@ NetworkManager-wwan
 
 # Fonts
 hack-fonts
-open-sans-fonts
+google-roboto-*
 
 # Essential utilities
 bash-completion
@@ -130,6 +130,9 @@ mlocate
 
 %post
 
+# Set font in Arc theme
+sed -i 's/^  font-family.*/  font-family: Roboto;/g' /usr/share/themes/Arc/gnome-shell/gnome-shell.css
+
 # set arc theme
 cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << EOF
 
@@ -137,6 +140,8 @@ cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << EOF
 name="Arc"
 
 [org.gnome.desktop.interface]
+document-font-name='Roboto 10'
+font-name='Roboto 12'
 gtk-theme="Arc"
 monospace-font-name="Hack 11"
 
@@ -148,13 +153,13 @@ picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
 picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
 
 [org.gnome.desktop.wm.preferences]
-titlebar-font='Open Sans 10'
+titlebar-font='Roboto 10'
 titlebar-uses-system-font=false
 
 [org.gnome.evolution.mail]
 monospace-font='Hack 12'
 use-custom-font=true
-variable-width-font='Open Sans 12'
+variable-width-font='Roboto 12'
 
 [org.gnome.gedit.plugins.externaltools]
 font='Hack 10'
@@ -170,15 +175,18 @@ use-default-font=false
 
 [org.gnome.gedit.preferences.print]
 print-font-body-pango='Hack 9'
-print-font-header-pango='Open Sans 11'
-print-font-numbers-pango='Open Sans 8'
+print-font-header-pango='Roboto 11'
+print-font-numbers-pango='Roboto 8'
 
 [org.gnome.gnote]
-custom-font-face='Open Sans 11'
+custom-font-face='Roboto 11'
 enable-custom-font=true
 
 [org.gnome.nautilus.desktop]
-font='Open Sans 10'
+font='Roboto 10'
+
+[org.gnome.libgnomekbd.indicator]
+font-family='Roboto'
 
 EOF
 
