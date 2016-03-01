@@ -134,10 +134,10 @@ mlocate
 cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << EOF
 
 [org.gnome.shell.extensions.user-theme]
-name="Arc-Dark"
+name="Arc"
 
 [org.gnome.desktop.interface]
-gtk-theme="Arc-Dark"
+gtk-theme="Arc"
 monospace-font-name="Hack 11"
 
 [org.gnome.desktop.background]                                                                   
@@ -146,6 +146,39 @@ picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
 
 [org.gnome.desktop.screensaver]
 picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
+
+[org.gnome.desktop.wm.preferences]
+titlebar-font='Open Sans 10'
+titlebar-uses-system-font=false
+
+[org.gnome.evolution.mail]
+monospace-font='Hack 12'
+use-custom-font=true
+variable-width-font='Open Sans 12'
+
+[org.gnome.gedit.plugins.externaltools]
+font='Hack 10'
+use-system-font=false
+
+[org.gnome.gedit.plugins.pythonconsole]
+font='Hack 10'
+use-system-font=false
+
+[org.gnome.gedit.preferences.editor]
+editor-font='Hack 12'
+use-default-font=false
+
+[org.gnome.gedit.preferences.print]
+print-font-body-pango='Hack 9'
+print-font-header-pango='Open Sans 11'
+print-font-numbers-pango='Open Sans 8'
+
+[org.gnome.gnote]
+custom-font-face='Open Sans 11'
+enable-custom-font=true
+
+[org.gnome.nautilus.desktop]
+font='Open Sans 10'
 
 EOF
 
