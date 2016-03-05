@@ -157,6 +157,8 @@ pptp-setup
 
 #
 # HARDWARE
+cups-*
+-cups*devel
 epson-inkjet-printer-escpr # support for recent Epson inkjet printers
 hplip # support for extra HP printers
 hpijs
