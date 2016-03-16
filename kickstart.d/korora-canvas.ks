@@ -53,9 +53,12 @@ gnome-bluetooth
 #gnome-clocks
 -gnome-getting-started-docs
 -gnome-initial-setup
+gnome-packagekit
+gnome-packagekit-updater
+gnome-packagekit-installer
 #gnome-screenshot
 gnome-session-wayland-session
--gnome-software
+gnome-software
 gvfs-afc
 gvfs-afp
 gvfs-archive
@@ -70,6 +73,8 @@ nautilus-sendto
 orca
 PackageKit-command-not-found
 PackageKit-gstreamer-plugin
+pavucontrol
+pinentry-gnome3
 yumex-dnf
 
 # Korora essentials
@@ -122,8 +127,16 @@ google-roboto-*
 
 # Essential utilities
 bash-completion
+cups
 fprintd-pam
 mlocate
+system-config-printer
+
+# Potential extras to make base image more useful
+evince
+file-roller
+gnome-calculator
+shotwell
 
 %end
 
@@ -140,10 +153,10 @@ cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << EOF
 name="Arc"
 
 [org.gnome.desktop.interface]
-document-font-name='Roboto 10'
-font-name='Roboto 12'
+document-font-name='Roboto Slab Light 10'
+font-name='Roboto Light 12'
 gtk-theme="Arc"
-monospace-font-name="Hack 11"
+monospace-font-name="Roboto Mono Light 11"
 
 [org.gnome.desktop.background]                                                                   
 show-desktop-icons=false
@@ -153,28 +166,28 @@ picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
 picture-uri='file:///usr/share/backgrounds/korora/default/korora.xml'
 
 [org.gnome.desktop.wm.preferences]
-titlebar-font='Roboto 10'
+titlebar-font='Roboto 12'
 titlebar-uses-system-font=false
 
 [org.gnome.evolution.mail]
-monospace-font='Hack 12'
+monospace-font='Roboto Mono 12'
 use-custom-font=true
 variable-width-font='Roboto 12'
 
 [org.gnome.gedit.plugins.externaltools]
-font='Hack 10'
+font='Roboto Mono 10'
 use-system-font=false
 
 [org.gnome.gedit.plugins.pythonconsole]
-font='Hack 10'
+font='Roboto Mono 10'
 use-system-font=false
 
 [org.gnome.gedit.preferences.editor]
-editor-font='Hack 12'
+editor-font='Roboto Mono 12'
 use-default-font=false
 
 [org.gnome.gedit.preferences.print]
-print-font-body-pango='Hack 9'
+print-font-body-pango='Roboto Mono 9'
 print-font-header-pango='Roboto 11'
 print-font-numbers-pango='Roboto 8'
 
