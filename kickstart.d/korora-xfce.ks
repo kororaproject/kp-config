@@ -38,7 +38,7 @@ yumex-dnf
 -parole
 -pragha
 -realmd                     # only seems to be used in GNOME
--ristretto
+#-ristretto
 -smartmontools
 -thunderbird
 -totem*
@@ -127,6 +127,7 @@ wget
 x264
 xfce4-volumed
 xfce4-whiskermenu-plugin
+xfpanel-switch
 xfsprogs
 xscreensaver-base
 xscreensaver-extras-base
