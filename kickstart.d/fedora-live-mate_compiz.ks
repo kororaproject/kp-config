@@ -79,7 +79,4 @@ chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
 EOF
 
-# This is a huge file and things work ok without it
-rm -f /usr/share/icons/HighContrast/icon-theme.cache
-
 %end

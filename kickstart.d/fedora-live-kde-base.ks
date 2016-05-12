@@ -4,7 +4,6 @@
 
 %include fedora-live-base.ks
 %include fedora-kde-packages.ks
-#%include snippets/packagekit-cached-metadata.ks
 
 %post
 

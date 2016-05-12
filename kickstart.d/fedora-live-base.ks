@@ -313,12 +313,6 @@ rm -f /core*
 # convince readahead not to collect
 # FIXME: for systemd
 
-# forcibly regenerate fontconfig cache (so long as this live image has
-# fontconfig) - see #1169979
-if [ -x /usr/bin/fc-cache ] ; then
-   fc-cache -f
-fi
-
 echo 'File created by kickstart. See systemd-update-done.service(8).' \
     | tee /etc/.updated >/var/.updated
 

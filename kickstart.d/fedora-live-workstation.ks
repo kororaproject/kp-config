@@ -10,9 +10,6 @@ part / --size 6144
 
 %post
 
-# This is a huge file and things work ok without it
-rm -f /usr/share/icons/HighContrast/icon-theme.cache
-
 cat >> /etc/rc.d/init.d/livesys << EOF
 
 
@@ -45,8 +42,8 @@ FOE
     cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
   fi
 
-  # Copy Anaconda branding in place
 # Korora edit, we do this in all ours
+#  # Copy Anaconda branding in place
 #  if [ -d /usr/share/lorax/product/usr/share/anaconda ]; then
 #    cp -a /usr/share/lorax/product/* /
 #  fi

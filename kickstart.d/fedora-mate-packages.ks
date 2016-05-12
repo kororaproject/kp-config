@@ -1,4 +1,5 @@
 %packages
+-PackageKit*                # we switched to yumex, so we don't need this
 firefox
 @mate
 compiz
@@ -19,7 +20,7 @@ fusion-icon-gtk
 blueman
 
 # some apps from mate-applications
-# caja-actions
+caja-actions
 mate-disk-usage-analyzer
 mate-netspeed
 
@@ -36,19 +37,15 @@ lightdm-gtk-greeter-settings
 # audio video
 parole
 exaile
-PackageKit-gstreamer-plugin
+
+# blacklist applications which breaks mate-desktop
+-audacious
 
 # office
 @libreoffice
 
 # dsl tools
 rp-pppoe
-
-# drop packages
--PackageKit*                # we switched to yumex, so we don't need this
-
-# blacklist applications which breaks mate-desktop
--audacious
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.
