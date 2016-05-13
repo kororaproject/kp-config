@@ -181,7 +181,7 @@ powertop
 
 #
 # MULTIMEDIA
-HandBrake-gui
+#HandBrake-gui #k24 not packaged yet
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
