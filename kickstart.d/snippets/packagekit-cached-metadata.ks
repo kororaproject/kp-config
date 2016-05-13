@@ -44,6 +44,8 @@ cp -v /etc/yum.repos.d/rpmfusion-free.repo $PK_PREFIX/etc/yum.repos.d/
 cp -v /etc/yum.repos.d/rpmfusion-free-updates.repo $PK_PREFIX/etc/yum.repos.d/
 cp -v /etc/yum.repos.d/rpmfusion-nonfree.repo $PK_PREFIX/etc/yum.repos.d/
 cp -v /etc/yum.repos.d/rpmfusion-nonfree-updates.repo $PK_PREFIX/etc/yum.repos.d/
+# for testing:
+cp -v /etc/yum.repos.d/rpmfusion-rawhide*.repo $PK_PREFIX/etc/yum.repos.d/
 
 rpm --root=$PK_PREFIX --initdb
 DESTDIR=$PK_PREFIX /usr/libexec/packagekit-direct refresh
