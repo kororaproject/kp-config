@@ -32,7 +32,7 @@ okular
 -f22-backgrounds-kde
 -f22-kde-theme
 -kdegames
--kde-l10n-* #kde-l10n-* - CONFLICTS - plasma-desktop - f22
+-kde-l10n* #kde-l10n-* - CONFLICTS - plasma-desktop - f22
 -calligra-l10n*
 -synaptic
 -system-config-printer
@@ -63,7 +63,7 @@ kde-connect
 kde-gtk-config
 kde-print-manager
 kde-settings
-kde-settings-ksplash
+#kde-settings-ksplash
 kde-settings-plasma
 kde-settings-pulseaudio
 #kde-workspace-ksplash-themes - N/A - f22
@@ -72,14 +72,14 @@ kde-settings-pulseaudio
 #kdebase-workspace-ksplash-themes - N/A - f22
 kdegames-minimal
 kdemultimedia-extras-freeworld
-kdenlive
+-kdenlive #k24
 kdeplasma-addons
 kdiff3
 kdm
 kid3
 kio-ftps
 kio_mtp
-kipi-plugins
+kf5-kipi-plugins
 kjots
 konversation
 krdc
@@ -94,8 +94,8 @@ mariadb-embedded
 mariadb-libs
 mariadb-server
 okular
-phonon-backend-vlc
-phonon-qt5-backend-vlc
+#phonon-backend-vlc #k24
+#phonon-qt5-backend-vlc #k24
 plasma-nm*
 python3-PyQt4
 qt-recordmydesktop
