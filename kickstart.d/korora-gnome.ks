@@ -10,6 +10,10 @@ korora-settings-gnome
 korora-backgrounds-gnome
 korora-backgrounds-extras-gnome
 
+arc-theme # new theme for k24
+mozilla-arc-theme # new theme for k24
+gnome-terminal #k24 not sure why this wasn't included already
+
 -alacarte
 -gnome-mplayer
 -gnome-mplayer-nautilus
