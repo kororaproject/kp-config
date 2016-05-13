@@ -14,6 +14,16 @@ arc-theme # new theme for k24
 mozilla-arc-theme # new theme for k24
 gnome-terminal #k24 not sure why this wasn't included already
 
+#nautilus-dropbox
+deja-dup-nautilus
+file-roller-nautilus
+seahorse-nautilus
+owncloud-client-nautilus
+gnome-terminal-nautilus
+nautilus-pastebin
+nautilus-image-converter
+nautilus-search-tool
+
 -alacarte
 -gnome-mplayer
 -gnome-mplayer-nautilus

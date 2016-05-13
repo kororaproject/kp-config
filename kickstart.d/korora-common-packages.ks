@@ -216,6 +216,7 @@ libdvdcss
 libdvdnav
 libdvdread
 mozilla-openh264
+raw-thumbnailer #k24 add support for raw thumbs
 #vlc #k24
 #vlc-extras #k24
 vorbis-tools
