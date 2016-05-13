@@ -15,6 +15,9 @@ repo --name="Fedora %%KP_VERSION%% - %%KP_BASEARCH%% - Updates" --baseurl=http:/
 repo --name="Korora %%KP_VERSION%%" --baseurl=%%KP_REPOSITORY%%/releases/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 #repo --name="Korora %%KP_VERSION%%" --baseurl=http://dl.kororaproject.org/pub/korora/testing/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=10
 
+# Cisco
+repo --name="Fedora %%KP_VERSION%% openh264 (From Cisco) - %%KP_BASEARCH%%" --baseurl=https://codecs.fedoraproject.org/openh264/%%KP_VERSION%%/%%KP_BASEARCH%%/ --cost=100
+
 #repo --name="RPMFusion Free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch --cost=1000
 #repo --name="RPMFusion Free - Updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch --cost=1000
 

@@ -201,6 +201,7 @@ gstreamer-plugins-good
 gstreamer-plugins-good-extras
 gstreamer-plugins-ugly
 gstreamer1-libav
+gstreamer1-plugin-openh264
 gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-free-extras
 gstreamer1-plugins-bad-freeworld
@@ -214,8 +215,9 @@ libbluray
 libdvdcss
 libdvdnav
 libdvdread
-vlc
-vlc-extras
+mozilla-openh264
+#vlc #k24
+#vlc-extras #k24
 vorbis-tools
 
 
@@ -304,7 +306,6 @@ java-1.8.0-openjdk
 icedtea-web
 libimobiledevice
 mlocate
-PackageKit-browser-plugin
 PackageKit-command-not-found
 PackageKit-gstreamer-plugin
 pavucontrol

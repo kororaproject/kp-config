@@ -95,6 +95,7 @@ mariadb-libs
 mariadb-server
 okular
 phonon-backend-vlc
+phonon-qt5-backend-vlc
 plasma-nm*
 python3-PyQt4
 qt-recordmydesktop

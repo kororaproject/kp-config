@@ -41,7 +41,6 @@ NetworkManager-ssh-gnome
 NetworkManager-vpnc-gnome
 NetworkManager-wifi
 NetworkManager-wwan
-PackageKit-browser-plugin
 PackageKit-gtk3-module
 argyllcms
 brasero
@@ -91,7 +90,7 @@ lirc
 mtools
 nautilus-extensions
 nautilus-image-converter
-nautilus-open-terminal
+#nautilus-open-terminal #k24
 nautilus-sendto
 ncftp
 network-manager-applet

@@ -36,7 +36,6 @@ NetworkManager-ssh
 NetworkManager-vpnc
 NetworkManager-wifi
 NetworkManager-wwan
-PackageKit-browser-plugin
 PackageKit-gtk3-module
 argyllcms
 blueman
