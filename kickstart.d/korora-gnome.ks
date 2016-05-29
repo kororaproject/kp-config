@@ -153,7 +153,7 @@ gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandator
   cat >> /usr/share/glib-2.0/schemas/org.korora.gschema.override << FOE
 
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'anaconda.desktop']
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'vlc.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Terminal.desktop', 'anaconda.desktop']
 FOE
 
 # rebuild schema cache with any overrides we installed
