@@ -98,6 +98,7 @@ iok
 libmatroska
 libmpg123
 libproxy-networkmanager
+libreoffice-gtk3
 libsane-hpaio
 liferea
 lirc
@@ -119,6 +120,7 @@ simple-scan
 sound-juicer
 soundconverter
 strongswan
+tracker-preferences
 transcode
 wget
 x264

@@ -64,6 +64,7 @@ iok
 libmatroska
 libmpg123
 libproxy-networkmanager
+libreoffice-gtk3
 libsane-hpaio
 liferea
 lirc
