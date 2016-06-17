@@ -30,7 +30,7 @@ mkdir -p /home/liveuser/.config/xfce4
 cat > /home/liveuser/.config/xfce4/helpers.rc << FOE
 MailReader=sylpheed-claws
 FileManager=Thunar
-WebBrowser=midori
+WebBrowser=firefox
 FOE
 
 # disable screensaver locking (#674410)

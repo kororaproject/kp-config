@@ -1,4 +1,5 @@
 %packages
+@firefox
 @kde-apps
 @kde-desktop
 @kde-media
@@ -9,7 +10,7 @@
 ### The KDE-Desktop
 
 ### Browser
-firefox
+qupzilla
 
 ### fixes
 

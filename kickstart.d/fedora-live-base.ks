@@ -14,8 +14,12 @@ auth --useshadow --passalgo=sha512
 selinux --enforcing
 firewall --enabled --service=mdns
 xconfig --startxonboot
-part / --size 4096 --fstype ext4
+zerombr
+clearpart --all
+part / --size 5120 --fstype ext4
 services --enabled=NetworkManager,ModemManager --disabled=network,sshd
+network --bootproto=dhcp --device=link --activate
+shutdown
 
 %include fedora-repo.ks
 
@@ -34,6 +38,8 @@ services --enabled=NetworkManager,ModemManager --disabled=network,sshd
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
 kernel
+kernel-modules
+kernel-modules-extra
 
 # This was added a while ago, I think it falls into the category of
 # "Diagnosis/recovery tool useful from a Live OS image".  Leaving this untouched
@@ -49,7 +55,11 @@ aajohan-comfortaa-fonts
 
 # Without this, initramfs generation during live image creation fails: #1242586
 dracut-live
+grub2-efi
+syslinux
 
+# anaconda needs the locales available to run for different locales
+glibc-all-langpacks
 %end
 
 %post
@@ -275,21 +285,11 @@ chmod 755 /etc/rc.d/init.d/livesys-late
 # enable tmpfs for /tmp
 systemctl enable tmp.mount
 
-# As livecd-creator is still yum based, we only get yum's yumdb during the
-# image compose. Migrate this over to dnf so that dnf and PackageKit can keep
-# track where packages came from.
-if [ ! -d /var/lib/dnf ]; then
-  mkdir -p /var/lib/dnf
-  mv /var/lib/yum/yumdb /var/lib/dnf/
-  rm -rf /var/lib/yum/
-fi
-
 # make it so that we don't do writing to the overlay for things which
 # are just tmpdirs/caches
 # note https://bugzilla.redhat.com/show_bug.cgi?id=1135475
 cat >> /etc/fstab << EOF
 vartmp   /var/tmp    tmpfs   defaults   0  0
-varcacheyum /var/cache/yum  tmpfs   mode=0755,context=system_u:object_r:rpm_var_cache_t:s0   0   0
 EOF
 
 # work around for poor key import UI in PackageKit
@@ -305,16 +305,21 @@ rm -f /var/lib/rpm/__db*
 # go ahead and pre-make the man -k cache (#455968)
 /usr/bin/mandb
 
-# save a little bit of space at least...
-rm -f /boot/initramfs*
 # make sure there aren't core files lying around
 rm -f /core*
+
+# remove random seed, the newly installed instance should make it's own
+rm -f /var/lib/systemd/random-seed
 
 # convince readahead not to collect
 # FIXME: for systemd
 
 echo 'File created by kickstart. See systemd-update-done.service(8).' \
     | tee /etc/.updated >/var/.updated
+
+# Drop the rescue kernel and initramfs, we don't need them on the live media itself.
+# See bug 1317709
+rm -f /boot/*-rescue*
 
 %end
 

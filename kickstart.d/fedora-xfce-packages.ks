@@ -21,6 +21,8 @@
 
 # unlock default keyring. FIXME: Should probably be done in comps
 gnome-keyring-pam
+# Admin tools are handy to have
+@admin-tools
 # Add some screensavers, people seem to like them
 # Note that blank is still default.
 xscreensaver-extras

@@ -7,7 +7,6 @@
 -mpage
 -sox
 -hplip
--hpijs
 -numactl
 -isdn4k-utils
 -autofs

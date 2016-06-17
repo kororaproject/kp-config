@@ -7,27 +7,25 @@ compiz-plugins-main
 compiz-plugins-extra
 compiz-manager
 compizconfig-python
-compiz-plugins-unsupported
-compiz-mate
+compiz-plugins-experimental
 libcompizconfig
 compiz-plugins-main
 ccsm
+simple-ccsm
 emerald-themes
 emerald
 fusion-icon
-fusion-icon-gtk
 @networkmanager-submodules
 blueman
 
 # some apps from mate-applications
 caja-actions
 mate-disk-usage-analyzer
-mate-netspeed
 
 # more backgrounds
-f23-backgrounds-base
-f23-backgrounds-mate
-f23-backgrounds-extras-base
+f24-backgrounds-base
+f24-backgrounds-mate
+f24-backgrounds-extras-base
 
 # system tools
 system-config-printer
@@ -37,6 +35,7 @@ lightdm-gtk-greeter-settings
 # audio video
 parole
 exaile
+PackageKit-gstreamer-plugin
 
 # blacklist applications which breaks mate-desktop
 -audacious
@@ -46,6 +45,10 @@ exaile
 
 # dsl tools
 rp-pppoe
+
+# some tools
+p7zip
+p7zip-plugins
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
 # desktop image at some point.  We won't touch this one for now.

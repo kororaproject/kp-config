@@ -3,7 +3,7 @@
 %post --nochroot
 # Copy over files needed for networking inside the chroot
 for f in /etc/resolv.conf /etc/hosts ; do
-  test -f $f && cp -a $f ${INSTALL_ROOT}${f}.kickstart
+  test -f $f && cp $f /mnt/sysimage/$f.kickstart
 done
 %end
 
@@ -19,7 +19,7 @@ PK_PREFIX=`mktemp -d`
 mkdir -p $PK_PREFIX/etc/yum.repos.d
 if [ -f /etc/yum.repos.d/fedora.repo ] ; then
   cp /etc/yum.repos.d/fedora.repo $PK_PREFIX/etc/yum.repos.d/
-  sed -i -e 's|^metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch|baseurl=http://kojipkgs.fedoraproject.org/mash/branched/$basearch/os/|' \
+  sed -i -e 's|^metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch|baseurl=http://kojipkgs.fedoraproject.org/compose/branched/latest-Fedora-/compose/Everything/$basearch/os/|' \
          $PK_PREFIX/etc/yum.repos.d/fedora.repo
 fi
 if [ -f /etc/yum.repos.d/fedora-updates.repo ] ; then
@@ -34,7 +34,7 @@ if [ -f /etc/yum.repos.d/fedora-updates-testing.repo ] ; then
 fi
 if [ -f /etc/yum.repos.d/fedora-rawhide.repo ] ; then
   cp /etc/yum.repos.d/fedora-rawhide.repo $PK_PREFIX/etc/yum.repos.d/
-  sed -i -e 's|^metalink=https://mirrors.fedoraproject.org/metalink?repo=rawhide&arch=$basearch|baseurl=http://kojipkgs.fedoraproject.org/mash/rawhide/$basearch/os/|' \
+  sed -i -e 's|^metalink=https://mirrors.fedoraproject.org/metalink?repo=rawhide&arch=$basearch|baseurl=http://kojipkgs.fedoraproject.org/compose/rawhide/latest-Fedora-/compose/Everything/$basearch/os/|' \
          $PK_PREFIX/etc/yum.repos.d/fedora-rawhide.repo
 fi
 
@@ -45,7 +45,7 @@ cp -v /etc/yum.repos.d/rpmfusion-free-updates.repo $PK_PREFIX/etc/yum.repos.d/
 cp -v /etc/yum.repos.d/rpmfusion-nonfree.repo $PK_PREFIX/etc/yum.repos.d/
 cp -v /etc/yum.repos.d/rpmfusion-nonfree-updates.repo $PK_PREFIX/etc/yum.repos.d/
 # for testing:
-cp -v /etc/yum.repos.d/rpmfusion-rawhide*.repo $PK_PREFIX/etc/yum.repos.d/
+#cp -v /etc/yum.repos.d/rpmfusion-rawhide*.repo $PK_PREFIX/etc/yum.repos.d/
 
 rpm --root=$PK_PREFIX --initdb
 DESTDIR=$PK_PREFIX /usr/libexec/packagekit-direct refresh

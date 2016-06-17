@@ -19,7 +19,6 @@ part / --size=6144
 # don't include these for now to fit on a cd
 -desktop-backgrounds-basic
 -kdeaccessibility*
--kdeartwork-screensavers	# screensavers are not needed on live images
 #-ktorrent			# kget has also basic torrent features (~3 megs)
 -digikam			# digikam has duplicate functionality with gwenview (~28 megs)
 #-amarok 			# ~23 megs (mysql-embedded etc.)
@@ -44,7 +43,7 @@ wqy-microhei-fonts			# a compact CJK font, to replace:
 -naver-nanum-gothic-fonts		# Korean
 -vlgothic-fonts				# Japanese
 -adobe-source-han-sans-cn-fonts		# simplified Chinese
--adobe-source-han-sans-twhk-fonts	# traditional Chinese
+-adobe-source-han-sans-tw-fonts 	# traditional Chinese
 
 -paratype-pt-sans-fonts	# Cyrillic (already supported by DejaVu), huge
 #-stix-fonts		# mathematical symbols
