@@ -62,7 +62,7 @@ lha
 p7zip
 p7zip-plugins
 rar
-unace
+#unace #k24
 unrar
 unar
 xz-lzma-compat
@@ -181,14 +181,14 @@ powertop
 
 #
 # MULTIMEDIA
-#HandBrake-gui #k24 not packaged yet
+HandBrake-gui
 alsa-plugins-pulseaudio
 alsa-utils
 audacity-freeworld
 dvb-apps
 faac
 ffmpeg
-ffmpegthumbnailer
+#ffmpegthumbnailer #k24
 flac
 #flash-plugin.%%KP_BASEARCH%%
 #flash-plugin.i386  # remove 32bit, now that we don't ship steam

@@ -114,7 +114,7 @@ soundconverter
 strongswan
 system-config-users
 thunderbird
-transcode
+#transcode #k24
 transmission-gtk
 wget
 x264

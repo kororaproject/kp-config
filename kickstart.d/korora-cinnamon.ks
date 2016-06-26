@@ -89,7 +89,7 @@ soundconverter
 strongswan
 system-config-printer
 thunderbird
-transcode
+#transcode #k24
 webkitgtk4
 wget
 x264

@@ -121,7 +121,7 @@ sound-juicer
 soundconverter
 strongswan
 tracker-preferences
-transcode
+#transcode #k24
 wget
 x264
 xfsprogs
