@@ -72,7 +72,7 @@ kde-settings-pulseaudio
 #kdebase-workspace-ksplash-themes - N/A - f22
 kdegames-minimal
 kdemultimedia-extras-freeworld
--kdenlive #k24
+kdenlive #k24
 kdeplasma-addons
 kdiff3
 kdm
@@ -94,8 +94,8 @@ mariadb-embedded
 mariadb-libs
 mariadb-server
 okular
-#phonon-backend-vlc #k24
-#phonon-qt5-backend-vlc #k24
+phonon-backend-vlc #k24
+phonon-qt5-backend-vlc #k24
 plasma-nm*
 python3-PyQt4
 qt-recordmydesktop
