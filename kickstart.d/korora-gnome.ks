@@ -114,6 +114,8 @@ pcsc-lite
 pcsc-lite-ccid
 pharlap
 pulseaudio-module-bluetooth
+python3-lens-gtk
+-python3-lens-qt
 rhythmbox
 shotwell
 simple-scan

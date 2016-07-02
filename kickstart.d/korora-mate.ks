@@ -108,6 +108,7 @@ pidgin
 plank-theme-korora
 pulseaudio-module-bluetooth
 python3-lens-gtk
+-python3-lens-qt
 shotwell
 simple-scan
 soundconverter

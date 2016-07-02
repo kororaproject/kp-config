@@ -98,6 +98,8 @@ okular
 #phonon-qt5-backend-vlc #k24 #k24
 plasma-nm*
 python3-PyQt4
+-python3-lens-gtk
+python3-lens-qt
 qt-recordmydesktop
 qtcurve-gtk2
 qtcurve-kde4

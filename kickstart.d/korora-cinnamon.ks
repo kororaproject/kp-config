@@ -81,6 +81,8 @@ pcsc-lite-ccid
 pharlap
 plank-theme-korora
 pulseaudio-module-bluetooth
+python3-lens-gtk
+-python3-lens-qt
 rhythmbox
 shotwell
 simple-scan

@@ -70,6 +70,7 @@ xz-lzma-compat
 
 #
 # BRANDING
+breeze-cursor-theme
 korora-extras
 korora-release
 korora-logos
@@ -159,6 +160,7 @@ pptp-setup
 # HARDWARE
 cups-*
 -cups*devel
+-cups-pdf # this doesn't work when building live images
 epson-inkjet-printer-escpr # support for recent Epson inkjet printers
 hplip # support for extra HP printers
 hpijs

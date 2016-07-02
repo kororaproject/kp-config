@@ -113,6 +113,8 @@ pidgin-privacy-please
 pidgin-sipe
 pulseaudio-module-bluetooth
 #purple-microblog - N/A - f22
+python3-lens-gtk
+-python3-lens-qt
 shotwell
 simple-mtpfs
 simple-scan
