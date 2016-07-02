@@ -62,6 +62,7 @@ NetworkManager-vpnc
 NetworkManager-wifi
 NetworkManager-wwan
 alacarte
+arc-theme
 argyllcms
 audacious
 audacious-plugins*
@@ -164,8 +165,8 @@ cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
 [greeter]
 background=/usr/share/backgrounds/korora/default/standard/korora.png
 default-user-image=/usr/share/icons/hicolor/64x64/apps/korora-icon-generic.png
-#theme-name=Greybird
-icon-theme-name=korora
+theme-name=Arc
+icon-theme-name="Numix Circle"
 font-name=Sans Bold 9
 #xft-antialias=
 #xft-dpi=

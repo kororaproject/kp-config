@@ -52,6 +52,7 @@ NetworkManager-vpnc
 NetworkManager-wifi
 NetworkManager-wwan
 alacarte
+arc-theme
 argyllcms
 asunder
 audacious
@@ -79,9 +80,9 @@ gconf-editor
 gnome-disk-utility
 gnote
 gpgme
-greybird-gtk2-theme
-greybird-gtk3-theme
-greybird-metacity-theme
+#greybird-gtk2-theme
+#greybird-gtk3-theme
+#greybird-metacity-theme
 gtk-murrine-engine
 gtk-recordmydesktop
 gtk-unico-engine

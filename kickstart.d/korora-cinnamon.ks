@@ -37,6 +37,7 @@ NetworkManager-vpnc
 NetworkManager-wifi
 NetworkManager-wwan
 PackageKit-gtk3-module
+arc-theme
 argyllcms
 blueman
 brasero
