@@ -100,7 +100,7 @@ lirc
 mtools
 ncftp
 network-manager-applet
-openshot
+pitivi
 pcsc-lite
 pcsc-lite-ccid
 pharlap

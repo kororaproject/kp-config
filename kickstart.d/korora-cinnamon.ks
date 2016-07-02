@@ -74,7 +74,7 @@ nemo
 nemo-extensions
 nemo-fileroller
 network-manager-applet
-openshot
+pitivi
 -parole
 pcsc-lite
 pcsc-lite-ccid

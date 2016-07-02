@@ -100,7 +100,7 @@ mousepad
 mtools
 ncftp
 network-manager-applet
-openshot
+pitivi
 owncloud
 pcsc-lite
 pcsc-lite-ccid

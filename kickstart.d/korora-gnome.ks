@@ -109,7 +109,7 @@ nautilus-image-converter
 nautilus-sendto
 ncftp
 network-manager-applet
-openshot
+pitivi
 pcsc-lite
 pcsc-lite-ccid
 pharlap
