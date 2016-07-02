@@ -292,6 +292,7 @@ unburden-home-dir
 # WEB
 firefox
 #mozilla-adblock-plus
+mozilla-arc-theme
 mozilla-ublock-origin
 #mozilla-downthemall
 #mozilla-flashblock

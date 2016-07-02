@@ -75,6 +75,7 @@ nemo
 nemo-extensions
 nemo-fileroller
 network-manager-applet
+gst-transcoder
 pitivi
 -parole
 pcsc-lite

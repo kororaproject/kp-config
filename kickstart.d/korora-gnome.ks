@@ -109,6 +109,7 @@ nautilus-image-converter
 nautilus-sendto
 ncftp
 network-manager-applet
+gst-transcoder
 pitivi
 pcsc-lite
 pcsc-lite-ccid

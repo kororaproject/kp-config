@@ -101,6 +101,7 @@ lirc
 mtools
 ncftp
 network-manager-applet
+gst-transcoder
 pitivi
 pcsc-lite
 pcsc-lite-ccid

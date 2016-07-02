@@ -101,6 +101,7 @@ mousepad
 mtools
 ncftp
 network-manager-applet
+gst-transcoder
 pitivi
 owncloud
 pcsc-lite
