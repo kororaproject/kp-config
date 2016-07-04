@@ -302,6 +302,7 @@ mozilla-xclear
 # TO SORT
 aspell-en
 chrony
+cowsay
 execstack
 expect
 fprintd-pam
