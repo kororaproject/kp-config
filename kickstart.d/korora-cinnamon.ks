@@ -80,7 +80,7 @@ pitivi
 -parole
 pcsc-lite
 pcsc-lite-ccid
-pharlap
+#pharlap #no longer useful
 plank-theme-korora
 pulseaudio-module-bluetooth
 python3-lens-gtk

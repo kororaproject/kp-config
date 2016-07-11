@@ -124,7 +124,7 @@ b43-firmware
 akmods
 dkms
 kernel-devel
-pharlap
+#pharlap #no longer useful
 
 
 #

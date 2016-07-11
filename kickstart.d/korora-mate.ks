@@ -105,7 +105,7 @@ gst-transcoder
 pitivi
 pcsc-lite
 pcsc-lite-ccid
-pharlap
+#pharlap #no longer useful
 pidgin
 plank-theme-korora
 pulseaudio-module-bluetooth

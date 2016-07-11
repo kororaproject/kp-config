@@ -113,7 +113,7 @@ gst-transcoder
 pitivi
 pcsc-lite
 pcsc-lite-ccid
-pharlap
+#pharlap #no longer useful
 pulseaudio-module-bluetooth
 python3-lens-gtk
 -python3-lens-qt

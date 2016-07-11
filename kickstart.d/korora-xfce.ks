@@ -106,7 +106,7 @@ pitivi
 owncloud
 pcsc-lite
 pcsc-lite-ccid
-pharlap
+#pharlap #no longer useful
 pidgin
 pidgin-guifications
 pidgin-musictracker
