@@ -20,11 +20,12 @@ file-roller-nautilus
 seahorse-nautilus
 owncloud-client-nautilus
 gnome-terminal-nautilus
-nautilus-pastebin
+-nautilus-pastebin
 nautilus-image-converter
 nautilus-search-tool
 
 -alacarte
+-deluge
 -gnome-mplayer
 -gnome-mplayer-nautilus
 -gnome-shell-extension-gpaste
@@ -39,7 +40,6 @@ nautilus-search-tool
 -system-config-printer
 -thunderbird
 -totem*
--transmission-gtk
 -xscreensaver-base
 -xscreensaver-extras
 -xscreensaver-gl-extras
@@ -64,7 +64,7 @@ control-center
 darktable
 dconf-editor
 deja-dup
-deluge
+transmission
 ekiga
 empathy
 evince

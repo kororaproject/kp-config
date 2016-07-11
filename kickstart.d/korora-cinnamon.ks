@@ -15,6 +15,7 @@ korora-backgrounds-extras-gnome
 -alacarte
 -control-center
 -deja-dup
+-deluge
 -evolution*
 -gnome-mplayer
 -gnome-mplayer-nautilus
@@ -23,7 +24,7 @@ korora-backgrounds-extras-gnome
 -mplayer
 -smartmontools
 -totem*
--transmission-gtk
+transmission
 NetworkManager-adsl
 NetworkManager-bluetooth
 NetworkManager-iodine
@@ -44,7 +45,6 @@ brasero
 brltty
 darktable
 dconf-editor
--deluge
 ekiga
 -empathy
 evince

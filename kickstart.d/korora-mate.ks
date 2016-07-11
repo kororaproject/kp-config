@@ -21,6 +21,7 @@ yumex-dnf
 -brasero-nautilus
 -claws-mail # K21 replace with thunderbird
 -exaile
+-deluge
 -geany
 -gnome-mplayer
 -gnome-mplayer-nautilus
@@ -118,7 +119,7 @@ strongswan
 system-config-users
 thunderbird
 #transcode #k24
-transmission-gtk
+transmission
 wget
 x264
 xfsprogs

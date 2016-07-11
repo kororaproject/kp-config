@@ -42,7 +42,7 @@ yumex-dnf
 -smartmontools
 -thunderbird
 -totem*
--transmission-gtk
+transmission
 -xfdashboard
 -xpdf
 -xterm
