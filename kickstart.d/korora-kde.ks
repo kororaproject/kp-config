@@ -2,7 +2,7 @@
 %include korora-base.ks
 %include korora-common-packages.ks
 
-services --enabled=kdm --disabled=sddm
+services --enabled=sddm --disabled=kdm
 
 #
 # PACKAGES
@@ -75,7 +75,7 @@ kdegames-minimal
 kdenlive #k24
 kdeplasma-addons
 kdiff3
-kdm
+-kdm
 kid3
 kio-ftps
 kio_mtp
@@ -85,6 +85,7 @@ konversation
 krdc
 krename
 krusader
+ksuperkey
 ktimetracker
 ktorrent
 libmpg123
@@ -104,6 +105,7 @@ qt-recordmydesktop
 qtcurve-gtk2
 qtcurve-kde4
 skanlite
+soundkonverter
 system-config-users
 #xine-lib-extras
 #xine-lib-extras-freeworld
@@ -115,7 +117,10 @@ yakuake
 
 echo -e "\n*****\nPOST SECTION\n*****\n"
 
-systemctl enable kdm.service
+systemctl enable sddm.service
+
+# enable ksuperkey
+cp /usr/share/applications/ksuperkey.desktop /etc/xdg/autostart/
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
