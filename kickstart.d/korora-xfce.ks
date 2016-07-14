@@ -167,7 +167,7 @@ cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
 background=/usr/share/backgrounds/korora/default/standard/korora.png
 default-user-image=/usr/share/icons/hicolor/64x64/apps/korora-icon-generic.png
 theme-name=Arc
-icon-theme-name="Numix Circle"
+icon-theme-name=Numix-Circle
 font-name=Sans Bold 9
 #xft-antialias=
 #xft-dpi=
