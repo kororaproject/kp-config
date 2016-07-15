@@ -81,7 +81,7 @@ pitivi
 pcsc-lite
 pcsc-lite-ccid
 #pharlap #no longer useful
-plank-theme-korora
+arc-theme-plank
 pulseaudio-module-bluetooth
 python3-lens-gtk
 -python3-lens-qt
@@ -129,8 +129,8 @@ cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
 [greeter]
 background=/usr/share/backgrounds/korora/default/standard/korora.png
 default-user-image=/usr/share/icons/hicolor/64x64/apps/korora-icon-generic.png
-#theme-name=Greybird
-icon-theme-name=korora
+theme-name=Arc
+icon-theme-name=Numix-Circle
 #font-name=Sans Bold 9
 #xft-antialias=
 #xft-dpi=
