@@ -100,7 +100,7 @@ okular
 plasma-nm*
 python3-PyQt4
 -python3-lens-gtk
-python3-lens-qt
+python3-lens-qt5
 qt-recordmydesktop
 qtcurve-gtk2
 qtcurve-kde4

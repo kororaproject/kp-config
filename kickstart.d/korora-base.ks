@@ -48,7 +48,6 @@ do
     fi
   done
 done
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-24-x86_64
 
 # enable magic keys
 echo "kernel.sysrq = 1" >> /etc/sysctl.conf

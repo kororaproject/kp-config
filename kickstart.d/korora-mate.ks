@@ -108,6 +108,7 @@ pcsc-lite
 pcsc-lite-ccid
 #pharlap #no longer useful
 pidgin
+plank
 arc-theme-plank
 pulseaudio-module-bluetooth
 python3-lens-gtk
