@@ -255,6 +255,7 @@ yumex-dnf
 #
 # SYSTEM ADMINSITRATION / CONFIGURATION
 canvas
+firewall-config
 -ntp
 -system-config-date
 -system-config-firewall*
@@ -271,7 +272,7 @@ screen
 screenfetch
 setools-console
 system-config-samba
-system-config-services
+-system-config-services
 #systemd-ui - N/A - f22
 tmux
 

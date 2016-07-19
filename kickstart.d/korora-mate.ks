@@ -117,6 +117,7 @@ shotwell
 simple-scan
 soundconverter
 strongswan
+system-config-language
 system-config-users
 thunderbird
 #transcode #k24
@@ -152,7 +153,7 @@ cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
 [greeter]
 background=/usr/share/backgrounds/korora/default/standard/korora.png
 default-user-image=/usr/share/pixmaps/fedora-logo-small.png
-theme-name=Arc
+theme-name=Arc-Dark
 icon-theme-name=Numix-Circle
 position = 20%,center 50%,center
 #font-name=Sans Bold 9

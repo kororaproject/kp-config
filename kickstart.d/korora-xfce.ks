@@ -122,8 +122,10 @@ simple-mtpfs
 simple-scan
 soundconverter
 strongswan
+system-config-language
 system-config-users
 system-config-date
+system-config-printer-applet
 thunderbird
 tumbler-extras
 webkitgtk4
@@ -146,7 +148,7 @@ echo -e "\n*****\nPOST SECTION\n*****\n"
 
 # KP - customise gtk-greeter
 cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
-#
+
 # background = Background file to use, either an image path or a color (e.g. #772953)
 # theme-name = GTK+ theme to use
 # icon-theme-name = Icon theme to use
@@ -166,9 +168,9 @@ cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
 [greeter]
 background=/usr/share/backgrounds/korora/default/standard/korora.png
 default-user-image=/usr/share/pixmaps/fedora-logo-small.png
-theme-name=Arc
+theme-name=Arc-Dark
 icon-theme-name=Numix-Circle
-font-name=Sans Bold 9
+#font-name=Sans Bold 9
 position = 20%,center 50%,center
 #xft-antialias=
 #xft-dpi=

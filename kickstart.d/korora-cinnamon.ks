@@ -130,7 +130,7 @@ cat > /etc/lightdm/lightdm-gtk-greeter.conf << EOF
 [greeter]
 background=/usr/share/backgrounds/korora/default/standard/korora.png
 default-user-image=/usr/share/pixmaps/fedora-logo-small.png
-theme-name=Arc
+theme-name=Arc-Dark
 icon-theme-name=Numix-Circle
 position = 20%,center 50%,center
 
