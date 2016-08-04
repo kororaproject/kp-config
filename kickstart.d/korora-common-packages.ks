@@ -114,7 +114,7 @@ openssh-askpass
 #rpm-sign
 strace
 vim
-
+fdupes
 
 #
 # DEVICE DRIVER / FIRMWARE MANAGEMENT
