@@ -102,6 +102,7 @@ inkscape
 
 #
 # DEVELOPMENT / DEBUGGING
+ack
 android-tools
 #createrepo
 fpaste # fpaste is very useful for debugging and very small

@@ -69,7 +69,7 @@ compiz-plugins-main
 compiz-plugins-main
 compiz-plugins-unsupported
 compizconfig-python
-darktable
+-darktable
 dconf-editor
 ekiga
 emerald

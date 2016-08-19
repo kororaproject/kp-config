@@ -69,7 +69,7 @@ audacious-plugins*
 blueman
 brltty
 catfish
-darktable
+-darktable
 dconf-editor
 egtk-gtk2-theme
 egtk-gtk3-theme
