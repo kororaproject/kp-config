@@ -103,7 +103,6 @@ ncftp
 network-manager-applet
 gst-transcoder
 pitivi
-owncloud
 pcsc-lite
 pcsc-lite-ccid
 #pharlap #no longer useful
