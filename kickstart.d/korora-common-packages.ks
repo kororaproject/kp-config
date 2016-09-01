@@ -83,6 +83,7 @@ efibootmgr
 korora-icon-theme-base
 korora-icon-theme
 korora-productimg-workstation
+-fedora-productimg-workstation
 -korora-release-workstation
 -fedora-release-workstation
 -f22-backgrounds*
@@ -204,7 +205,7 @@ gstreamer-plugins-good
 gstreamer-plugins-good-extras
 gstreamer-plugins-ugly
 gstreamer1-libav
-gstreamer1-plugin-openh264
+#gstreamer1-plugin-openh264 #k25
 gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-free-extras
 gstreamer1-plugins-bad-freeworld
@@ -218,7 +219,7 @@ libbluray
 libdvdcss
 libdvdnav
 libdvdread
-mozilla-openh264
+#mozilla-openh264 #k25
 raw-thumbnailer #k24 add support for raw thumbs
 vlc #k24
 vlc-extras #k24

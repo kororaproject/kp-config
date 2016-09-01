@@ -63,7 +63,7 @@ ccsm
 compiz
 compiz-bcop
 compiz-manager
-compiz-mate
+#compiz-mate # k25
 compiz-plugins-extra
 compiz-plugins-main
 compiz-plugins-main
@@ -76,7 +76,7 @@ emerald
 emerald-themes
 fbreader-gtk
 fusion-icon
-fusion-icon-gtk
+#fusion-icon-gtk #k25
 gconf-editor
 gnome-disk-utility
 gnote

@@ -11,9 +11,9 @@ services --enabled=sddm --disabled=kdm
 %packages
 
 # KORORA KDE CONFIGURATION
-korora-settings-kde
-korora-kde-theme
-korora-kdm-theme
+#korora-settings-kde #k25
+#korora-kde-theme #k25
+#korora-kdm-theme #k25
 korora-backgrounds-kde
 korora-backgrounds-extras-kde
 
