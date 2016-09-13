@@ -82,7 +82,7 @@ gnome-shell-extension-drive-menu
 gnome-shell-extension-places-menu
 gnome-shell-extension-pomodoro
 gnome-shell-extension-user-theme
-gnome-shell-extension-weather
+gnome-shell-extension-openweather
 gnome-shell-theme-*
 gnome-system-log
 gnome-tweak-tool

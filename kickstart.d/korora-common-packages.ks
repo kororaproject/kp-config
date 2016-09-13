@@ -17,6 +17,10 @@
 -abrt*
 -@multimedia
 
+# Fixups
+libcrypt-nss
+-libcrypt
+
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
 kernel-modules-extra
@@ -77,6 +81,7 @@ korora-logos
 -fedora-release-notes
 korora-welcome
 plymouth-theme-korora
+#plymouth-theme-hot-dog
 #grub2-starfield-theme
 grub2-efi
 efibootmgr
@@ -126,6 +131,7 @@ b43-firmware
 akmods
 dkms
 kernel-devel
+lm_sensors-sensord
 #pharlap #no longer useful
 
 
@@ -163,6 +169,7 @@ pptp-setup
 cups-*
 -cups*devel
 -cups-pdf # this doesn't work when building live images
+-cura-lulzbot
 epson-inkjet-printer-escpr # support for recent Epson inkjet printers
 hplip # support for extra HP printers
 hpijs
