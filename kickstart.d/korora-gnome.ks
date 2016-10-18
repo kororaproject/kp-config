@@ -16,7 +16,7 @@ gnome-terminal #k24 not sure why this wasn't included already
 
 #nautilus-dropbox
 deja-dup-nautilus
-file-roller-nautilus
+#file-roller-nautilus #k25
 seahorse-nautilus
 owncloud-client-nautilus
 gnome-terminal-nautilus

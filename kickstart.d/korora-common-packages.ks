@@ -199,7 +199,7 @@ audacity-freeworld
 dvb-apps
 faac
 ffmpeg
-#ffmpegthumbnailer #k24
+ffmpegthumbnailer
 flac
 #flash-plugin.%%KP_BASEARCH%%
 #flash-plugin.i386  # remove 32bit, now that we don't ship steam
@@ -227,7 +227,7 @@ libdvdcss
 libdvdnav
 libdvdread
 #mozilla-openh264 #k25
-raw-thumbnailer #k24 add support for raw thumbs
+raw-thumbnailer
 vlc #k24
 vlc-extras #k24
 vorbis-tools
