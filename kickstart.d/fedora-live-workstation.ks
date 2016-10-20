@@ -4,7 +4,11 @@
 
 %include fedora-live-base.ks
 %include fedora-workstation-packages.ks
-%include snippets/packagekit-cached-metadata.ks
+#
+# Disable this for now to see if packagekit is causing
+# compose failures by leaving a gpg-agent around holding /dev/null open.
+#
+#include snippets/packagekit-cached-metadata.ks
 
 part / --size 6656
 

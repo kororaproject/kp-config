@@ -23,8 +23,8 @@ caja-actions
 mate-disk-usage-analyzer
 
 # more backgrounds
-f24-backgrounds-base
-f24-backgrounds-mate
+f25-backgrounds-base
+f25-backgrounds-mate
 f24-backgrounds-extras-base
 
 # system tools
