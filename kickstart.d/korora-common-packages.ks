@@ -47,7 +47,7 @@ adobe-release
 #dropbox-release # now in rpmfusion
 google-chrome-release
 google-earth-release
-google-talkplugin-release
+#google-talkplugin-release
 #ksplice-uptrack
 rpmfusion-free-release
 rpmfusion-nonfree-release
@@ -56,7 +56,7 @@ virtualbox-release
 
 #
 # ACCESSIBILITY
-eekboard
+#eekboard
 
 
 #
@@ -169,7 +169,7 @@ pptp-setup
 cups-*
 -cups*devel
 -cups-pdf # this doesn't work when building live images
--cura-lulzbot
+#-cura-lulzbot
 epson-inkjet-printer-escpr # support for recent Epson inkjet printers
 hplip # support for extra HP printers
 hpijs
@@ -280,7 +280,7 @@ polkit-desktop-policy
 screen
 screenfetch
 setools-console
-system-config-samba
+#system-config-samba - f26
 -system-config-services
 #systemd-ui - N/A - f22
 tmux

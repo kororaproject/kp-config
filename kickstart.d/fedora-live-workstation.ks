@@ -3,10 +3,10 @@
 # mailto:desktop@lists.fedoraproject.org
 
 %include fedora-live-base.ks
-%include fedora-workstation-packages.ks
+%include fedora-workstation-common.ks
 #
-# Disable this for now to see if packagekit is causing
-# compose failures by leaving a gpg-agent around holding /dev/null open.
+# Disable this for now as packagekit is causing compose failures
+# by leaving a gpg-agent around holding /dev/null open.
 #
 #include snippets/packagekit-cached-metadata.ks
 

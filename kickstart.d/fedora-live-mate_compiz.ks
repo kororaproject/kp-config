@@ -4,47 +4,10 @@
 # mailto:desktop@lists.fedoraproject.org
 
 %include fedora-live-base.ks
-%include fedora-mate-packages.ks
+%include fedora-mate-common.ks
 %include fedora-live-minimization.ks
 
 part / --size 6144
-
-%packages
-
-# Drop things for size
--@3d-printing
--brasero
--colord
--fedora-icon-theme
--GConf2
--gnome-bluetooth-libs
--gnome-icon-theme
--gnome-icon-theme-symbolic
--gnome-software
--gnome-themes
--gnome-themes-standard
--gnome-user-docs
-
--@mate-applications
--mate-icon-theme-faenza
-
-# Drop oversized fonts that aren't needed
-
-# Drop things that pull in perl
-
-# Dictionaries are big
-# we're going to try keeping hunspell-* after notting, davidz, and ajax voiced
-# strong preference to giving it a go on #fedora-desktop.
-# also see http://bugzilla.gnome.org/681084
-
-# Help and art can be big, too
--gnome-user-docs
--evolution-help
-
-# Legacy cmdline things we don't want
--telnet
-
-%end
 
 %post
 cat >> /etc/rc.d/init.d/livesys << EOF
@@ -57,6 +20,9 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 fi
 mkdir /home/liveuser/Desktop
 cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
+
+# and mark it as executable
+chmod +x /home/liveuser/Desktop/liveinst.desktop
 
 # rebuild schema cache with any overrides we installed
 glib-compile-schemas /usr/share/glib-2.0/schemas

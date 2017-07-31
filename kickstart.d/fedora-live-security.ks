@@ -1,17 +1,94 @@
-# fedora-livecd-xfce.ks
-#
+# Filename:
+#   fedora-livecd-security.ks
 # Description:
-# - Fedora Live Spin with the light-weight XFCE Desktop Environment
-#
-# Maintainer(s):
-# - Rahul Sundaram    <sundaram@fedoraproject.org>
-# - Christoph Wickert <cwickert@fedoraproject.org>
-# - Kevin Fenzi       <kevin@tummy.com>
-# - Adam Miller       <maxamillion@fedoraproject.org>
+#   A fully functional live OS based on Fedora for use in security auditing, 
+#   forensics research, and penetration testing.
+# Maintainers:
+#   Fabian Affolter <fab [AT] fedoraproject <dot> org>
+#   Joerg Simon <jsimon [AT] fedoraproject <dot> org>
+# Acknowledgements:
+#   Fedora LiveCD Xfce Spin team - some work here was and will be inherited,
+#   many thanks, especially to Christoph Wickert!
+#   Fedora LXDE Spin - Copied over stuff to make LXDE Default
+#   Luke Macken and Adam Miller for the original OpenBox Security ks and all
+#   the Security Applications! 
+#   Hiemanshu Sharma <hiemanshu [AT] fedoraproject <dot> org>
 
 %include fedora-live-base.ks
 %include fedora-live-minimization.ks
-%include fedora-xfce-common.ks
+
+# spin was failing to compose due to lack of space, so bumping the size.
+part / --size 10240
+
+%packages
+@xfce-desktop
+@xfce-apps
+
+# Security tools
+@security-lab
+security-menus
+
+# unlock default keyring. FIXME: Should probably be done in comps
+gnome-keyring-pam
+
+# save some space
+-autofs
+-acpid
+-gimp-help
+-desktop-backgrounds-basic
+-realmd                     # only seems to be used in GNOME
+-PackageKit*                # we switched to yumex, so we don't need this
+-aspell-*                   # dictionaries are big
+-gnumeric
+-foomatic-db-ppds
+-foomatic
+-stix-fonts
+-ibus-typing-booster
+-xfce4-sensors-plugin
+-man-pages-*
+
+# drop some system-config things
+-system-config-rootpassword
+-policycoreutils-gui
+
+# exclude some packages to save some space
+# use './fsl-maintenance.py -l' in your security spin git folder to build
+-ArpON
+-aide
+-binwalk
+-bkhive
+-bonesi
+-bro
+-cmospwd
+-dnstop
+-etherape
+-hfsutils
+-httpie
+-httrack
+-hydra
+-kismon
+-labrea
+-nebula
+-netsed
+-onesixtyone
+-packETH
+-pads
+-pdfcrack
+-proxychains
+-pyrit
+-raddump
+-rkhunter
+-safecopy
+-samdump2
+-scalpel
+-sslstrip
+-tcpreen
+-tcpreplay
+-tripwire
+-wipe
+-zmap
+
+%end
 
 %post
 # xfce configuration
@@ -30,7 +107,7 @@ mkdir -p /home/liveuser/.config/xfce4
 cat > /home/liveuser/.config/xfce4/helpers.rc << FOE
 MailReader=sylpheed-claws
 FileManager=Thunar
-WebBrowser=firefox
+WebBrowser=midori
 FOE
 
 # disable screensaver locking (#674410)
@@ -70,4 +147,3 @@ restorecon -R /home/liveuser
 EOF
 
 %end
-

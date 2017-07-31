@@ -19,6 +19,7 @@ clearpart --all
 part / --size 5120 --fstype ext4
 services --enabled=NetworkManager,ModemManager --disabled=sshd
 network --bootproto=dhcp --device=link --activate
+rootpw --lock --iscrypted locked
 shutdown
 
 %include fedora-repo.ks
@@ -214,7 +215,9 @@ touch /.liveimg-configured
 
 # add static hostname to work around xauth bug
 # https://bugzilla.redhat.com/show_bug.cgi?id=679486
-echo "localhost" > /etc/hostname
+# the hostname must be something else than 'localhost'
+# https://bugzilla.redhat.com/show_bug.cgi?id=1370222
+echo "localhost-live" > /etc/hostname
 
 EOF
 

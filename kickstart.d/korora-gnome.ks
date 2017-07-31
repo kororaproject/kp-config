@@ -16,7 +16,6 @@ gnome-terminal #k24 not sure why this wasn't included already
 
 #nautilus-dropbox
 deja-dup-nautilus
-#file-roller-nautilus #k25
 seahorse-nautilus
 owncloud-client-nautilus
 gnome-terminal-nautilus
@@ -39,7 +38,7 @@ nautilus-search-tool
 -smartmontools
 -system-config-printer
 -thunderbird
--totem*
+-totem
 -xscreensaver-base
 -xscreensaver-extras
 -xscreensaver-gl-extras
@@ -92,7 +91,6 @@ gtk-murrine-engine
 gtk-recordmydesktop
 gtk-unico-engine
 gvfs-*
-#gwibber - N/A - f23
 hardlink
 iok
 libmatroska
@@ -105,7 +103,6 @@ lirc
 mtools
 nautilus-extensions
 nautilus-image-converter
-#nautilus-open-terminal #k24
 nautilus-sendto
 ncftp
 network-manager-applet
@@ -113,7 +110,6 @@ gst-transcoder
 pitivi
 pcsc-lite
 pcsc-lite-ccid
-#pharlap #no longer useful
 pulseaudio-module-bluetooth
 python3-lens-gtk
 -python3-lens-qt
@@ -124,7 +120,6 @@ sound-juicer
 soundconverter
 strongswan
 tracker-preferences
-#transcode #k24
 wget
 x264
 xfsprogs

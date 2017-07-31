@@ -71,8 +71,8 @@ brltty
 catfish
 -darktable
 dconf-editor
-egtk-gtk2-theme
-egtk-gtk3-theme
+#egtk-gtk2-theme
+#egtk-gtk3-theme
 ekiga
 elementary-xfce-icon-theme
 evince
@@ -123,7 +123,7 @@ soundconverter
 strongswan
 system-config-language
 system-config-users
-system-config-date
+#system-config-date - f26
 system-config-printer-applet
 thunderbird
 tumbler-extras

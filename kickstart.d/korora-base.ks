@@ -17,7 +17,7 @@ clearpart --all
 part / --size 10240 --fstype ext4
 services --enabled=fstrim.timer,ksmtuned,lircd,ModemManager,NetworkManager,sensord,spice-vdagentd --disabled=abrtd,abrt-ccpp,abrt-oops,abrt-vmcore,abrt-xorg,capi,iprdump,iprinit,iprupdate,iscsi,iscsid,isdn,libvirtd,multipathd,netfs,network,nfs,nfslock,pcscd,rpcbind,rpcgssd,rpcidmapd,rpcsvcgssd,sendmail,sm-client,sshd
 
-%include korora-repo-dev.ks
+%include korora-repo.ks
 #%include korora-repo-dev.ks
 # move the common packages to the desktops so that canvas doesn't inherit them
 #%include korora-common-packages.ks

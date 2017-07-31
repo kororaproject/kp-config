@@ -3,7 +3,7 @@
 # mailto:kde@lists.fedoraproject.org
 
 %include fedora-live-base.ks
-%include fedora-kde-packages.ks
+%include fedora-kde-common.ks
 
 %post
 
@@ -55,11 +55,9 @@ cat > /home/liveuser/.config/akonadi/akonadiserverrc << AKONADI_EOF
 Driver=QSQLITE3
 AKONADI_EOF
 
-# Disable plasma-pk-updates
-sed -i \
-    -e "s|^X-KDE-PluginInfo-EnabledByDefault=true|X-KDE-PluginInfo-EnabledByDefault=false|g" \
-    /usr/share/plasma/plasmoids/org.kde.plasma.pkupdates/metadata.desktop \
-    /usr/share/kservices5/plasma-applet-org.kde.plasma.pkupdates.desktop
+# Disable plasma-pk-updates (bz #1436873 and 1206760)
+echo "Removing plasma-pk-updates package."
+rpm -e plasma-pk-updates
 
 # Disable baloo
 cat > /home/liveuser/.config/baloofilerc << BALOO_EOF
